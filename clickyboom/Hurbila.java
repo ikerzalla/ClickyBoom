@@ -14,4 +14,9 @@ public class Hurbila extends Laukia {
 	public int getBonbaKop() {
 		return bonbaKop;
 	}
+	
+	public void egituratu(int x, int y) {
+		super.egituratu(x,y);
+		Pantaila.getNPantaila().setIrudi((char)bonbaKop, x, y);
+	}
 }

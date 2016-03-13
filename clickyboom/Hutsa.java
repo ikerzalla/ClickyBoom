@@ -8,6 +8,7 @@ public class Hutsa extends Laukia {
 
 	public void egituratu(int x, int y) {
 		super.egituratu(x,y);
+		Pantaila.getNPantaila().setIrudi('h', x, y);
 		State estado = new StateBeteta();
 		Tableroa taula = Jokoa.getNireJokoa().getTableroa();
 		if (x > 0) {
