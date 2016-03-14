@@ -2,7 +2,7 @@ package clickyboom;
 
 public class TableroaErraza extends Tableroa {
 	
-	public TableroaErraza(int x, int y, int b){
-		super(x, y, b);
+	public TableroaErraza(int alt, int zab, int b){
+		super(alt, zab, b);
 	}
 }
