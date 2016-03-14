@@ -12,155 +12,157 @@ public abstract class Tableroa {
     protected JButton[][] botoiak;
     protected State egoera;
     protected int bonbaKop;
-    protected int zabalera;
     protected int altuera;
+    protected int zabalera;
     //Bi atributu hauek erabili ditut bonben ondoan dauden laukiak ikutzean,
     //hasieran click egin dugun laukia HUTSA jarraitzen izateko hurbilakAldatu() metodoa eta gero
     //Hala ere, inprimatu metodoaren emaitza ikusita, baliteke "zabalera" eta "altuera" hitzak trukatzea
-    protected int hasX;
     protected int hasY;
+    protected int hasX;
     
-    protected Tableroa(int zab, int alt, int bon){
-    	this.zabalera = zab;
+    protected Tableroa(int alt, int zab, int bon){
     	this.altuera = alt;
-    	this.laukiak = new Laukia[zab][alt];
-		this.botoiak = new JButton[zab][alt];
+    	this.zabalera = zab;
+    	this.laukiak = new Laukia[alt][zab];
+		this.botoiak = new JButton[alt][zab];
     	this.bonbaKop = bon;
     	this.egoera = new StateHutsa();
     }
     //Lauki batean click egitean, laukiak metodo honi deituko
     //dio bere posizioa pasatuz
-    public void clickEgin(int x, int y){
-    	System.out.println("Click egin da");
-    	egoera.eskatu(x, y);
+    public void clickEgin(int y, int x){
+    	System.out.println("Click egin da " + x + "," + y +" posizioan");
+    	egoera.eskatu(y, x);
     }
 
 	//public abstract Tableroa nTableroaLortu();
    
     //0 <= laukZab <= (laukiak[].lenght)-1
     //0 <= laukAlt <= (laukiak[0][].lenght)-1
-    public void tableroaBete(int laukZab, int laukAlt){
-    	this.hasX = laukZab;
+    public void tableroaBete(int laukAlt, int laukZab){
     	this.hasY = laukAlt;
-        laukiak[laukZab][laukAlt] = new Hutsa();
+    	this.hasX = laukZab;
+        laukiak[laukAlt][laukZab] = new Hutsa();
         this.bonbakKokatu();
-        int x = 0;
         int y = 0;
+        int x = 0;
         Laukia [] lista = null;
-        while (x<=this.zabalera-1){
-        	lista =  this.laukiak[x];
+        while (y<=this.altuera-1){
+        	lista =  this.laukiak[y];
             for (Laukia l : lista){
                 if(l==null){
-                    laukiak[x][y] = new Hutsa();
+                    laukiak[y][x] = new Hutsa();
                 }
                 else if (l instanceof Bonba){
-                    hurbilakAldatu(x,y); 
+                    hurbilakAldatu(y,x); 
                     //hasX eta hasY gehitu ditut bonben ondoan dauden laukiak aldatzean 
                     //hasierako hutsunea ez aldatzeko
                 }
-                y++;
+                x++;
             }
-            y=0;
-            x++;
+            x=0;
+            y++;
         }
         System.out.println("Tableroa bete da");
     }
  
     protected void bonbakKokatu(){
         int b = 0;
-        int posX;
         int posY;
+        int posX;
         while(b<this.bonbaKop){
-            posX =(int)(Math.random()*this.zabalera-1);
             posY =(int)(Math.random()*this.altuera-1);
-            if(laukiak[posX][posY]==null){
-                laukiak[posX][posY] = new Bonba();
+            posX =(int)(Math.random()*this.zabalera-1);
+            if(!(posY+1 ==this.hasY || posY-1==this.hasY) && !(posX+1 ==this.hasX || posX-1==this.hasX)
+            && laukiak[posY][posX]==null){ 	//If honen baldintza luzea da, hasieran click 
+            								//egin dugun posizioaren alboan bonbak ez kokatzeko
+                laukiak[posY][posX] = new Bonba();
                 b++;
             }
         }
         System.out.println("Bonbak kokatu dira");
     }
    
-    protected void hurbilakAldatu(int x, int y){
+    protected void hurbilakAldatu(int y, int x){
         //Aurrebaldintza: Tableroa 2x2-koa izango da gutxienez
         //Metodo honetan bonbak egoteagatik aldaketak non egin ahal diren begiratzen du bakarrik,
         //ez du ezer ez aldatzen
-        if (x == 0){                                //Ezkerraldeko zutabea
-            if (y == 0){                            //Goiko errenkada
-                hurbilaAldatu(x+1, y  );
-                hurbilaAldatu(x+1, y+1);
-                hurbilaAldatu(x  , y+1);
+        if (y == 0){                                //Ezkerraldeko zutabea
+            if (x == 0){                            //Goiko errenkada
+                hurbilaAldatu(y+1, x  );
+                hurbilaAldatu(y+1, x+1);
+                hurbilaAldatu(y  , x+1);
             }
-            else if (y == (altuera-1)){   //Beheko errenkada
-                hurbilaAldatu(x  , y-1);
-                hurbilaAldatu(x+1, y-1);
-                hurbilaAldatu(x+1, y  );
+            else if (x == (zabalera-1)){   //Beheko errenkada
+                hurbilaAldatu(y  , x-1);
+                hurbilaAldatu(y+1, x-1);
+                hurbilaAldatu(y+1, x  );
             }
             else{
-                hurbilaAldatu(x  , y-1);
-                hurbilaAldatu(x+1, y-1);
-                hurbilaAldatu(x+1, y  );
-                hurbilaAldatu(x+1, y+1);
-                hurbilaAldatu(x  , y+1);
+                hurbilaAldatu(y  , x-1);
+                hurbilaAldatu(y+1, x-1);
+                hurbilaAldatu(y+1, x  );
+                hurbilaAldatu(y+1, x+1);
+                hurbilaAldatu(y  , x+1);
             }
         }
-        else if (x == (zabalera-1)){          //Eskuinaldeko zutabea
-            if (y == 0){
-                hurbilaAldatu(x  , y+1);
-                hurbilaAldatu(x-1, y+1);
-                hurbilaAldatu(x-1, y  );
+        else if (y == (altuera-1)){          //Eskuinaldeko zutabea
+            if (x == 0){
+                hurbilaAldatu(y  , x+1);
+                hurbilaAldatu(y-1, x+1);
+                hurbilaAldatu(y-1, x  );
             }
-            else if (y == (altuera-1)){
-                hurbilaAldatu(x  , y-1);
-                hurbilaAldatu(x-1, y  );
-                hurbilaAldatu(x-1, y-1);
+            else if (x == (zabalera-1)){
+                hurbilaAldatu(y  , x-1);
+                hurbilaAldatu(y-1, x  );
+                hurbilaAldatu(y-1, x-1);
             }
             else{
-                hurbilaAldatu(x  , y-1);
-                hurbilaAldatu(x  , y+1);
-                hurbilaAldatu(x-1, y+1);
-                hurbilaAldatu(x-1, y  );
-                hurbilaAldatu(x-1, y-1);
+                hurbilaAldatu(y  , x-1);
+                hurbilaAldatu(y  , x+1);
+                hurbilaAldatu(y-1, x+1);
+                hurbilaAldatu(y-1, x  );
+                hurbilaAldatu(y-1, x-1);
             }
         }
         else{
-            if (y == 0){
-                hurbilaAldatu(x+1, y  );
-                hurbilaAldatu(x+1, y+1);
-                hurbilaAldatu(x  , y+1);
-                hurbilaAldatu(x-1, y+1);
-                hurbilaAldatu(x-1, y  );
+            if (x == 0){
+                hurbilaAldatu(y+1, x  );
+                hurbilaAldatu(y+1, x+1);
+                hurbilaAldatu(y  , x+1);
+                hurbilaAldatu(y-1, x+1);
+                hurbilaAldatu(y-1, x  );
             }
-            else if (y == (altuera-1)){
-                hurbilaAldatu(x  , y-1);
-                hurbilaAldatu(x+1, y-1);
-                hurbilaAldatu(x+1, y  );
-                hurbilaAldatu(x-1, y  );
-                hurbilaAldatu(x-1, y-1);
+            else if (x == (zabalera-1)){
+                hurbilaAldatu(y  , x-1);
+                hurbilaAldatu(y+1, x-1);
+                hurbilaAldatu(y+1, x  );
+                hurbilaAldatu(y-1, x  );
+                hurbilaAldatu(y-1, x-1);
             }
             else{
-                hurbilaAldatu(x  , y-1);
-                hurbilaAldatu(x+1, y-1);
-                hurbilaAldatu(x+1, y  );
-                hurbilaAldatu(x+1, y+1);
-                hurbilaAldatu(x  , y+1);
-                hurbilaAldatu(x-1, y+1);
-                hurbilaAldatu(x-1, y  );
-                hurbilaAldatu(x-1, y-1);
+                hurbilaAldatu(y  , x-1);
+                hurbilaAldatu(y+1, x-1);
+                hurbilaAldatu(y+1, x  );
+                hurbilaAldatu(y+1, x+1);
+                hurbilaAldatu(y  , x+1);
+                hurbilaAldatu(y-1, x+1);
+                hurbilaAldatu(y-1, x  );
+                hurbilaAldatu(y-1, x-1);
                
             }
         }
-        System.out.println(x + "," + y + " posizioko bonbaren albokoak aldatu dira");
+        System.out.println(y + "," + x + " posizioko bonbaren albokoak aldatu dira");
     }
    
-    protected void hurbilaAldatu(int x, int y){
-    	if(x!= this.hasX && y != this.hasY){
-	        if(laukiak[x][y] instanceof Hurbila){
-	            Hurbila hur = (Hurbila)laukiak[x][y];
+    protected void hurbilaAldatu(int y, int x){
+    	if(!(y== this.hasY && x == this.hasX)){
+	        if(laukiak[y][x] instanceof Hurbila){
+	            Hurbila hur = (Hurbila)laukiak[y][x];
 	            hur.bonbaGehitu();
 	        }
-	        else if(!(laukiak[x][y] instanceof Bonba)){
-	            laukiak[x][y] = new Hurbila();
+	        else if(!(laukiak[y][x] instanceof Bonba)){
+	            laukiak[y][x] = new Hurbila();
 	        }
     	}
     }
@@ -173,8 +175,8 @@ public abstract class Tableroa {
 		botoiak[i][j].setEnabled(false);
 	}
 	
-	public Laukia getLauki(int x, int y) {
-		return laukiak[x][y];
+	public Laukia getLauki(int y, int x) {
+		return laukiak[y][x];
 	}
 
 	public int getAltuera() {
@@ -186,10 +188,10 @@ public abstract class Tableroa {
 	}
 	//Metodo hau tableroa ondo sortu dela probatzeko da bakarrik
 	public void inprimatu(){
-		int x = 0;
+		int y = 0;
         Laukia [] lista = null;
-        while (x<=this.zabalera-1){
-        	lista =  this.laukiak[x];
+        while (y<=this.altuera-1){
+        	lista =  this.laukiak[y];
         	for (Laukia l : lista){
                 if(l instanceof Bonba){
                     System.out.print("* ");
@@ -213,7 +215,7 @@ public abstract class Tableroa {
                 }
             }
         	System.out.println("");
-            x++;
+            y++;
         }
 	}
  
