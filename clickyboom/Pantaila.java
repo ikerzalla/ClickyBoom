@@ -46,8 +46,8 @@ public class Pantaila extends JFrame {
 		botoiak = new JButton[altuera][luzera];
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 300, 200);
-		setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		setBounds(100, 100, this.altuera*(tamainua+3), this.luzera*(tamainua+8));
+		//setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
