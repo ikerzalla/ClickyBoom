@@ -8,17 +8,17 @@ import javax.swing.JButton;
 //ezberdintasun askorik.
  
 public abstract class Tableroa {
-    protected Laukia[][] laukiak;
-    protected JButton[][] botoiak;
-    protected State egoera;
-    protected int bonbaKop;
-    protected int altuera;
-    protected int zabalera;
+    private Laukia[][] laukiak;
+    private JButton[][] botoiak;
+    private int bonbaKop;
+    private int altuera;
+    private int zabalera;
+    private State egoera;
     //Bi atributu hauek erabili ditut bonben ondoan dauden laukiak ikutzean,
     //hasieran click egin dugun laukia HUTSA jarraitzen izateko hurbilakAldatu() metodoa eta gero
     //Hala ere, inprimatu metodoaren emaitza ikusita, baliteke "zabalera" eta "altuera" hitzak trukatzea
-    protected int hasY;
-    protected int hasX;
+    private int hasY;
+    private int hasX;
     
     protected Tableroa(int alt, int zab, int bon){
     	this.altuera = alt;
@@ -31,7 +31,7 @@ public abstract class Tableroa {
     //Lauki batean click egitean, laukiak metodo honi deituko
     //dio bere posizioa pasatuz
     public void clickEgin(int y, int x){
-    	System.out.println("Click egin da " + x + "," + y +" posizioan");
+    	System.out.println("Click egin da " + y + "," + x +" posizioan");
     	egoera.eskatu(y, x);
     }
 
@@ -39,7 +39,7 @@ public abstract class Tableroa {
    
     //0 <= laukZab <= (laukiak[].lenght)-1
     //0 <= laukAlt <= (laukiak[0][].lenght)-1
-    public void tableroaBete(int laukAlt, int laukZab){
+    public void tableroaBete(int laukZab, int laukAlt){
     	this.hasY = laukAlt;
     	this.hasX = laukZab;
         laukiak[laukAlt][laukZab] = new Hutsa();
@@ -175,7 +175,7 @@ public abstract class Tableroa {
 		botoiak[i][j].setEnabled(false);
 	}
 	
-	public Laukia getLauki(int y, int x) {
+	public Laukia getLauki(int x, int y) {
 		return laukiak[y][x];
 	}
 

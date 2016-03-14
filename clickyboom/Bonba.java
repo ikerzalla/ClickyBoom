@@ -7,7 +7,9 @@ public class Bonba extends Laukia {
 	}
 
 	public void egituratu(int x, int y) {
-		super.egituratu(x,y);
-		Pantaila.getNPantaila().setIrudi('b', x, y);
+		if(Pantaila.getNPantaila().entzutenDago(y, x)){
+			super.egituratu(x,y);
+			Pantaila.getNPantaila().setIrudi('b', x, y);
+		}
 	}
 }

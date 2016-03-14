@@ -21,7 +21,11 @@ public class Jokoa {
 	public void jokatu() {
 		TableroaFactory faktoria = TableroaFactory.tableroaFactoryLortu();
 		taula = faktoria.createTableroa("Erraza");
-		new Pantaila(taula.altuera, taula.zabalera);
+		System.out.println("Tableroa sortu dugu");
+		Pantaila p = new Pantaila();
+		System.out.println("Pantaila sortu dugu");
+		p.setVisible(true);
+		
 	}
 
 	public static void main(String[] args){
