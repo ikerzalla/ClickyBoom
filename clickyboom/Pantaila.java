@@ -40,12 +40,9 @@ public class Pantaila extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	private Pantaila() {
-		//Tableroa taula = Jokoa.getNireJokoa().getTableroa();
-		luzera=25;
-		altuera=12;
-		//luzera = taula.getZabalera();
-		//altuera = taula.getAltuera();
+	public Pantaila(int alt, int luz) {
+		this.altuera = alt;
+		this.luzera = luz;
 		botoiak = new JButton[luzera][altuera];
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,17 +63,17 @@ public class Pantaila extends JFrame {
 		
 		kargatuBotoiak();
 	}
-	
+
 	public static Pantaila getNPantaila() {
 		if (nPantaila == null) {
-			nPantaila = new Pantaila();
+			nPantaila = new Pantaila(0,0);
 		}
 		return nPantaila;
 	}
 	
 	private void kargatuBotoiak(){
-		for(int i=0; i<altuera; i++){
-			for(int j=0; j<luzera; j++){
+		for(int i=0; i<altuera-1; i++){
+			for(int j=0; j<luzera-1; j++){
 				botoiak[i][j] = new JButton();
 				botoiak[i][j].setIcon(new ImageIcon("a.png"));
 				tableroa.add(botoiak[i][j]);

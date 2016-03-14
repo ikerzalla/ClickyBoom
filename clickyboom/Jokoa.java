@@ -21,6 +21,10 @@ public class Jokoa {
 	public void jokatu() {
 		TableroaFactory faktoria = TableroaFactory.tableroaFactoryLortu();
 		taula = faktoria.createTableroa("Erraza");
+		new Pantaila(taula.altuera, taula.zabalera);
 	}
 
+	public static void main(String[] args){
+		getNireJokoa().jokatu();
+	}
 }

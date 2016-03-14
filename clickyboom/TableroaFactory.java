@@ -19,7 +19,7 @@ public class TableroaFactory {
 	public Tableroa createTableroa(String s){	
 		Tableroa nireTableroa = null;
 		
-		if(s.equals("Erraza")|| s.equals("erraza") || s.equals("ERRAZA")){
+		if(s.equalsIgnoreCase("erraza")){
 			nireTableroa = new TableroaErraza(7,10,10);
 		}
 		//else if (s.equals("Normal")|| s.equals("normal")){
