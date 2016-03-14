@@ -10,8 +10,7 @@ import javax.swing.border.EmptyBorder;
 public class Pantaila extends JFrame {
 
 	private JPanel contentPane;
-	private int altuera;
-	private int luzera;
+	private int altuera, luzera, laukiTotal;
 	private int tamainua = 40;
 	private JButton botoiak[][];
 	private JPanel fondoa = new JPanel();
@@ -40,10 +39,11 @@ public class Pantaila extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Pantaila() {
-		this.luzera = Jokoa.getNireJokoa().getTableroa().getAltuera();
-		this.altuera = Jokoa.getNireJokoa().getTableroa().getZabalera();
+	private Pantaila() {
+		this.altuera = Jokoa.getNireJokoa().getTableroa().getAltuera();
+		this.luzera = Jokoa.getNireJokoa().getTableroa().getZabalera();
 		botoiak = new JButton[altuera][luzera];
+		laukiTotal = altuera*luzera;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, this.altuera*(tamainua+3), this.luzera*(tamainua+8));
@@ -87,8 +87,11 @@ public class Pantaila extends JFrame {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
+						int n= altuera;
+						int n1= luzera;
 						for(int i=0; i<altuera; i++){
 							for(int j=0; j<luzera; j++){
+								System.out.println("se ha mirado "+j+" , "+i);
 								if (e.getSource().equals(botoiak[i][j])){
 									Jokoa.getNireJokoa().getTableroa().clickEgin(i, j);
 									//JOptionPane a = new JOptionPane();
@@ -111,6 +114,10 @@ public class Pantaila extends JFrame {
 
 	 public void botonOff(int alt, int zab){
 			botoiak[alt][zab].setEnabled(false);
+			laukiTotal--;
+			if (laukiTotal == Jokoa.getNireJokoa().getTableroa().getBonbaKop()){
+				amaitu(false);
+			}
 	}
 	
 	 public void setIrudi(char irudi, int i, int j) {
@@ -125,12 +132,23 @@ public class Pantaila extends JFrame {
 		 	case '7': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/siete.png"))); break;
 		 	case '8': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/ocho.png"))); break;
 		 	case 'b': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/c4.png"))); break;
-		 	case 'h': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/ocho.png"))); break; //falta una imagen
+		 	case 'h': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/arrow.png"))); break; //falta una imagen
 		 	default:
 			break;
 		}
 	 }
 	 public boolean entzutenDago(int alt, int zab){
 		 return botoiak[alt][zab].isEnabled();
+	 }
+	 
+	 public void amaitu(boolean boom){
+		 JOptionPane a = new JOptionPane();
+		 if(boom){			
+			a.showMessageDialog(null, "BOMBA bat zapaldu duzu. BOOM!");
+			dispose();
+		 }else{
+			 a.showMessageDialog(null, "Irabazi egin duzu!");
+			 dispose();
+		 }
 	 }
 }

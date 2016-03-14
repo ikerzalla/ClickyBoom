@@ -18,18 +18,18 @@ public class Hutsa extends Laukia {
 					estado.eskatu(altuera-1,zabalera-1);
 					estado.eskatu(altuera,zabalera-1);
 				}
-				if (zabalera < taula.getZabalera()) {
+				if (zabalera < taula.getZabalera()-1) {
 					estado.eskatu(altuera-1,zabalera+1);
 					estado.eskatu(altuera,zabalera+1);
 				}
 			}
-			else if (altuera < taula.getAltuera()) {
+			else if (altuera < taula.getAltuera()-1) {
 				estado.eskatu(altuera+1,zabalera);
 				if (zabalera > 0) {
 					estado.eskatu(altuera+1,zabalera-1);
 					estado.eskatu(altuera,zabalera-1);
 				}
-				if (zabalera < taula.getZabalera()) {
+				if (zabalera < taula.getZabalera()-1) {
 					estado.eskatu(altuera+1,zabalera+1);
 					estado.eskatu(altuera,zabalera+1);
 				}
@@ -37,7 +37,7 @@ public class Hutsa extends Laukia {
 			else {
 				if (zabalera > 0) 
 					estado.eskatu(altuera,zabalera-1);
-				if (zabalera < taula.getZabalera()) 
+				if (zabalera < taula.getZabalera()-1) 
 					estado.eskatu(altuera,zabalera+1);
 			}
 		}

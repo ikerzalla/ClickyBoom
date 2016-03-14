@@ -13,9 +13,10 @@ public class StateBeteta implements State {
 			((Hutsa)laukia).egituratu(alt, zab);
 		else if (laukia instanceof Hurbila)
 			((Hurbila)laukia).egituratu(alt,zab);
-		else
+		else {
 			((Bonba)laukia).egituratu(alt,zab);
-			
+			Pantaila.getNPantaila().amaitu(true);
+		}
 	}
 
 	

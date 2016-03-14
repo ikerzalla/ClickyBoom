@@ -2,7 +2,7 @@ package clickyboom;
 
 public class Hurbila extends Laukia {
 
-	int bonbaKop;
+	Integer bonbaKop;
 	public Hurbila() {
 		bonbaKop = 1;
 	}
@@ -12,13 +12,14 @@ public class Hurbila extends Laukia {
 	}
 	
 	public int getBonbaKop() {
-		return bonbaKop;
+		return (int)bonbaKop;
 	}
 	
 	public void egituratu(int altuera, int zabalera) {
 		if(Pantaila.getNPantaila().entzutenDago(altuera, zabalera)){
 			super.egituratu(altuera,zabalera);
-			Pantaila.getNPantaila().setIrudi((char)bonbaKop, altuera, zabalera);
+			
+			Pantaila.getNPantaila().setIrudi(bonbaKop.toString().charAt(0), altuera, zabalera);
 		}
 	}
 }

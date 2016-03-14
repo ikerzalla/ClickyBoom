@@ -22,7 +22,7 @@ public class Jokoa {
 		TableroaFactory faktoria = TableroaFactory.tableroaFactoryLortu();
 		taula = faktoria.createTableroa("Erraza");
 		System.out.println("Tableroa sortu dugu");
-		Pantaila p = new Pantaila();
+		Pantaila p = Pantaila.getNPantaila();
 		System.out.println("Pantaila sortu dugu");
 		p.setVisible(true);
 		

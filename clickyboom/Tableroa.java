@@ -9,7 +9,6 @@ import javax.swing.JButton;
  
 public abstract class Tableroa {
     private Laukia[][] laukiak;
-    private JButton[][] botoiak;
     private int bonbaKop;
     private int altuera;
     private int zabalera;
@@ -24,15 +23,16 @@ public abstract class Tableroa {
     	this.altuera = alt;
     	this.zabalera = zab;
     	this.laukiak = new Laukia[alt][zab];
-		this.botoiak = new JButton[alt][zab];
     	this.bonbaKop = bon;
     	this.egoera = new StateHutsa();
     }
     //Lauki batean click egitean, laukiak metodo honi deituko
     //dio bere posizioa pasatuz
     public void clickEgin(int alt, int zab){
-    	System.out.println("Click egin da " + zab + "," + alt +" posizioan");
-    	egoera.eskatu(alt, zab);
+    	if(Pantaila.getNPantaila().entzutenDago(alt, zab)){
+    		System.out.println("Click egin da " + zab + "," + alt +" posizioan");
+    		egoera.eskatu(alt, zab);
+    	}
     }
 
 	//public abstract Tableroa nTableroaLortu();
@@ -170,10 +170,6 @@ public abstract class Tableroa {
     public void egoeraAldatu(State e){
     	this.egoera = e;
     }
-   
-    public void botonOff(int alt, int zab){
-		botoiak[alt][zab].setEnabled(false);
-	}
 	
 	public Laukia getLauki(int alt, int zab) {
 		return laukiak[alt][zab];
@@ -185,6 +181,10 @@ public abstract class Tableroa {
 
 	public int getZabalera() {
 		return zabalera;
+	}
+	
+	public int getBonbaKop(){
+		return bonbaKop;
 	}
 	
 	//Metodo hau tableroa ondo sortu dela probatzeko da bakarrik
