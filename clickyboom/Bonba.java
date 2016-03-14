@@ -6,10 +6,10 @@ public class Bonba extends Laukia {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void egituratu(int x, int y) {
-		if(Pantaila.getNPantaila().entzutenDago(y, x)){
-			super.egituratu(x,y);
-			Pantaila.getNPantaila().setIrudi('b', x, y);
+	public void egituratu(int altuera, int zabalera) {
+		if(Pantaila.getNPantaila().entzutenDago(altuera, zabalera)){
+			super.egituratu(altuera,zabalera);
+			Pantaila.getNPantaila().setIrudi('b', altuera, zabalera);
 		}
 	}
 }

@@ -4,7 +4,7 @@ public abstract class Laukia {
 	
 	public Laukia() {}
 	
-	public void egituratu(int x, int y){
-		Pantaila.getNPantaila().botonOff(x, y);
+	public void egituratu(int altuera, int zabalera){
+		Pantaila.getNPantaila().botonOff(altuera, zabalera);
 	}
 }

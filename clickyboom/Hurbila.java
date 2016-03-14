@@ -15,10 +15,10 @@ public class Hurbila extends Laukia {
 		return bonbaKop;
 	}
 	
-	public void egituratu(int x, int y) {
-		if(Pantaila.getNPantaila().entzutenDago(x, y)){
-			super.egituratu(x,y);
-			Pantaila.getNPantaila().setIrudi((char)bonbaKop, x, y);
+	public void egituratu(int altuera, int zabalera) {
+		if(Pantaila.getNPantaila().entzutenDago(altuera, zabalera)){
+			super.egituratu(altuera,zabalera);
+			Pantaila.getNPantaila().setIrudi((char)bonbaKop, altuera, zabalera);
 		}
 	}
 }
