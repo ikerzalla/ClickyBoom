@@ -7,14 +7,14 @@ public class StateBeteta implements State {
 	}
 
 	@Override
-	public void eskatu(int x, int y) {
-		Laukia laukia = Jokoa.getNireJokoa().getTableroa().getLauki(x, y);
+	public void eskatu(int alt, int zab) {
+		Laukia laukia = Jokoa.getNireJokoa().getTableroa().getLauki(alt, zab);
 		if (laukia instanceof Hutsa)
-			((Hutsa)laukia).egituratu(x,y);
+			((Hutsa)laukia).egituratu(alt, zab);
 		else if (laukia instanceof Hurbila)
-			((Hurbila)laukia).egituratu(x,y);
+			((Hurbila)laukia).egituratu(alt,zab);
 		else
-			((Bonba)laukia).egituratu(x,y);
+			((Bonba)laukia).egituratu(alt,zab);
 			
 	}
 

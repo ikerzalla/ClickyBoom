@@ -6,11 +6,11 @@ public class StateHutsa implements State{
 
 	
 	@Override
-	public void eskatu(int x, int y){//Click egin dugun posizioa
+	public void eskatu(int alt, int zab){//Click egin dugun posizioa
 		Tableroa tab = Jokoa.getNireJokoa().getTableroa();
-		tab.tableroaBete(x, y);
+		tab.tableroaBete(alt, zab);
 		tab.egoeraAldatu(new StateBeteta());
-		tab.clickEgin(x, y);
+		tab.clickEgin(alt, zab);
 		
 	}
 
