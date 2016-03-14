@@ -32,7 +32,7 @@ public abstract class Tableroa {
     //dio bere posizioa pasatuz
     public void clickEgin(int alt, int zab){
     	System.out.println("Click egin da " + zab + "," + alt +" posizioan");
-    	egoera.eskatu(zab, alt);
+    	egoera.eskatu(alt, zab);
     }
 
 	//public abstract Tableroa nTableroaLortu();

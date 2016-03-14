@@ -109,8 +109,8 @@ public class Pantaila extends JFrame {
 		System.out.println("Botoiak kokatu dira");
 	}
 
-	 public void botonOff(int i, int j){
-			botoiak[i][j].setEnabled(false);
+	 public void botonOff(int alt, int zab){
+			botoiak[alt][zab].setEnabled(false);
 	}
 	
 	 public void setIrudi(char irudi, int i, int j) {
@@ -130,7 +130,7 @@ public class Pantaila extends JFrame {
 			break;
 		}
 	 }
-	 public boolean entzutenDago(int i, int j){
-		 return botoiak[j][i].isEnabled();
+	 public boolean entzutenDago(int alt, int zab){
+		 return botoiak[alt][zab].isEnabled();
 	 }
 }
