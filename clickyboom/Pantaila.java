@@ -75,7 +75,7 @@ public class Pantaila extends JFrame {
 		for(int i=0; i<altuera; i++){
 			for(int j=0; j<luzera; j++){
 				botoiak[i][j] = new JButton();
-				botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/argazkiak/a.png")));
+				botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/argazkiak/Button.png")));
 				tableroa.add(botoiak[i][j]);
 				botoiak[i][j].setBounds(i*tamainua, j*tamainua, tamainua, tamainua);
 				botoiak[i][j].setEnabled(true);				
@@ -132,7 +132,7 @@ public class Pantaila extends JFrame {
 		 	case '7': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/siete.png"))); break;
 		 	case '8': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/ocho.png"))); break;
 		 	case 'b': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/c4.png"))); break;
-		 	case 'h': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/arrow.png"))); break; //falta una imagen
+		 	case 'h': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/h.png"))); break; //falta una imagen
 		 	default:
 			break;
 		}

@@ -13,7 +13,7 @@ public class Hutsa extends Laukia {
 			State estado = new StateBeteta();
 			Tableroa taula = Jokoa.getNireJokoa().getTableroa();
 			if (altuera > 0) {
-				estado.eskatu(altuera,zabalera);
+				estado.eskatu(altuera-1,zabalera);
 				if (zabalera > 0) {
 					estado.eskatu(altuera-1,zabalera-1);
 					estado.eskatu(altuera,zabalera-1);
@@ -23,7 +23,7 @@ public class Hutsa extends Laukia {
 					estado.eskatu(altuera,zabalera+1);
 				}
 			}
-			else if (altuera < taula.getAltuera()-1) {
+			if (altuera < taula.getAltuera()-1) {
 				estado.eskatu(altuera+1,zabalera);
 				if (zabalera > 0) {
 					estado.eskatu(altuera+1,zabalera-1);
