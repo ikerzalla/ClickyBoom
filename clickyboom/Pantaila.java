@@ -75,7 +75,7 @@ public class Pantaila extends JFrame {
 		for(int i=0; i<altuera; i++){
 			for(int j=0; j<luzera; j++){
 				botoiak[i][j] = new JButton();
-				botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/argazkiak/laukia.jpg")));
+				botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/amarilla.png")));
 				tableroa.add(botoiak[i][j]);
 				botoiak[i][j].setBounds(i*tamainua, j*tamainua, tamainua, tamainua);
 				botoiak[i][j].setEnabled(true);				
@@ -123,16 +123,16 @@ public class Pantaila extends JFrame {
 	 public void setIrudi(char irudi, int i, int j) {
 		 System.out.println(j + "," + i + " posizioko laukiari irudia jarriko zaio...");
 		 switch (irudi) {
-		 	case '1': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/uno.png"))); break;
-		 	case '2': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/dos.png"))); break;
-		 	case '3': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/tres.png"))); break;
-		 	case '4': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/cuatro.png"))); break;
-		 	case '5': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/cinco.png"))); break;
-		 	case '6': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/seis.png"))); break;
-		 	case '7': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/siete.png"))); break;
-		 	case '8': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/ocho.png"))); break;
-		 	case 'b': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/c4.png"))); break;
-		 	//case 'h': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/image1.jpg"))); break; //falta una imagen
+		 	case '1': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/uno.png"))); break;
+		 	case '2': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/dos.png"))); break;
+		 	case '3': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/tres.png"))); break;
+		 	case '4': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/cuatro.png"))); break;
+		 	case '5': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/cinco.png"))); break;
+		 	case '6': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/seis.png"))); break;
+		 	case '7': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/siete.png"))); break;
+		 	case '8': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/ocho.png"))); break;
+		 	case 'b': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/c4.png"))); break;
+		 	//case 'h': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/image1.jpg"))); break; //falta una imagen
 		 	default:
 			break;
 		}
