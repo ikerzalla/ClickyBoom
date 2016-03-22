@@ -2,9 +2,12 @@ package clickyboom;
 
 public class TableroNormala extends Tableroa {
 
-	protected TableroNormala(int alt, int zab, int bon) {
-		super(alt, zab, bon);
-		
+	protected TableroNormala() {
+		this.altuera = 10;
+    	this.zabalera = 15;
+    	this.laukiak = new Laukia[altuera][zabalera];
+    	this.bonbaKop = zabalera*2;
+    	this.egoera = new StateHutsa();
 	}
 
 }

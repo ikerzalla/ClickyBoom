@@ -8,23 +8,19 @@ import javax.swing.JButton;
 //ezberdintasun askorik.
  
 public abstract class Tableroa {
-    private Laukia[][] laukiak;
-    private int bonbaKop;
-    private int altuera;
-    private int zabalera;
-    private State egoera;
+    protected Laukia[][] laukiak;
+    protected int bonbaKop;
+    protected int altuera;
+    protected int zabalera;
+    protected State egoera;
     //Bi atributu hauek erabili ditut bonben ondoan dauden laukiak ikutzean,
     //hasieran click egin dugun laukia HUTSA jarraitzen izateko hurbilakAldatu() metodoa eta gero
     //Hala ere, inprimatu metodoaren emaitza ikusita, baliteke "zabalera" eta "altuera" hitzak trukatzea
     private int hasAlt;
     private int hasZab;
     
-    protected Tableroa(int alt, int zab, int bon){
-    	this.altuera = alt;
-    	this.zabalera = zab;
-    	this.laukiak = new Laukia[alt][zab];
-    	this.bonbaKop = bon;
-    	this.egoera = new StateHutsa();
+    protected Tableroa(){
+    	
     }
     //Lauki batean click egitean, laukiak metodo honi deituko
     //dio bere posizioa pasatuz

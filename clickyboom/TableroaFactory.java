@@ -21,13 +21,13 @@ public class TableroaFactory {
 		Tableroa nireTableroa = null;
 		
 		if(s.equalsIgnoreCase("erraza")){
-			nireTableroa = new TableroaErraza(7,10,10);
+			nireTableroa = new TableroErraza();
 		}
 		else if (s.equals("Normal")|| s.equals("normal")){
-			nireTableroa = new TableroNormala(10,15,30);
+			nireTableroa = new TableroNormala();
 		}
 		else {
-			nireTableroa = new TableroZaila(25,12,75);
+			nireTableroa = new TableroZaila();
 		}
 		return nireTableroa;
 	}

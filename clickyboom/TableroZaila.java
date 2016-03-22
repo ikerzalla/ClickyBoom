@@ -2,8 +2,12 @@ package clickyboom;
 
 public class TableroZaila extends Tableroa {
 
-	protected TableroZaila(int alt, int zab, int bon) {
-		super(alt, zab, bon);
+	protected TableroZaila() {
+		this.altuera = 25;
+    	this.zabalera = 12;
+    	this.laukiak = new Laukia[altuera][zabalera];
+    	this.bonbaKop = this.altuera*3;
+    	this.egoera = new StateHutsa();
 	}
 
 }
