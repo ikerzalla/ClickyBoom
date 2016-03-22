@@ -1,0 +1,6 @@
+1- 	Pantaila klasean dagoen laukiTotal atributua Tableroa klasera mugitu; joko osoa Pantaila klasea gabe ere
+	funtzionatu beharko luke. Adibidez, Java-n egin beharrean HTML-ko interfazarekin ikusi nahiko bagenu,
+	Pantaila klasea isolatuta egonda askoz errazagoa izango da interfaza aldatzea.
+2-	//Tableroari 2 zailtasun maila gehitu (normala eta zaila)
+3-	Flag-ak jartzeko aukera ematea eskuineko click-a sakatzean (State?)
+4-	Interfazaren bidez zailtasun motak aukeratzea botoien bidez
