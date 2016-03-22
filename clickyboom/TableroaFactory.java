@@ -1,3 +1,4 @@
+
 package clickyboom;
 
 
@@ -20,14 +21,14 @@ public class TableroaFactory {
 		Tableroa nireTableroa = null;
 		
 		if(s.equalsIgnoreCase("erraza")){
-			nireTableroa = new TableroaErraza(10,7,10);
+			nireTableroa = new TableroaErraza(7,10,10);
 		}
-		//else if (s.equals("Normal")|| s.equals("normal")){
-			//nireTableroa = new TableroNormala();
-		//}
-		//else {
-			//nireTableroa = new TableroZail();
-		//}
+		else if (s.equals("Normal")|| s.equals("normal")){
+			nireTableroa = new TableroNormala(10,15,30);
+		}
+		else {
+			nireTableroa = new TableroZaila(25,12,75);
+		}
 		return nireTableroa;
 	}
 
