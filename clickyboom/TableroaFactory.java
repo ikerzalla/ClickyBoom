@@ -20,7 +20,7 @@ public class TableroaFactory {
 		Tableroa nireTableroa = null;
 		
 		if(s.equalsIgnoreCase("erraza")){
-			nireTableroa = new TableroaErraza(7,10,10);
+			nireTableroa = new TableroaErraza(10,7,10);
 		}
 		//else if (s.equals("Normal")|| s.equals("normal")){
 			//nireTableroa = new TableroNormala();
