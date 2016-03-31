@@ -3,9 +3,13 @@ package clickyboom;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
 
 public class Pantaila extends JFrame {
 
@@ -83,12 +87,10 @@ public class Pantaila extends JFrame {
 				//botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("Button.png")));
 				//botoiak[i][j].setText(" ");
 				//botoiak[i][j].setSize(new Dimension(25, 25));
-				botoiak[i][j].addActionListener(new ActionListener() {
+				
+				botoiak[i][j].addMouseListener(new SaguListener() {
 					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						int n= altuera;
-						int n1= luzera;
+					public void mouseClicked(MouseEvent e) {
 						for(int i=0; i<altuera; i++){
 							for(int j=0; j<luzera; j++){
 								System.out.println("se ha mirado "+j+" , "+i);
@@ -105,7 +107,8 @@ public class Pantaila extends JFrame {
 							}
 						}
 					}
-				});
+					
+				});				
 			}
 		}
 		System.out.println("Botoiak kokatu dira");
@@ -158,6 +161,28 @@ public class Pantaila extends JFrame {
 	 public void banderaJarri(int i, int j) {
 		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/bandera.png"))); //Irudi hau falta da
 	 }
+	 
+	 private class saguListener extends MouseAdapter{
+		 public saguListener(){}
+		 
+		 public void mouseClicked(MouseEvent e) {
+				for(int i=0; i<altuera; i++){
+					for(int j=0; j<luzera; j++){
+						System.out.println("se ha mirado "+j+" , "+i);
+						if (e.getSource().equals(botoiak[i][j])){
+							if(SwingUtilities.isLeftMouseButton(e)){
+								Jokoa.getNireJokoa().getTableroa().ezkerClickEgin(i, j);
+							}
+							else if(SwingUtilities.isRightMouseButton(e)){
+								Jokoa.getNireJokoa().getTableroa().eskuinClickEgin(i, j);
+							}
+						}
+					}
+				}
+			}
+	 }
 
 	
 }
+
+
