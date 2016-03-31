@@ -27,11 +27,11 @@ public abstract class Tableroa {
     public void ezkerClickEgin(int alt, int zab){
     	if(Pantaila.getNPantaila().entzutenDago(alt, zab)){
     		System.out.println("Click egin da " + zab + "," + alt +" posizioan");
-    		egoera.eskatu(alt, zab);
+    		egoera.ezkerClickEgin(alt, zab);
     	}
     }
     public void eskuinClickEgin(int alt, int zab){
-    	
+    	egoera.eskuinClickEgin(alt, zab);
     }
 
 	//public abstract Tableroa nTableroaLortu();

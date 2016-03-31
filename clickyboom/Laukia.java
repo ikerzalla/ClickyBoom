@@ -7,25 +7,28 @@ public abstract class Laukia {
 		this.egoera = new StateGarbia();
 	}
 	
+	public void ezkerClickEgin(int alt, int zab){
+		egoera.ezkerClickEgin(alt, zab);
+	}
+	
+	public void eskuinClickEgin(int alt, int zab){
+		egoera.eskuinClickEgin(alt, zab);
+	}
+	
+	
 	public void egituratu(int altuera, int zabalera){
 		Pantaila p = Pantaila.getNPantaila();
 		p.botonOff(altuera, zabalera);		
 	}
 	
-	public void ezkerClickEgin(int alt, int zab){
-		if(this.egoera instanceof StateGarbia){
-			this.egituratu(alt, zab);
-		}
-	}
-	
-	public void eskuinClickEgin(int alt, int zab){
+	public void egoeraAldatu(){
 		if(this.egoera instanceof StateGarbia){
 			this.egoera = new StateBandera();
-			this.egoera.eskatu(alt, zab);
+			System.out.println("EGOERA ALDATUTA --> BANDERA");
 		}
 		else{
 			this.egoera = new StateGarbia();
-			this.egoera.eskatu(alt, zab);
+			System.out.println("EGOERA ALDATUTA --> GARBIA");
 		}
 	}
 }

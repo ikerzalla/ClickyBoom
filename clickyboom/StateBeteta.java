@@ -2,21 +2,23 @@ package clickyboom;
 
 public class StateBeteta implements State {
 
-	public StateBeteta() {
-		//Auto-generated constructor stub
-	}
+	public StateBeteta() {}
 
 	@Override
-	public void eskatu(int alt, int zab) {
+	public void ezkerClickEgin(int alt, int zab) {
 		Laukia laukia = Jokoa.getNireJokoa().getTableroa().getLauki(alt, zab);
 		if (laukia instanceof Hutsa)
-			((Hutsa)laukia).egituratu(alt, zab);
+			((Hutsa)laukia).ezkerClickEgin(alt, zab);
 		else if (laukia instanceof Hurbila)
-			((Hurbila)laukia).egituratu(alt,zab);
+			((Hurbila)laukia).ezkerClickEgin(alt,zab);
 		else {
-			((Bonba)laukia).egituratu(alt,zab);
-			Pantaila.getNPantaila().amaitu(true);
+			((Bonba)laukia).ezkerClickEgin(alt,zab);
 		}
+	}
+	
+	public void eskuinClickEgin(int alt, int zab){
+		Laukia laukia = Jokoa.getNireJokoa().getTableroa().getLauki(alt, zab);
+		laukia.eskuinClickEgin(alt, zab);
 	}
 
 	

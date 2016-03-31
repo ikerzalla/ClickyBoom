@@ -88,7 +88,7 @@ public class Pantaila extends JFrame {
 				//botoiak[i][j].setText(" ");
 				//botoiak[i][j].setSize(new Dimension(25, 25));
 				
-				botoiak[i][j].addMouseListener(new SaguListener() {
+				botoiak[i][j].addMouseListener(new SaguListener() /*{
 					
 					public void mouseClicked(MouseEvent e) {
 						for(int i=0; i<altuera; i++){
@@ -108,7 +108,7 @@ public class Pantaila extends JFrame {
 						}
 					}
 					
-				});				
+				}*/);				
 			}
 		}
 		System.out.println("Botoiak kokatu dira");
@@ -162,8 +162,8 @@ public class Pantaila extends JFrame {
 		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/bandera.png"))); //Irudi hau falta da
 	 }
 	 
-	 private class saguListener extends MouseAdapter{
-		 public saguListener(){}
+	 private class SaguListener extends MouseAdapter{
+		 public SaguListener(){}
 		 
 		 public void mouseClicked(MouseEvent e) {
 				for(int i=0; i<altuera; i++){
@@ -173,7 +173,7 @@ public class Pantaila extends JFrame {
 							if(SwingUtilities.isLeftMouseButton(e)){
 								Jokoa.getNireJokoa().getTableroa().ezkerClickEgin(i, j);
 							}
-							else if(SwingUtilities.isRightMouseButton(e)){
+							else  if(SwingUtilities.isRightMouseButton(e)){
 								Jokoa.getNireJokoa().getTableroa().eskuinClickEgin(i, j);
 							}
 						}

@@ -2,5 +2,9 @@ package clickyboom;
 
 public interface State {
 
-	public void eskatu(int alt,int zab);
+	public void ezkerClickEgin(int alt,int zab);
+	
+	public void eskuinClickEgin(int alt,int zab);
+	
+	
 }

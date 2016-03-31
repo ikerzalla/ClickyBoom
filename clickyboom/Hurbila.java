@@ -4,6 +4,7 @@ public class Hurbila extends Laukia {
 
 	Integer bonbaKop;
 	public Hurbila() {
+		super();
 		bonbaKop = 1;
 	}
 
