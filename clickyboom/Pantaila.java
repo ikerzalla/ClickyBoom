@@ -44,13 +44,16 @@ public class Pantaila extends JFrame {
 	 * Create the frame.
 	 */
 	private Pantaila() {
+		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Pantaila.class.getResource("/argazkiak/icono.jpg")));
+		setTitle("ClickyBoom");
 		this.altuera = Jokoa.getNireJokoa().getTableroa().getAltuera();
 		this.luzera = Jokoa.getNireJokoa().getTableroa().getZabalera();
 		botoiak = new JButton[altuera][luzera];
 		laukiTotal = altuera*luzera;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, this.altuera*(tamainua+3), this.luzera*(tamainua+8));
+		setBounds(100, 100, 228, 146);
 		//setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		
 		contentPane = new JPanel();
@@ -66,6 +69,7 @@ public class Pantaila extends JFrame {
 		fondoa.add(tableroa);	
 		
 		kargatuBotoiak();
+		this.pack();
 	}
 
 	public static Pantaila getNPantaila() {

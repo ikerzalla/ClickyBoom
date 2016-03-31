@@ -25,14 +25,25 @@ public class Jokoa {
 		return taula;
 	}
 	
-	public void jokatu() {
+	public void setZailtasun(int z){
 		TableroaFactory faktoria = TableroaFactory.tableroaFactoryLortu();
-		taula = faktoria.createTableroa("Erraza");
-		System.out.println("Tableroa sortu dugu");
+		if (z == 1){
+			taula = faktoria.createTableroa("Erraza");
+		}else if(z == 2){
+			taula = faktoria.createTableroa("Normala");
+		}else if(z == 3){
+			taula = faktoria.createTableroa("Zaila");
+		}
 		Pantaila p = Pantaila.getNPantaila();
 		System.out.println("Pantaila sortu dugu");
 		p.setVisible(true);
-		
+		System.out.println("Tableroa sortu dugu");		
+	}
+	
+	public void jokatu() {
+		Menu m = new Menu();
+		m.setVisible(true);		
+		System.out.println("Menua sortu dugu");		
 	}
 
 	public static void main(String[] args){
