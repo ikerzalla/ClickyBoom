@@ -1,5 +1,12 @@
 package clickyboom;
+/*
+1. Sprint:
+	Tableroa sortzea: 4 ordu
 
+2. Sprint:
+	Bandera jartzea: 3 ordu
+	
+	*/
 public class Jokoa {
 
 	private static Jokoa nJokoa;
