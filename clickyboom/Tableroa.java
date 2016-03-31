@@ -24,11 +24,14 @@ public abstract class Tableroa {
     }
     //Lauki batean click egitean, laukiak metodo honi deituko
     //dio bere posizioa pasatuz
-    public void clickEgin(int alt, int zab){
+    public void ezkerClickEgin(int alt, int zab){
     	if(Pantaila.getNPantaila().entzutenDago(alt, zab)){
     		System.out.println("Click egin da " + zab + "," + alt +" posizioan");
     		egoera.eskatu(alt, zab);
     	}
+    }
+    public void eskuinClickEgin(int alt, int zab){
+    	
     }
 
 	//public abstract Tableroa nTableroaLortu();

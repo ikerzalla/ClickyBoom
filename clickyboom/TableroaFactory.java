@@ -23,7 +23,7 @@ public class TableroaFactory {
 		if(s.equalsIgnoreCase("erraza")){
 			nireTableroa = new TableroErraza();
 		}
-		else if (s.equals("Normal")|| s.equals("normal")){
+		else if (s.equalsIgnoreCase("normal")){
 			nireTableroa = new TableroNormala();
 		}
 		else {

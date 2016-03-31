@@ -10,7 +10,7 @@ public class StateHutsa implements State{
 		Tableroa tab = Jokoa.getNireJokoa().getTableroa();
 		tab.tableroaBete(alt, zab);
 		tab.egoeraAldatu(new StateBeteta());
-		tab.clickEgin(alt, zab);
+		tab.ezkerClickEgin(alt, zab);
 		
 	}
 

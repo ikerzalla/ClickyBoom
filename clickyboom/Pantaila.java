@@ -93,7 +93,7 @@ public class Pantaila extends JFrame {
 							for(int j=0; j<luzera; j++){
 								System.out.println("se ha mirado "+j+" , "+i);
 								if (e.getSource().equals(botoiak[i][j])){
-									Jokoa.getNireJokoa().getTableroa().clickEgin(i, j);
+									Jokoa.getNireJokoa().getTableroa().ezkerClickEgin(i, j);
 									//JOptionPane a = new JOptionPane();
 									//a.showConfirmDialog(null, "Has pusado el boton: "+i+","+j);
 									//a.showMessageDialog(null, "Has pulsado el boton: "+(i+1)+","+(j+1));
@@ -101,7 +101,6 @@ public class Pantaila extends JFrame {
 									//botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("c4.png")));
 									//botoiak[i][j].setBackground(new Color(100, 50, 30));
 									//botoiak[i][j].setText("1");
-									
 								}
 							}
 						}
@@ -151,4 +150,14 @@ public class Pantaila extends JFrame {
 			 dispose();
 		 }
 	 }
+
+	 public void irudiHutsaJarri(int i, int j) {
+		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/amarilla.png")));	
+	 }
+	 
+	 public void banderaJarri(int i, int j) {
+		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/bandera.png"))); //Irudi hau falta da
+	 }
+
+	
 }
