@@ -7,10 +7,9 @@ public class Bonba extends Laukia {
 	}
 
 	public void egituratu(int altuera, int zabalera) {
-		if(Pantaila.getNPantaila().entzutenDago(altuera, zabalera)){
-			Pantaila.getNPantaila().setIrudi('b', altuera, zabalera);
-			super.egituratu(altuera,zabalera);
-			Pantaila.getNPantaila().amaitu(true);
-		}
+	}
+
+	public char irudiaEman() {
+		return 'b';
 	}
 }

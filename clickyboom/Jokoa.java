@@ -25,21 +25,17 @@ public class Jokoa {
 		return taula;
 	}
 	
-	public void setZailtasun(int z){
+	public void setZailtasun(String zailtasun){
 		TableroaFactory faktoria = TableroaFactory.tableroaFactoryLortu();
-		if (z == 1){
-			taula = faktoria.createTableroa("Erraza");
-		}else if(z == 2){
-			taula = faktoria.createTableroa("Normala");
-		}else if(z == 3){
-			taula = faktoria.createTableroa("Zaila");
-		}
-		Pantaila p = Pantaila.getNPantaila();
+		taula = faktoria.createTableroa(zailtasun);
+		//menura mugitu da 
+		/*Pantaila p = Pantaila.getNPantaila();
 		System.out.println("Pantaila sortu dugu");
 		p.setVisible(true);
-		System.out.println("Tableroa sortu dugu");		
+		System.out.println("Tableroa sortu dugu");*/
 	}
 	
+	//interfaz grafikoa eta sistema ezberdindu behar dira
 	public void jokatu() {
 		Menu m = new Menu();
 		m.setVisible(true);		

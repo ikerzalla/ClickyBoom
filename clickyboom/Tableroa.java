@@ -25,10 +25,8 @@ public abstract class Tableroa {
     //Lauki batean click egitean, laukiak metodo honi deituko
     //dio bere posizioa pasatuz
     public void ezkerClickEgin(int alt, int zab){
-    	if(Pantaila.getNPantaila().entzutenDago(alt, zab)){
     		System.out.println("Click egin da " + zab + "," + alt +" posizioan");
     		egoera.ezkerClickEgin(alt, zab);
-    	}
     }
     public void eskuinClickEgin(int alt, int zab){
     	egoera.eskuinClickEgin(alt, zab);
@@ -186,7 +184,7 @@ public abstract class Tableroa {
 		return bonbaKop;
 	}
 	
-	//Metodo hau tableroa ondo sortu dela probatzeko da bakarrik
+	/*Metodo hau tableroa ondo sortu dela probatzeko da bakarrik
 	public void inprimatu(){
 		int y = 0;
         Laukia [] lista = null;
@@ -217,6 +215,6 @@ public abstract class Tableroa {
         	System.out.println("");
             y++;
         }
-	}
+	}*/
  
 }

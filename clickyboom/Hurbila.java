@@ -16,10 +16,9 @@ public class Hurbila extends Laukia {
 		return (int)bonbaKop;
 	}
 	
-	public void egituratu(int altuera, int zabalera) {
-		if(Pantaila.getNPantaila().entzutenDago(altuera, zabalera)){
-			Pantaila.getNPantaila().setIrudi(bonbaKop.toString().charAt(0), altuera, zabalera);
-			super.egituratu(altuera,zabalera);
-		}
+	public void egituratu(int altuera, int zabalera) {}
+	
+	public char irudiaEman() {
+		return bonbaKop.toString().charAt(0);
 	}
 }

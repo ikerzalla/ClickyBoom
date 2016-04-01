@@ -16,10 +16,7 @@ public abstract class Laukia {
 	}
 	
 	
-	public void egituratu(int altuera, int zabalera){
-		Pantaila p = Pantaila.getNPantaila();
-		p.botonOff(altuera, zabalera);		
-	}
+	public void egituratu(int altuera, int zabalera){	}
 	
 	public void egoeraAldatu(){
 		if(this.egoera instanceof StateGarbia){
@@ -30,5 +27,9 @@ public abstract class Laukia {
 			this.egoera = new StateGarbia();
 			System.out.println("EGOERA ALDATUTA --> GARBIA");
 		}
+	}
+	
+	public char irudiaEman() {
+		return 'a';
 	}
 }

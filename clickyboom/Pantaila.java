@@ -138,10 +138,11 @@ public class Pantaila extends JFrame {
 		 	case '7': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/siete.png"))); break;
 		 	case '8': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/ocho.png"))); break;
 		 	case 'b': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/c4.png"))); break;
-		 	//case 'h': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/image1.jpg"))); break; //falta una imagen
+		 	//case 'h': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/laukia.jpg"))); break; //falta una imagen
 		 	default:
 			break;
 		}
+		 botonOff(i, j);
 	 }
 	 public boolean entzutenDago(int alt, int zab){
 		 return botoiak[alt][zab].isEnabled();
@@ -175,7 +176,7 @@ public class Pantaila extends JFrame {
 						System.out.println("se ha mirado "+j+" , "+i);
 						if (e.getSource().equals(botoiak[i][j])){
 							if(SwingUtilities.isLeftMouseButton(e)){
-								Jokoa.getNireJokoa().getTableroa().ezkerClickEgin(i, j);
+								ezkerClickEgin(i, j);
 							}
 							else  if(SwingUtilities.isRightMouseButton(e)){
 								Jokoa.getNireJokoa().getTableroa().eskuinClickEgin(i, j);
@@ -184,6 +185,47 @@ public class Pantaila extends JFrame {
 					}
 				}
 			}
+		 
+		 private void ezkerClickEgin(int i, int j) {
+			 Tableroa t = Jokoa.getNireJokoa().getTableroa();
+			 if (entzutenDago(i, j)){
+				 t.ezkerClickEgin(i, j);
+				 Laukia l = t.getLauki(i, j);
+				 setIrudi(l.irudiaEman(), i, j);
+				 if (l instanceof Hutsa) {
+					 if (i > 0) {
+						ezkerClickEgin(i-1,j);
+						if (j > 0) {
+							ezkerClickEgin(i-1,j-1);
+							ezkerClickEgin(i,j-1);
+						}
+						if (j < t.getZabalera()-1) {
+							ezkerClickEgin(i-1,j+1);
+							ezkerClickEgin(i,j+1);
+						}
+					}
+					if (i < t.getAltuera()-1) {
+						ezkerClickEgin(i+1,j);
+						if (j > 0) {
+							ezkerClickEgin(i+1,j-1);
+							ezkerClickEgin(i,j-1);
+						}
+						if (j < t.getZabalera()-1) {
+							ezkerClickEgin(i+1,j+1);
+							ezkerClickEgin(i,j+1);
+						}
+					}
+					else {
+						if (j > 0) 
+							ezkerClickEgin(i,j-1);
+						if (j < t.getZabalera()-1) 
+							ezkerClickEgin(i,j+1);
+					}
+				 }
+				 else if (l instanceof Bonba)
+					 amaitu(true);
+			 }
+		 }
 	 }
 
 	

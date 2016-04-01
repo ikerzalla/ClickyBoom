@@ -85,17 +85,21 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Jokoa j = Jokoa.getNireJokoa();
 				if(rdbtnErreza.isSelected()){
-					j.setZailtasun(1);
+					j.setZailtasun("erraza");
 					itxi();
 				}else if(rdbtnNormala.isSelected()){
-					j.setZailtasun(2);
+					j.setZailtasun("normal");
 					itxi();
 				}else if(rdbtnZaila.isSelected()){
-					j.setZailtasun(3);
+					j.setZailtasun("zaila");
 					itxi();
 				}else{
 					JOptionPane.showMessageDialog(null, "Aukeratu aurretik dagoen zailtasun bat.");
 				}
+				Pantaila p = Pantaila.getNPantaila();
+				System.out.println("Pantaila sortu dugu");
+				p.setVisible(true);
+				System.out.println("Tableroa sortu dugu");	
 			}
 		});
 		btnJokatu.setBounds(123, 172, 89, 23);

@@ -7,10 +7,7 @@ public class Hutsa extends Laukia {
 	}
 
 	public void egituratu(int altuera, int zabalera) {
-		if(Pantaila.getNPantaila().entzutenDago(altuera, zabalera)){
-			Pantaila.getNPantaila().setIrudi('h', altuera, zabalera);
-			super.egituratu(altuera,zabalera);
-			State estado = new StateBeteta();
+			/*State estado = new StateBeteta();
 			Tableroa taula = Jokoa.getNireJokoa().getTableroa();
 			if (altuera > 0) {
 				estado.ezkerClickEgin(altuera-1,zabalera);
@@ -39,8 +36,11 @@ public class Hutsa extends Laukia {
 					estado.ezkerClickEgin(altuera,zabalera-1);
 				if (zabalera < taula.getZabalera()-1) 
 					estado.ezkerClickEgin(altuera,zabalera+1);
-			}
-		}
+			}*/
+	}
+	
+	public char irudiaEman() {
+		return 'h';
 	}
 	
 	
