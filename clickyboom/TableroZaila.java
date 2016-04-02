@@ -8,6 +8,7 @@ public class TableroZaila extends Tableroa {
     	this.laukiak = new Laukia[altuera][zabalera];
     	this.bonbaKop = this.altuera*3;
     	this.egoera = new StateHutsa();
+    	this.begiratuak = new boolean[altuera][zabalera];
 	}
 
 }

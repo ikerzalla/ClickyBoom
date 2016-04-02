@@ -11,7 +11,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 
-public class Pantaila extends JFrame {
+public class Pantaila extends JFrame implements Observer {
 
 	private JPanel contentPane;
 	private int altuera, luzera, laukiTotal;
@@ -119,11 +119,13 @@ public class Pantaila extends JFrame {
 	}
 
 	 public void botonOff(int alt, int zab){
+		 if (entzutenDago(alt, zab)) {
 			botoiak[alt][zab].setEnabled(false);
 			laukiTotal--;
 			if (laukiTotal == Jokoa.getNireJokoa().getTableroa().getBonbaKop()){
 				amaitu(false);
 			}
+		 }
 	}
 	
 	 public void setIrudi(char irudi, int i, int j) {
@@ -167,6 +169,11 @@ public class Pantaila extends JFrame {
 		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/bandera.png"))); //Irudi hau falta da
 	 }
 	 
+	 @Override
+		public void updateIrudia(char c, int i, int j) {
+			setIrudi(c, i, j);
+		}
+	 
 	 private class SaguListener extends MouseAdapter{
 		 public SaguListener(){}
 		 
@@ -191,44 +198,12 @@ public class Pantaila extends JFrame {
 			 if (entzutenDago(i, j)){
 				 t.ezkerClickEgin(i, j);
 				 Laukia l = t.getLauki(i, j);
-				 setIrudi(l.irudiaEman(), i, j);
-				 if (l instanceof Hutsa) {
-					 if (i > 0) {
-						ezkerClickEgin(i-1,j);
-						if (j > 0) {
-							ezkerClickEgin(i-1,j-1);
-							ezkerClickEgin(i,j-1);
-						}
-						if (j < t.getZabalera()-1) {
-							ezkerClickEgin(i-1,j+1);
-							ezkerClickEgin(i,j+1);
-						}
-					}
-					if (i < t.getAltuera()-1) {
-						ezkerClickEgin(i+1,j);
-						if (j > 0) {
-							ezkerClickEgin(i+1,j-1);
-							ezkerClickEgin(i,j-1);
-						}
-						if (j < t.getZabalera()-1) {
-							ezkerClickEgin(i+1,j+1);
-							ezkerClickEgin(i,j+1);
-						}
-					}
-					else {
-						if (j > 0) 
-							ezkerClickEgin(i,j-1);
-						if (j < t.getZabalera()-1) 
-							ezkerClickEgin(i,j+1);
-					}
-				 }
-				 else if (l instanceof Bonba)
+				 if (l instanceof Bonba)
 					 amaitu(true);
 			 }
 		 }
 	 }
 
-	
 }
 
 

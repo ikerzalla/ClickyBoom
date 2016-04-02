@@ -7,9 +7,11 @@ public class Bonba extends Laukia {
 	}
 
 	public void egituratu(int altuera, int zabalera) {
+		super.egituratu(altuera, zabalera);
 	}
 
-	public char irudiaEman() {
-		return 'b';
+	@Override
+	public void notifyObserver(int i, int j) {
+		pantaila.updateIrudia('b', i, j);
 	}
 }

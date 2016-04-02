@@ -1,10 +1,12 @@
 package clickyboom;
 
-public abstract class Laukia {
+public abstract class Laukia implements Observable{
 	private State egoera;
+	protected Observer pantaila;
 	
 	public Laukia() {
 		this.egoera = new StateGarbia();
+		this.pantaila = Pantaila.getNPantaila();
 	}
 	
 	public void ezkerClickEgin(int alt, int zab){
@@ -16,7 +18,10 @@ public abstract class Laukia {
 	}
 	
 	
-	public void egituratu(int altuera, int zabalera){	}
+	public void egituratu(int altuera, int zabalera){
+		this.notifyObserver(altuera, zabalera);
+		Jokoa.getNireJokoa().getTableroa().laukiaMarkatu(altuera, zabalera);
+	}
 	
 	public void egoeraAldatu(){
 		if(this.egoera instanceof StateGarbia){

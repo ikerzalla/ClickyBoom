@@ -18,6 +18,7 @@ public abstract class Tableroa {
     //Hala ere, inprimatu metodoaren emaitza ikusita, baliteke "zabalera" eta "altuera" hitzak trukatzea
     private int hasAlt;
     private int hasZab;
+    protected boolean[][] begiratuak;
     
     protected Tableroa(){
     	
@@ -163,11 +164,19 @@ public abstract class Tableroa {
 	        }
     	}
     }
+    
+    public void laukiaMarkatu(int i, int j) {
+		begiratuak[i][j] = true;
+    }
+    
+    public boolean begiratutakoLaukia(int i, int j) {
+    	return begiratuak[i][j];
+    }
    
     public void egoeraAldatu(State e){
     	this.egoera = e;
     }
-	
+    
 	public Laukia getLauki(int alt, int zab) {
 		return laukiak[alt][zab];
 	}

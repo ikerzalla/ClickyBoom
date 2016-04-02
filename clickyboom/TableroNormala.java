@@ -8,6 +8,7 @@ public class TableroNormala extends Tableroa {
     	this.laukiak = new Laukia[altuera][zabalera];
     	this.bonbaKop = zabalera*2;
     	this.egoera = new StateHutsa();
+    	this.begiratuak = new boolean[altuera][zabalera];
 	}
 
 }
