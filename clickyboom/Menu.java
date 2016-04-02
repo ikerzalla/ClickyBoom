@@ -88,7 +88,7 @@ public class Menu extends JFrame {
 					j.setZailtasun("erraza");
 					itxi();
 				}else if(rdbtnNormala.isSelected()){
-					j.setZailtasun("normal");
+					j.setZailtasun("normala");
 					itxi();
 				}else if(rdbtnZaila.isSelected()){
 					j.setZailtasun("zaila");
