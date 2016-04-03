@@ -186,20 +186,29 @@ public class Pantaila extends JFrame implements Observer {
 								ezkerClickEgin(i, j);
 							}
 							else  if(SwingUtilities.isRightMouseButton(e)){
-								Jokoa.getNireJokoa().getTableroa().eskuinClickEgin(i, j);
+								eskuinClickEgin(i, j);
 							}
 						}
 					}
 				}
 			}
 		 
-		 private void ezkerClickEgin(int i, int j) {
+		 private void eskuinClickEgin(int i, int j) {
+			 Tableroa t = Jokoa.getNireJokoa().getTableroa();
+			 if (entzutenDago(i, j)){
+				 t.eskuinClickEgin(i, j);
+			 }
+		}
+
+		private void ezkerClickEgin(int i, int j) {
 			 Tableroa t = Jokoa.getNireJokoa().getTableroa();
 			 if (entzutenDago(i, j)){
 				 t.ezkerClickEgin(i, j);
 				 Laukia l = t.getLauki(i, j);
-				 if (l instanceof Bonba)
-					 amaitu(true);
+				 if (!entzutenDago(i, j)){
+					 if (l instanceof Bonba)
+						 amaitu(true);
+				 }
 			 }
 		 }
 	 }
