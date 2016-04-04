@@ -155,9 +155,11 @@ public class Pantaila extends JFrame implements Observer {
 		 if(boom){			
 			a.showMessageDialog(null, "BOMBA bat zapaldu duzu. BOOM!");
 			dispose();
+			//RANKINARI DEITU ??
 		 }else{
 			 a.showMessageDialog(null, "Irabazi egin duzu!");
 			 dispose();
+			 //RANKINARI DEITU ??
 		 }
 	 }
 
