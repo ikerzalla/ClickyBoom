@@ -174,9 +174,9 @@ public class Pantaila extends JFrame implements Observer {
 	 @Override
 		public void updateIrudia(char ch, int i, int j) {
 		 if (ch == 'x')
-			 banderaJarri(i, j);
-		 else if (ch == 'm')
 			 irudiHutsaJarri(i, j);
+		 else if (ch == 'm')
+			 banderaJarri(i, j);
 		 else
 			 setIrudi(ch, i, j);
 		}
