@@ -13,9 +13,8 @@ public class StateGarbia implements State{
 	
 	@Override
 	public void eskuinClickEgin(int alt, int zab){
-		Pantaila p = Pantaila.getNPantaila();
-		p.banderaJarri(alt, zab);
 		Laukia l = Jokoa.getNireJokoa().getTableroa().getLauki(alt, zab);
+		l.banderaJarri(alt, zab, true);
 		l.egoeraAldatu();
 	}
 

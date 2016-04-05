@@ -37,4 +37,13 @@ public abstract class Laukia implements Observable{
 	public char irudiaEman() {
 		return 'a';
 	}
+	
+	@Override
+	public void banderaJarri(int alt, int zab, boolean bandera) {
+		if (bandera)
+		pantaila.updateIrudia('m', alt, zab);
+		else
+		pantaila.updateIrudia('x', alt, zab);
+	}
+	
 }

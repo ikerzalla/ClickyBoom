@@ -10,9 +10,8 @@ public class StateBandera implements State{
 	
 	@Override
 	public void eskuinClickEgin(int alt, int zab){
-		Pantaila p = Pantaila.getNPantaila();
-		p.irudiHutsaJarri(alt, zab);
 		Laukia l = Jokoa.getNireJokoa().getTableroa().getLauki(alt, zab);
+		l.banderaJarri(alt, zab, false);
 		l.egoeraAldatu();
 	}
 
