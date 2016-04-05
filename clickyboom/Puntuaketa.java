@@ -4,14 +4,14 @@ import java.util.Comparator;
 
 public class Puntuaketa {
 	private String jokalaria;
-	private int puntuaketa;
+	private String puntuaketa;
 	
 	public Puntuaketa(String pJok){
 		this.jokalaria = pJok;
-		this.puntuaketa = 0;
+		this.puntuaketa = "0";
 	}
 	
-	public void puntuaketaAldatu(int z){
+	public void puntuaketaAldatu(String z){
 		this.puntuaketa = z;
 	}
 	
