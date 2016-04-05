@@ -37,7 +37,7 @@ public class Jokoa {
 	
 	//interfaz grafikoa eta sistema ezberdindu behar dira
 	public void jokatu() {
-		Menu m = new Menu();
+		Menu2 m = new Menu2();
 		m.setVisible(true);		
 		System.out.println("Menua sortu dugu");		
 	}
