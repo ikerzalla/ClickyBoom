@@ -152,7 +152,8 @@ public class Pantaila extends JFrame implements Observer {
 	 
 	 public void amaitu(boolean boom){
 		 JOptionPane a = new JOptionPane();
-		 if(boom){			
+		 if(boom){	
+			Jokoa.getNireJokoa().getTableroa().bonbakErakutsi();
 			a.showMessageDialog(null, "BOMBA bat zapaldu duzu. BOOM!");
 			dispose();
 			//RANKINARI DEITU ??

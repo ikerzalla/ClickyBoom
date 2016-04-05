@@ -1,5 +1,6 @@
 package clickyboom;
 import javax.swing.JButton;
+import java.util.*;
 
 //Enkapsulazio handiagoa nahiko bagenu Singleton patroia Tableroa klasean erabiltzeko eta
 //tablero bakarra egoteko, Tableroa interfaze bat izan beharko litzateke, klase abstraktu
@@ -19,6 +20,7 @@ public abstract class Tableroa {
     private int hasAlt;
     private int hasZab;
     protected boolean[][] begiratuak;
+    private ArrayList<Integer> bonbenKoor= new ArrayList<Integer>();
     
     protected Tableroa(){
     	
@@ -75,6 +77,8 @@ public abstract class Tableroa {
             && laukiak[alt][zab]==null){ 	//If honen baldintza luzea da, hasieran click 
             								//egin dugun posizioaren alboan bonbak ez kokatzeko
                 laukiak[alt][zab] = new Bonba();
+                bonbenKoor.add(alt);
+                bonbenKoor.add(zab);
                 b++;
             }
         }
@@ -162,6 +166,18 @@ public abstract class Tableroa {
 	        else if(!(laukiak[alt][zab] instanceof Bonba)){
 	            laukiak[alt][zab] = new Hurbila();
 	        }
+    	}
+    }
+    
+    public void bonbakErakutsi(){
+    	Iterator<Integer> itr = bonbenKoor.iterator();
+    	int alt, zab;
+    	Bonba b;
+    	while(itr.hasNext()){
+    		alt = itr.next();
+    		zab = itr.next();
+    		b = (Bonba)laukiak[alt][zab];
+    		b.notifyObserver(alt, zab);
     	}
     }
     
