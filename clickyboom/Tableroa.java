@@ -241,5 +241,6 @@ public abstract class Tableroa {
             y++;
         }
 	}*/
- 
+	
+	
 }
