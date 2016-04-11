@@ -21,7 +21,8 @@ public  class Ranking extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ranking frame = getRanking();
+					Ranking frame =nRanking.getRanking();
+					nRanking.rankingaKargatu("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,7 +32,7 @@ public  class Ranking extends JFrame{
 	}
 	
 	private Ranking()throws Exception{
-		this.rankingaKargatu("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
+		//this.rankingaKargatu("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
 		
 		}
 	
