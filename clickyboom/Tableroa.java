@@ -11,6 +11,7 @@ import java.util.*;
 public abstract class Tableroa {
     protected Laukia[][] laukiak;
     protected int bonbaKop;
+    private int banderaKop = 0;
     protected int altuera;
     protected int zabalera;
     protected State egoera;
@@ -191,6 +192,21 @@ public abstract class Tableroa {
    
     public void egoeraAldatu(State e){
     	this.egoera = e;
+    }
+    
+    public boolean banderaJarriDatiteke() {
+    	if (banderaKop < bonbaKop)
+    		return true;
+    	else return false;
+    }
+    
+    public void banderaGehitu() {
+    	banderaKop++;
+    }
+    
+    public void banderaKendu() {
+    	if (banderaKop > 0)
+    	banderaKop--;
     }
     
 	public Laukia getLauki(int alt, int zab) {
