@@ -1,0 +1,4 @@
+1- 	Jokoa nahi denean amaitu eta beste bat hasi (horretarako adibidez botoi bat jar genezake)
+2-  Partida bat amaitu eta gero, beste bat hasteko aukera eman
+3-  Ranking-a, puntuazio altuena lortu duten jokalarien lista
+?4- Interfazeari gauzak gehitu, bururatzen
