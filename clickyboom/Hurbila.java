@@ -18,6 +18,7 @@ public class Hurbila extends Laukia {
 	
 	public void egituratu(int altuera, int zabalera) {
 		super.egituratu(altuera, zabalera);
+		Jokoa.getNireJokoa().getTableroa().laukiaMarkatu(altuera, zabalera);
 	}
 	
 	@Override

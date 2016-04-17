@@ -9,5 +9,6 @@ public class TableroErraza extends Tableroa {
     	this.bonbaKop = zabalera*1;
     	this.egoera = new StateHutsa();
     	this.begiratuak = new boolean[altuera][zabalera];
+    	laukiKop = altuera*zabalera;
 	}
 }

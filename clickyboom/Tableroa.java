@@ -14,6 +14,7 @@ public abstract class Tableroa {
     private int banderaKop = 0;
     protected int altuera;
     protected int zabalera;
+    protected int laukiKop;
     protected State egoera;
     //Bi atributu hauek erabili ditut bonben ondoan dauden laukiak ikutzean,
     //hasieran click egin dugun laukia HUTSA jarraitzen izateko hurbilakAldatu() metodoa eta gero
@@ -183,7 +184,13 @@ public abstract class Tableroa {
     }
     
     public void laukiaMarkatu(int i, int j) {
-		begiratuak[i][j] = true;
+    	if (!begiratuak[i][j]) {
+    		begiratuak[i][j] = true;
+    		laukiKop--;
+    	}
+    	
+		if (laukiKop == bonbaKop)
+			Jokoa.getNireJokoa().amaitu(true);
     }
     
     public boolean begiratutakoLaukia(int i, int j) {

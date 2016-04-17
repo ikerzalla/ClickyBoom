@@ -20,7 +20,6 @@ public abstract class Laukia implements Observable{
 	
 	public void egituratu(int altuera, int zabalera){
 		this.notifyObserver(altuera, zabalera);
-		Jokoa.getNireJokoa().getTableroa().laukiaMarkatu(altuera, zabalera);
 	}
 	
 	public void egoeraAldatu(){

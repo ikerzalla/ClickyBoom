@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 public class Pantaila extends JFrame implements Observer {
 
 	private JPanel contentPane;
-	private int altuera, luzera, laukiTotal;
+	private int altuera, luzera;
 	private int tamainua = 40;
 	private JButton botoiak[][];
 	private JPanel fondoa = new JPanel();
@@ -50,7 +50,6 @@ public class Pantaila extends JFrame implements Observer {
 		this.altuera = Jokoa.getNireJokoa().getTableroa().getAltuera();
 		this.luzera = Jokoa.getNireJokoa().getTableroa().getZabalera();
 		botoiak = new JButton[altuera][luzera];
-		laukiTotal = altuera*luzera;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 228, 146);
@@ -121,10 +120,6 @@ public class Pantaila extends JFrame implements Observer {
 	 public void botonOff(int alt, int zab){
 		 if (entzutenDago(alt, zab)) {
 			botoiak[alt][zab].setEnabled(false);
-			laukiTotal--;
-			if (laukiTotal == Jokoa.getNireJokoa().getTableroa().getBonbaKop()){
-				amaitu(false);
-			}
 		 }
 	}
 	
@@ -150,10 +145,9 @@ public class Pantaila extends JFrame implements Observer {
 		 return botoiak[alt][zab].isEnabled();
 	 }
 	 
-	 public void amaitu(boolean boom){
+	 public void amaitu(boolean notBoom){
 		 JOptionPane a = new JOptionPane();
-		 if(boom){	
-			//Jokoa.getNireJokoa().getTableroa().bonbakErakutsi();
+		 if(!notBoom){	
 			a.showMessageDialog(null, "BOMBA bat zapaldu duzu. BOOM!");
 			dispose();
 			
@@ -218,11 +212,6 @@ public class Pantaila extends JFrame implements Observer {
 			 Tableroa t = Jokoa.getNireJokoa().getTableroa();
 			 if (entzutenDago(i, j)){
 				 t.ezkerClickEgin(i, j);
-				 Laukia l = t.getLauki(i, j);
-				 if (!entzutenDago(i, j)){
-					 if (l instanceof Bonba)
-						 amaitu(true);
-				 }
 			 }
 		 }
 	 }

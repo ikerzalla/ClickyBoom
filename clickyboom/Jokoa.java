@@ -45,4 +45,8 @@ public class Jokoa {
 	public static void main(String[] args){
 		getNireJokoa().jokatu();
 	}
+
+	public void amaitu(boolean irabazi) {
+		Pantaila.getNPantaila().amaitu(irabazi);
+	}
 }

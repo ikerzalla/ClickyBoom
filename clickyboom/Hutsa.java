@@ -11,6 +11,7 @@ public class Hutsa extends Laukia {
 		Tableroa taula = Jokoa.getNireJokoa().getTableroa();
 		if (!taula.begiratutakoLaukia(altuera, zabalera)) {
 			super.egituratu(altuera, zabalera);
+			Jokoa.getNireJokoa().getTableroa().laukiaMarkatu(altuera, zabalera);
 			if (altuera > 0) {
 				estado.ezkerClickEgin(altuera-1,zabalera);
 				if (zabalera > 0) {

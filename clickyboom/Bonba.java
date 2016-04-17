@@ -7,6 +7,8 @@ public class Bonba extends Laukia {
 	}
 
 	public void egituratu(int altuera, int zabalera) {
+		Jokoa.getNireJokoa().getTableroa().bonbakErakutsi();
+		Jokoa.getNireJokoa().amaitu(false);
 		super.egituratu(altuera, zabalera);
 	}
 
