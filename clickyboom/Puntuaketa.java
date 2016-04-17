@@ -1,5 +1,8 @@
 package clickyboom;
-
+import java.util.*;
+import java.io.*;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.util.Comparator;
 
 public class Puntuaketa {
@@ -21,4 +24,9 @@ public class Puntuaketa {
 			return new Integer(pPunt2.puntuaketa).compareTo(new Integer(pPunt1.puntuaketa));
 		}
 	 };
+	 
+	public JLabel showpuntuaketa(){
+		JLabel l = new JLabel(this.jokalaria + " :     " + this.puntuaketa);
+		return l;
+	}
 }

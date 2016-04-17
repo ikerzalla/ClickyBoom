@@ -23,6 +23,10 @@ public  class Ranking extends JFrame{
 				try {
 					Ranking frame =nRanking.getRanking();
 					nRanking.rankingaKargatu("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
+					JLabel l = nRanking.lista.get(1).showpuntuaketa();
+				    nRanking.setContentPane(l);
+				    
+					nRanking.ordenatuRankina();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,8 +36,17 @@ public  class Ranking extends JFrame{
 	}
 	
 	private Ranking()throws Exception{
-		//this.rankingaKargatu("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
-		
+		//rankingaKargatu("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
+		setResizable(true);
+		setTitle("ClickyBoom");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(400, 200, 450, 300);
+		contentPane= new JPanel();
+		contentPane.setLayout(null);
+	    /*JLabel l = lista.get(1).showpuntuaketa();
+	    setContentPane(l);
+	        */
+	    
 		}
 	
 	public static Ranking getRanking()throws Exception{
