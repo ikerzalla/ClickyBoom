@@ -108,9 +108,11 @@ public  class Ranking extends JFrame{
 		setContentPane(b);
 		for (int i=0;i<10;i++){
 			JPanel a = new JPanel();
+			JLabel k = new JLabel("#" + (i+1));
 			JLabel l = nRanking.lista.get(i).showpuntuaketa();
-			a.add(l);
-			nRanking.add(a);
+			a.add(k, BorderLayout.SOUTH);
+			a.add(l, BorderLayout.SOUTH);
+			b.add(a, BorderLayout.SOUTH);
 			
 		}
 	}

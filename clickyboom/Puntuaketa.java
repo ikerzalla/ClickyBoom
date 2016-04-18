@@ -21,7 +21,7 @@ public class Puntuaketa {
 	
 	static final Comparator<Puntuaketa> PUNTUAKETA = new Comparator<Puntuaketa>() {
 		public int compare(Puntuaketa pPunt1, Puntuaketa pPunt2) {
-			return new Integer(pPunt2.puntuaketa).compareTo(new Integer(pPunt1.puntuaketa));
+			return new Integer(pPunt1.puntuaketa).compareTo(new Integer(pPunt2.puntuaketa));
 		}
 	 };
 	 
