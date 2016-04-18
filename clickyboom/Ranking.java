@@ -9,7 +9,6 @@ import java.awt.*;
 public  class Ranking extends JFrame{
 	private static Ranking nRanking = null;
 	private ArrayList<Puntuaketa> lista  = new ArrayList<Puntuaketa>();
-	private JPanel contentPane;
 	
 	
 	
@@ -21,12 +20,14 @@ public  class Ranking extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ranking frame =nRanking.getRanking();
-					nRanking.rankingaKargatu("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
-					JLabel l = nRanking.lista.get(1).showpuntuaketa();
-				    nRanking.setContentPane(l);
+					Ranking frame = getRanking();
+					frame.rankingaKargatu("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
+					frame.ordenatuRankina();
+					frame.jokalariakJarri();
+
 				    
-					nRanking.ordenatuRankina();
+				    
+					
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,16 +37,14 @@ public  class Ranking extends JFrame{
 	}
 	
 	private Ranking()throws Exception{
-		//rankingaKargatu("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
-		setResizable(true);
+		//nRanking.rankingaKargatu("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
+		setResizable(false);
 		setTitle("ClickyBoom");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 200, 450, 300);
-		contentPane= new JPanel();
-		contentPane.setLayout(null);
-	    /*JLabel l = lista.get(1).showpuntuaketa();
-	    setContentPane(l);
-	        */
+
+	   
+	        
 	    
 		}
 	
@@ -102,7 +101,19 @@ public  class Ranking extends JFrame{
 		}catch(Exception e){JOptionPane.showMessageDialog(null, "ezin da fitxategia sortu");}
 	
 	}
-
+	
+	public void jokalariakJarri(){
+		JPanel b = new JPanel();
+		b.setBorder(new EmptyBorder(5,5,5,5));
+		setContentPane(b);
+		for (int i=0;i<10;i++){
+			JPanel a = new JPanel();
+			JLabel l = nRanking.lista.get(i).showpuntuaketa();
+			a.add(l);
+			nRanking.add(a);
+			
+		}
+	}
 }
 
 
