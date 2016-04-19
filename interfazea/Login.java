@@ -52,6 +52,11 @@ public class Login extends JFrame {
 		textField = new JTextField();
 		panel.add(textField);
 		textField.setColumns(10);
+		textField.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				izenaIrakurri(textField.getText());
+			}
+		});
 		
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {	
