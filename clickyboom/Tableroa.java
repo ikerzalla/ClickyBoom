@@ -232,7 +232,7 @@ public abstract class Tableroa {
 		return bonbaKop;
 	}
 	
-	/*Metodo hau tableroa ondo sortu dela probatzeko da bakarrik
+	//Metodo hau tableroa ondo sortu dela probatzeko da bakarrik
 	public void inprimatu(){
 		int y = 0;
         Laukia [] lista = null;
@@ -263,7 +263,7 @@ public abstract class Tableroa {
         	System.out.println("");
             y++;
         }
-	}*/
+	}
 	
 	
 }
