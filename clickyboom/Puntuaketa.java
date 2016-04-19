@@ -26,7 +26,7 @@ public class Puntuaketa {
 	 };
 	 
 	public JLabel showpuntuaketa(){
-		JLabel l = new JLabel(this.jokalaria + " :     " + this.puntuaketa);
+		JLabel l = new JLabel(this.jokalaria + " : " + this.puntuaketa + "  ");
 		return l;
 	}
 }
