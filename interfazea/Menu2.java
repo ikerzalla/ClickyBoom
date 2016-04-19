@@ -36,7 +36,11 @@ public class Menu2 extends JFrame {
 		setResizable(false);
 		setTitle("ClickyBoom");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(400, 200, 450, 300);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		setSize(302, 278);
+		int x = (int) ((dim.getWidth() - this.getWidth()) / 2);
+		int y = (int) ((dim.getHeight() - this.getHeight()) / 2);
+		this.setLocation(x, y);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
