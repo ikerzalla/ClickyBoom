@@ -49,4 +49,12 @@ public class Jokoa {
 	public void amaitu(boolean irabazi) {
 		Pantaila.getNPantaila().amaitu(irabazi);
 	}
+
+	public void eskuinClickEgin(int i, int j) {
+		taula.eskuinClickEgin(i, j);
+	}
+
+	public void ezkerClickEgin(int i, int j) {
+		taula.ezkerClickEgin(i, j);
+	}
 }

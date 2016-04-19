@@ -33,10 +33,6 @@ public abstract class Laukia implements Observable{
 		}
 	}
 	
-	public char irudiaEman() {
-		return 'a';
-	}
-	
 	@Override
 	public void banderaJarri(int alt, int zab, boolean bandera) {
 		if (bandera)
