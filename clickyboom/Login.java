@@ -13,7 +13,7 @@ import javax.swing.JButton;
 
 public class Login extends JFrame {
 	
-	private static Login nireLogin = null;
+	
 	private JPanel contentPane;
 	private JTextField textField;
 
@@ -24,7 +24,7 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login frame = getnireLogin();
+					Login frame = new Login();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,17 +33,12 @@ public class Login extends JFrame {
 		});
 	}
 
-	public static Login getnireLogin(){
-		if (nireLogin == null){
-			nireLogin = new Login();
-		}
-		return nireLogin;
-	}
+	
 	
 	/**
 	 * Create the frame.
 	 */
-	private Login() {
+	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
