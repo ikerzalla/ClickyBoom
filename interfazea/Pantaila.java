@@ -51,7 +51,11 @@ public class Pantaila extends JFrame implements Observer {
 		botoiak = new JButton[altuera][luzera];
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 228, 146);
+		//setBounds(100, 100, 228, 146);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		int x = (int) ((dim.getWidth() - (altuera*42)+10) / 2);
+		int y = (int) ((dim.getHeight() - (luzera*42)+36) / 2);
+		this.setLocation(x, y-40);//40 hori Windows-en "Barra de tareas"-en altuera da
 		//setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		
 		contentPane = new JPanel();

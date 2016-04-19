@@ -40,7 +40,7 @@ public class Menu2 extends JFrame {
 		setSize(302, 278);
 		int x = (int) ((dim.getWidth() - this.getWidth()) / 2);
 		int y = (int) ((dim.getHeight() - this.getHeight()) / 2);
-		this.setLocation(x, y);
+		this.setLocation(x, y-40);//40 hori Windows-en "Barra de tareas"-en altuera da
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -65,7 +65,7 @@ public class Menu2 extends JFrame {
 	    
 	    JButton b2 = new JButton();
 	    b2.setIcon(new ImageIcon(this.getClass().getResource("/argazkiak/Normala.jpg")));
-	    b2.setBounds(113, 111, b2.getIcon().getIconWidth(), b2.getIcon().getIconHeight());
+	    b2.setBounds(120, 111, b2.getIcon().getIconWidth(), b2.getIcon().getIconHeight());
 	    getContentPane().add(b2);
 	    b2.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
