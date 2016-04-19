@@ -9,6 +9,7 @@ package clickyboom;
 	*/
 public class Jokoa {
 
+	private String jokalaria = null;
 	private static Jokoa nJokoa;
 	private Tableroa taula;
 	private Jokoa() {
@@ -61,5 +62,13 @@ public class Jokoa {
 
 	public void ezkerClickEgin(int i, int j) {
 		taula.ezkerClickEgin(i, j);
+	}
+	
+	public void aldatuJokalaria(String p){
+		nJokoa.jokalaria=p;
+	}
+	
+	public void inprimatuJokalaria(){
+		System.out.println(jokalaria);
 	}
 }

@@ -68,7 +68,9 @@ public class Login extends JFrame {
 	}
 	
 	private void izenaIrakurri(String pUserName){
-		
+		Jokoa j = Jokoa.getNireJokoa();
+		j.aldatuJokalaria(pUserName);
+		j.inprimatuJokalaria();
 		dispose();
 	}
 }
