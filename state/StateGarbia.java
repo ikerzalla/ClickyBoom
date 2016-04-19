@@ -1,4 +1,8 @@
-package clickyboom;
+package state;
+
+import clickyboom.Jokoa;
+import clickyboom.Laukia;
+import clickyboom.Tableroa;
 
 public class StateGarbia implements State{
 	//Klase honek lauki batean bandera bat jarrita ez dagoela adierazten du

@@ -1,4 +1,7 @@
-package clickyboom;
+package state;
+
+import clickyboom.Jokoa;
+import clickyboom.Tableroa;
 
 public class StateHutsa implements State{
 	

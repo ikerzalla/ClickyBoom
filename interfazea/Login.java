@@ -1,4 +1,4 @@
-package clickyboom;
+package interfazea;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import clickyboom.Jokoa;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -17,9 +20,7 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -34,10 +35,6 @@ public class Login extends JFrame {
 	}
 
 	
-	
-	/**
-	 * Create the frame.
-	 */
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -72,5 +69,6 @@ public class Login extends JFrame {
 		j.aldatuJokalaria(pUserName);
 		j.inprimatuJokalaria();
 		dispose();
+		j.zailtasunaAukeratu();
 	}
 }

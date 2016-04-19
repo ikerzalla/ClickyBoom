@@ -1,4 +1,8 @@
-package clickyboom;
+package state;
+
+import clickyboom.Jokoa;
+import clickyboom.Laukia;
+import clickyboom.Tableroa;
 
 public class StateBandera implements State{
 	//Klase honek lauki batean bandera bat jarrita dagoela adierazten du

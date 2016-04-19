@@ -1,4 +1,4 @@
-package clickyboom;
+package interfazea;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,6 +9,9 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import clickyboom.Jokoa;
+import clickyboom.Observer;
 
 
 public class Pantaila extends JFrame implements Observer {
@@ -22,9 +25,7 @@ public class Pantaila extends JFrame implements Observer {
 	private static Pantaila nPantaila = null;
 	
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String []args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -40,9 +41,7 @@ public class Pantaila extends JFrame implements Observer {
 		
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	private Pantaila() {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Pantaila.class.getResource("/argazkiak/icono.jpg")));

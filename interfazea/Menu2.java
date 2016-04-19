@@ -1,4 +1,4 @@
-package clickyboom;
+package interfazea;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import clickyboom.Jokoa;
 
 public class Menu2 extends JFrame {
 
@@ -85,7 +87,6 @@ public class Menu2 extends JFrame {
 		System.out.println("Pantaila sortu dugu");
 		p.setVisible(true);
 		System.out.println("Tableroa sortu dugu");
-		
 		dispose();
 	}
 }

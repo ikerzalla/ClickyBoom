@@ -1,4 +1,4 @@
-package clickyboom;
+package state;
 
 public interface State {
 

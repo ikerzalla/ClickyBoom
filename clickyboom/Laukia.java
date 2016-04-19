@@ -1,5 +1,9 @@
 package clickyboom;
 
+import interfazea.Pantaila;
+import state.State;
+import state.StateGarbia;
+
 public abstract class Laukia implements Observable{
 	private State egoera;
 	protected Observer pantaila;

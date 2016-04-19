@@ -1,10 +1,15 @@
 package clickyboom;
+
+import interfazea.Login;
+import interfazea.Menu2;
+import interfazea.Pantaila;
+
 /*
 1. Sprint:
 	Tableroa sortzea: 4 ordu
 
 2. Sprint:
-	Bandera jartzea: 3 ordu
+	Bandera jartzea (eskuineko click-a jaso): 3 ordu
 	
 	*/
 public class Jokoa {
@@ -37,16 +42,20 @@ public class Jokoa {
 	}
 	
 	//interfaz grafikoa eta sistema ezberdindu behar dira
-	public void jokatu() {
-		Login l = new Login();
-		l.setVisible(true);
-		Menu2 m = new Menu2();
-		m.setVisible(true);		
-		System.out.println("Menua sortu dugu");		
-	}
+	
 
 	public static void main(String[] args){
-		getNireJokoa().jokatu();
+		getNireJokoa().jokalariaSartu();
+	}
+	
+	public void jokalariaSartu(){
+		Login l = new Login();
+		l.setVisible(true);
+	}
+	
+	public void zailtasunaAukeratu() {
+		Menu2 m = new Menu2();
+		m.setVisible(true);	
 	}
 
 	public void amaitu(boolean irabazi) {

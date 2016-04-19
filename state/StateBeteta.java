@@ -1,4 +1,6 @@
-package clickyboom;
+package state;
+
+import clickyboom.Jokoa;
 
 public class StateBeteta implements State {
 

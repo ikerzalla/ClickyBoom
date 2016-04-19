@@ -1,5 +1,7 @@
 package clickyboom;
 
+import state.StateHutsa;
+
 public class TableroNormala extends Tableroa {
 
 	protected TableroNormala() {
