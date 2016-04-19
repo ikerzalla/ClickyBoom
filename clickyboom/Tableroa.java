@@ -68,7 +68,7 @@ public abstract class Tableroa {
         System.out.println("Tableroa bete da");
     }
  
-    protected void bonbakKokatu(){
+    private void bonbakKokatu(){
         int b = 0;
         int alt;
         int zab;
@@ -87,7 +87,7 @@ public abstract class Tableroa {
         System.out.println("Bonbak kokatu dira");
     }
    
-    protected void hurbilakAldatu(int alt, int zab){
+    private void hurbilakAldatu(int alt, int zab){
         //Aurrebaldintza: Tableroa 2zab2-koa izango da gutzabienez
         //Metodo honetan bonbak egoteagatik aldaketak non egin ahal diren begiratzen du bakarrik,
         //ez du ezer ez aldatzen
@@ -159,7 +159,7 @@ public abstract class Tableroa {
         System.out.println(zab + "," + alt + " posizioko bonbaren albokoak aldatu dira");
     }
    
-    protected void hurbilaAldatu(int alt, int zab){
+    private void hurbilaAldatu(int alt, int zab){
     	if(!(alt== this.hasAlt && zab == this.hasZab)){
 	        if(laukiak[alt][zab] instanceof Hurbila){
 	            Hurbila hur = (Hurbila)laukiak[alt][zab];

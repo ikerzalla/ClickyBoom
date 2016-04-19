@@ -22,23 +22,14 @@ public abstract class Laukia implements Observable{
 		this.notifyObserver(altuera, zabalera);
 	}
 	
-	public void egoeraAldatu(){
-		if(this.egoera instanceof StateGarbia){
-			this.egoera = new StateBandera();
-			System.out.println("EGOERA ALDATUTA --> BANDERA");
-		}
-		else{
-			this.egoera = new StateGarbia();
-			System.out.println("EGOERA ALDATUTA --> GARBIA");
-		}
+	public void egoeraAldatu(State pEgoeraBerria){
+		this.egoera = pEgoeraBerria;
 	}
 	
 	@Override
 	public void banderaJarri(int alt, int zab, boolean bandera) {
-		if (bandera)
-		pantaila.updateIrudia('m', alt, zab);
-		else
-		pantaila.updateIrudia('x', alt, zab);
+		if (bandera) pantaila.updateIrudia('m', alt, zab);
+		else pantaila.updateIrudia('x', alt, zab);
 	}
 	
 }

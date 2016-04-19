@@ -18,7 +18,7 @@ public class StateGarbia implements State{
 			Laukia l = t.getLauki(alt, zab);
 			l.banderaJarri(alt, zab, true);
 			t.banderaGehitu();
-			l.egoeraAldatu();
+			l.egoeraAldatu(new StateBandera());
 		}
 	}
 

@@ -14,7 +14,7 @@ public class StateBandera implements State{
 		Laukia l = t.getLauki(alt, zab);
 		l.banderaJarri(alt, zab, false);
 		t.banderaKendu();
-		l.egoeraAldatu();
+		l.egoeraAldatu(new StateGarbia());
 	}
 
 }
