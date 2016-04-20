@@ -59,9 +59,9 @@ public class Jokoa {
 	}
 
 	public void amaitu(boolean irabazi) {
-		if (!irabazi)
+		if (!irabazi){
 			taula.bonbakErakutsi();
-		
+		}
 		Pantaila.getNPantaila().amaitu(irabazi);
 	}
 

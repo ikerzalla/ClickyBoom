@@ -19,6 +19,8 @@ public class Pantaila extends JFrame implements Observer {
 	private JPanel contentPane;
 	private int altuera, luzera;
 	private int tamainua = 40;
+	private JPanel goiburuak = new JPanel();
+	private JButton aurpegi;
 	private JButton botoiak[][];
 	private JPanel fondoa = new JPanel();
 	private JPanel tableroa = new JPanel();
@@ -62,15 +64,23 @@ public class Pantaila extends JFrame implements Observer {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		setContentPane(contentPane);		
-		contentPane.add(fondoa);
+		setContentPane(contentPane);
 		
 		tableroa.setPreferredSize(new Dimension(altuera*tamainua, luzera*tamainua));
 		tableroa.setBackground(Color.BLUE);
 		tableroa.setLayout(null); //Layout por defecto te cambia las dimensiones
-		fondoa.add(tableroa);	
+		
+		goiburuak.setPreferredSize(new Dimension(altuera*tamainua, 60));
+		goiburuak.setBackground(Color.CYAN);
+		goiburuak.setLayout(null);
 		
 		kargatuBotoiak();
+		kargatuAurpegia();
+		
+		contentPane.add(goiburuak, BorderLayout.NORTH);
+		contentPane.add(tableroa, BorderLayout.SOUTH);
+		
+		
 		this.pack();
 	}
 
@@ -114,10 +124,24 @@ public class Pantaila extends JFrame implements Observer {
 						}
 					}
 					
-				}*/);				
+				}*/
+				);
 			}
 		}
+		
+		
 		System.out.println("Botoiak kokatu dira");
+	}
+	
+	private void kargatuAurpegia(){
+		aurpegi = new JButton();
+		aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin1/ongi.png")));
+		goiburuak.add(aurpegi/*, BorderLayout.CENTER*/);
+		aurpegi.setBounds(((tamainua*altuera) - tamainua)/ 2, (60 - tamainua) / 2, tamainua, tamainua);
+		aurpegi.setEnabled(true);				
+		aurpegi.setContentAreaFilled(false);
+		
+		aurpegi.addMouseListener(new SaguListener());
 	}
 
 	 public void botonOff(int alt, int zab){
@@ -138,12 +162,23 @@ public class Pantaila extends JFrame implements Observer {
 		 	case '7': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/siete.png"))); break;
 		 	case '8': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/ocho.png"))); break;
 		 	case 'b': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/c4.png"))); break;
-		 	//case 'h': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/argazkiak/laukia.jpg"))); break; //falta una imagen
 		 	default:
 			break;
 		}
 		 botonOff(i, j);
 	 }
+	 
+	 public void setAurpegiIrudi(char irudi) {
+		 switch (irudi) {
+		 	case 'o': aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin1/ongi.png"))); break;
+		 	case 'a': aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin1/auskalo.png"))); break;
+		 	case 'h': aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin1/hil.png"))); break;
+		 	case 'g': aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin1/ggwp.png"))); break;
+		 	default:
+			break;
+		}
+	 }
+	 
 	 public boolean entzutenDago(int alt, int zab){
 		 return botoiak[alt][zab].isEnabled();
 	 }
@@ -151,14 +186,16 @@ public class Pantaila extends JFrame implements Observer {
 	 public void amaitu(boolean notBoom){
 		 JOptionPane a = new JOptionPane();
 		 if(!notBoom){	
-			a.showMessageDialog(null, "BOMBA bat zapaldu duzu. BOOM!");
-			dispose();
+			 setAurpegiIrudi('h');
+			 a.showMessageDialog(null, "BOMBA bat zapaldu duzu. BOOM!");
+			 dispose();
 			
-			//RANKINARI DEITU ??
+			 //RANKINARI DEITU ??
 			
-		//	Jokoa.getNireJokoa().jokatu();
+			 //	Jokoa.getNireJokoa().jokatu();
 			
 		 }else{
+			 setAurpegiIrudi('g');
 			 a.showMessageDialog(null, "Irabazi egin duzu!");
 			 dispose();
 			 
@@ -203,14 +240,24 @@ public class Pantaila extends JFrame implements Observer {
 					}
 				}
 			}
+		 public void mousePressed(MouseEvent e){
+			 if (!e.getSource().equals(aurpegi)){
+				 setAurpegiIrudi('a');
+			 }
+		 }
+		 public void mouseReleased(MouseEvent e){
+			 if (!e.getSource().equals(aurpegi)){
+				 setAurpegiIrudi('o');
+			 }
+		 }
 		 
 		 private void eskuinClickEgin(int i, int j) {
 			 if (entzutenDago(i, j)){
 				 Jokoa.getNireJokoa().eskuinClickEgin(i, j);
 			 }
-		}
+		 }
 
-		private void ezkerClickEgin(int i, int j) {
+		 private void ezkerClickEgin(int i, int j) {
 			 if (entzutenDago(i, j)){
 				 Jokoa.getNireJokoa().ezkerClickEgin(i, j);
 			 }
