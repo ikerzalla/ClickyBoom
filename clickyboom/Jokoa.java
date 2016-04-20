@@ -1,9 +1,6 @@
 package clickyboom;
 
-import interfazea.Login;
-import interfazea.Menu2;
-import interfazea.Pantaila;
-
+import interfazea.*;
 /*
 1. Sprint:
 	Tableroa sortzea: 4 ordu
@@ -54,7 +51,7 @@ public class Jokoa {
 	}
 	
 	public void zailtasunaAukeratu() {
-		Menu2 m = new Menu2();
+		Menu m = new Menu();
 		m.setVisible(true);	
 	}
 

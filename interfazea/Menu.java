@@ -1,32 +1,17 @@
 package interfazea;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import clickyboom.Jokoa;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
+import clickyboom.*;
 
 public class Menu extends JFrame {
 
 	private JPanel contentPane;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -48,68 +33,88 @@ public class Menu extends JFrame {
 	 * Create the frame.
 	 */
 	public Menu() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Menu.class.getResource("/argazkiak/icono.jpg")));
 		setResizable(false);
 		setTitle("ClickyBoom");
-		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 353, 235);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		setSize(302, 278);
+		int x = (int) ((dim.getWidth() - this.getWidth()) / 2);
+		int y = (int) ((dim.getHeight() - this.getHeight()) / 2);
+		this.setLocation(x, y-40);//40 hori Windows-en "Barra de tareas"-en altuera da
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblAukeratuZailtasuna = new JLabel("Aukeratu zailtasuna");
-		lblAukeratuZailtasuna.setBounds(0, 11, 327, 41);
-		lblAukeratuZailtasuna.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAukeratuZailtasuna.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		contentPane.add(lblAukeratuZailtasuna);
-		
-		JRadioButton rdbtnErreza = new JRadioButton("Erreza");
-		rdbtnErreza.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		buttonGroup.add(rdbtnErreza);
-		rdbtnErreza.setBounds(83, 75, 109, 23);
-		contentPane.add(rdbtnErreza);
-		
-		JRadioButton rdbtnNormala = new JRadioButton("Normala");
-		rdbtnNormala.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		buttonGroup.add(rdbtnNormala);
-		rdbtnNormala.setBounds(83, 101, 109, 23);
-		contentPane.add(rdbtnNormala);
-		
-		JRadioButton rdbtnZaila = new JRadioButton("Zaila");
-		rdbtnZaila.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		buttonGroup.add(rdbtnZaila);
-		rdbtnZaila.setBounds(83, 127, 109, 23);
-		contentPane.add(rdbtnZaila);
-		
-		JButton btnJokatu = new JButton("Jokatu");
-		btnJokatu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Jokoa j = Jokoa.getNireJokoa();
-				if(rdbtnErreza.isSelected()){
-					j.setZailtasun("erraza");
-					itxi();
-				}else if(rdbtnNormala.isSelected()){
-					j.setZailtasun("normala");
-					itxi();
-				}else if(rdbtnZaila.isSelected()){
-					j.setZailtasun("zaila");
-					itxi();
-				}else{
-					JOptionPane.showMessageDialog(null, "Aukeratu aurretik dagoen zailtasun bat.");
-				}
-				Pantaila p = Pantaila.getNPantaila();
-				System.out.println("Pantaila sortu dugu");
-				p.setVisible(true);
-				System.out.println("Tableroa sortu dugu");	
-			}
-		});
-		btnJokatu.setBounds(123, 172, 89, 23);
-		contentPane.add(btnJokatu);
+	    JLabel l = new JLabel(new ImageIcon(this.getClass().getResource("/argazkiak/FondoMenu.jpg")));
+	    setContentPane(l);
+	    botoiak();	    
+	    this.pack();
 	}
 	
-	private void itxi(){
-		this.dispose();
+	private void botoiak(){
+		JButton b1 = new JButton();
+	    b1.setIcon(new ImageIcon(this.getClass().getResource("/argazkiak/Erreza.jpg")));
+	    b1.setBounds(15, 150, b1.getIcon().getIconWidth(), b1.getIcon().getIconHeight());
+	    getContentPane().add(b1);
+	    b1.addActionListener(new ActionListener() {	
+			public void actionPerformed(ActionEvent e) {
+				aukeratu("erraza");
+			}
+		});
+	    
+	    JButton b2 = new JButton();
+	    b2.setIcon(new ImageIcon(this.getClass().getResource("/argazkiak/Normala.jpg")));
+	    b2.setBounds(120, 111, b2.getIcon().getIconWidth(), b2.getIcon().getIconHeight());
+	    getContentPane().add(b2);
+	    b2.addActionListener(new ActionListener() {	
+			public void actionPerformed(ActionEvent e) {
+				aukeratu("normala");
+			}
+		});
+	    
+	    JButton b3 = new JButton();
+	    b3.setIcon(new ImageIcon(this.getClass().getResource("/argazkiak/Zaila.jpg")));
+	    b3.setBounds(220, 150, b3.getIcon().getIconWidth(), b3.getIcon().getIconHeight());
+	    getContentPane().add(b3);
+	    b3.addActionListener(new ActionListener() {	
+			public void actionPerformed(ActionEvent e) {
+				aukeratu("zaila");
+			}
+		});
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnArtxibo = new JMenu("Artxibo");
+		menuBar.add(mnArtxibo);
+		
+		JMenuItem mntmRanking = new JMenuItem("Ranking");
+		mnArtxibo.add(mntmRanking);
+		mntmRanking.addActionListener(new ActionListener() {	
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Ranking.getRanking().rankingDeia();
+					
+				} catch (Exception e1) {e1.printStackTrace();}
+			}
+		});
+		
+		JMenu mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
+		
+		JMenuItem mntmArauak = new JMenuItem("Arauak");
+		mnHelp.add(mntmArauak);
+	    
+
+	}
+	
+	private void aukeratu(String zailtasun){
+		Jokoa j = Jokoa.getNireJokoa();
+		j.setZailtasun(zailtasun);
+	    Pantaila p = Pantaila.getNPantaila();
+		System.out.println("Pantaila sortu dugu");
+		p.setVisible(true);
+		System.out.println("Tableroa sortu dugu");
+		dispose();
 	}
 }

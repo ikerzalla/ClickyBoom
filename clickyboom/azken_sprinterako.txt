@@ -4,7 +4,7 @@ Eclipse / VisualParadigm
 2-  Ranking-a, puntuazio altuena lortu duten jokalarien lista
 3-  Interfazeari gauzak gehitu, jokoa berriro hasteko, amaitzeko, bonben kontagailua, denboraren kontagailua...
 4-  Klaseak paketeetan ordenatu, nahiko korapilatsua geratzen da klase guztiak clickyboom 
-    packagean egotea
+    packagean egotea (DONE)
 5-  Ahal dena Junitetan egin
 6-  Sekuentzia-diagrama nagusiak egitea
 7-  Zereginen taula eta bakoitzeko denbora

@@ -29,4 +29,13 @@ public class Puntuaketa {
 		JLabel l = new JLabel(this.jokalaria + " : " + this.puntuaketa + "  ");
 		return l;
 	}
+
+	public void idatzi() {
+		try {
+			FileWriter fw = new FileWriter("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
+			fw.write(this.jokalaria + "\t" + this.puntuaketa + "\n");
+			fw.close();
+		} catch (IOException e) {e.printStackTrace();}
+		
+	}
 }
