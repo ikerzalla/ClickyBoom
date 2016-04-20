@@ -82,6 +82,22 @@ public class Menu2 extends JFrame {
 				aukeratu("zaila");
 			}
 		});
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnArtxibo = new JMenu("Artxibo");
+		menuBar.add(mnArtxibo);
+		
+		JMenuItem mntmRanking = new JMenuItem("Ranking");
+		mnArtxibo.add(mntmRanking);
+		
+		JMenu mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
+		
+		JMenuItem mntmArauak = new JMenuItem("Arauak");
+		mnHelp.add(mntmArauak);
+	    
+
 	}
 	
 	private void aukeratu(String zailtasun){
