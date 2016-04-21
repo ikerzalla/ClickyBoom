@@ -46,8 +46,10 @@ public class Jokoa {
 	}
 	
 	public void jokalariaSartu(){
-		Login l = new Login();
-		l.setVisible(true);
+		//Login l = new Login();
+		//l.setVisible(true);
+		Menu m = new Menu();
+		m.setVisible(true);
 	}
 	
 	public void zailtasunaAukeratu() {

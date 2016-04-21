@@ -30,11 +30,10 @@ public class Puntuaketa {
 		return l;
 	}
 
-	public void idatzi() {
+	public void idatzi(BufferedWriter p) {
 		try {
-			FileWriter fw = new FileWriter("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
-			fw.write(this.jokalaria + "\t" + this.puntuaketa + "\n");
-			fw.close();
+			p.write(this.jokalaria + "\t" + this.puntuaketa);
+			
 		} catch (IOException e) {e.printStackTrace();}
 		
 	}

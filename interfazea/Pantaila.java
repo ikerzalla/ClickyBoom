@@ -143,6 +143,10 @@ public class Pantaila extends JFrame implements Observer {
 		
 		aurpegi.addMouseListener(new SaguListener());
 	}
+	
+	private void kargatuKontagailua(){
+		
+	}
 
 	 public void botonOff(int alt, int zab){
 		 if (entzutenDago(alt, zab)) {

@@ -115,11 +115,22 @@ public  class Ranking extends JFrame{
 	public void fitxategiaGorde(){
 		ArrayList<Puntuaketa> l = nRanking.lista;
 		Puntuaketa p = null;
+		
+		try {
+			FileWriter fw = new FileWriter("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
+			BufferedWriter output = new BufferedWriter(fw);
 			
 			for(int i=0;i<l.size();i++){
+				
 				p = l.get(i);
-				p.idatzi();
+				p.idatzi(output);
+				output.newLine();
 			}
+			output.close();
+			
+		} catch (IOException e) {e.printStackTrace();}
+		
+
 	}
 	
 	public void jokalariakJarri(){
@@ -153,6 +164,14 @@ public  class Ranking extends JFrame{
 	public void erakutsi(){
 		nRanking.setVisible(true);
 	}
+	
+	public static void main(String[] args){
+		try {
+			Ranking r = Ranking.getRanking();
+			r.ordenatuRankina();
+			r.gehituPuntuaketa(new Puntuaketa("Harry"));
+			r.ordenatuRankina();
+			r.fitxategiaGorde();
+		} catch (Exception e) {e.printStackTrace();}
+	}
 }
-
-
