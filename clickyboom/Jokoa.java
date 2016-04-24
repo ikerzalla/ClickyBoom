@@ -1,5 +1,8 @@
 package clickyboom;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import interfazea.*;
 /*
 1. Sprint:
@@ -14,8 +17,19 @@ public class Jokoa {
 	private String jokalaria = null;
 	private static Jokoa nJokoa;
 	private Tableroa taula;
+	private int kronometroa;
+	private TimerTask timerTask;
+	
+	
 	private Jokoa() {
-		
+		kronometroa = 0;
+		timerTask = new TimerTask(){
+			public void run() {
+				kronometroa++;
+				Pantaila.getNPantaila().eguneratuKronometroa(kronometroa);
+			}
+        	
+        };
 	}
 	
 	public static Jokoa getNireJokoa() {
@@ -58,6 +72,7 @@ public class Jokoa {
 	}
 
 	public void amaitu(boolean irabazi) {
+		timerTask.cancel();
 		if (!irabazi){
 			taula.bonbakErakutsi();
 		}
@@ -70,6 +85,9 @@ public class Jokoa {
 
 	public void ezkerClickEgin(int i, int j) {
 		taula.ezkerClickEgin(i, j);
+		if(kronometroa==0){
+			kronometroaHasi();
+		}
 	}
 	
 	public void aldatuJokalaria(String p){
@@ -78,5 +96,10 @@ public class Jokoa {
 	
 	public void inprimatuJokalaria(){
 		System.out.println(jokalaria);
+	}
+	
+	private void kronometroaHasi(){
+        Timer timer = new Timer();
+        timer.schedule(timerTask, 0, 1000);
 	}
 }

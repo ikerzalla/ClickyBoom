@@ -1,6 +1,7 @@
 package clickyboom;
 import javax.swing.JButton;
 
+import interfazea.Pantaila;
 import state.State;
 
 import java.util.*;
@@ -26,6 +27,7 @@ public abstract class Tableroa {
     private int hasZab;
     protected boolean[][] begiratuak;
     private ArrayList<Integer> bonbenKoor= new ArrayList<Integer>();
+    
     
     protected Tableroa(){
     	
@@ -233,7 +235,7 @@ public abstract class Tableroa {
 	
 	public int getBonbaKop(){
 		return bonbaKop;
-	}
+	}	
 	
 	//Metodo hau tableroa ondo sortu dela probatzeko da bakarrik
 	public void inprimatu(){

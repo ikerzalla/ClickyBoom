@@ -19,11 +19,14 @@ public class Pantaila extends JFrame implements Observer {
 	private JPanel contentPane;
 	private int altuera, luzera;
 	private int tamainua = 40;
-	private JPanel goiburuak = new JPanel();
+	
+	private JPanel goiburuak;
+	private JTextArea kronometroa;
 	private JButton aurpegi;
+	
+	private JPanel tableroa;
 	private JButton botoiak[][];
-	private JPanel fondoa = new JPanel();
-	private JPanel tableroa = new JPanel();
+	
 	private static Pantaila nPantaila = null;
 	
 
@@ -53,32 +56,32 @@ public class Pantaila extends JFrame implements Observer {
 		botoiak = new JButton[altuera][luzera];
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//setBounds(100, 100, 228, 146);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (int) ((dim.getWidth() - (altuera*42)+10) / 2);
 		int y = (int) ((dim.getHeight() - (luzera*42)+36) / 2);
 		this.setLocation(x, y-40);//40 hori Windows-en "Barra de tareas"-en altuera da
-		//setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		
-		contentPane = new JPanel();
+		contentPane = new JPanel(new BorderLayout());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
+		//contentPane.setLayout(new BorderLayout(0, 0));
 		
 		setContentPane(contentPane);
 		
+		tableroa = new JPanel(new BorderLayout());
 		tableroa.setPreferredSize(new Dimension(altuera*tamainua, luzera*tamainua));
 		tableroa.setBackground(Color.BLUE);
 		tableroa.setLayout(null); //Layout por defecto te cambia las dimensiones
 		
+		goiburuak = new JPanel(new BorderLayout());
 		goiburuak.setPreferredSize(new Dimension(altuera*tamainua, 60));
 		goiburuak.setBackground(Color.CYAN);
 		goiburuak.setLayout(null);
 		
 		kargatuBotoiak();
-		kargatuAurpegia();
+		kargatuGoiburuak();
 		
 		contentPane.add(goiburuak, BorderLayout.NORTH);
-		contentPane.add(tableroa, BorderLayout.SOUTH);
+		contentPane.add(tableroa, BorderLayout.CENTER);
 		
 		
 		this.pack();
@@ -133,19 +136,21 @@ public class Pantaila extends JFrame implements Observer {
 		System.out.println("Botoiak kokatu dira");
 	}
 	
-	private void kargatuAurpegia(){
+	private void kargatuGoiburuak(){
+		//Aurpegia
 		aurpegi = new JButton();
 		aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin1/ongi.png")));
-		goiburuak.add(aurpegi/*, BorderLayout.CENTER*/);
+		goiburuak.add(aurpegi);
 		aurpegi.setBounds(((tamainua*altuera) - tamainua)/ 2, (60 - tamainua) / 2, tamainua, tamainua);
 		aurpegi.setEnabled(true);				
 		aurpegi.setContentAreaFilled(false);
 		
 		aurpegi.addMouseListener(new SaguListener());
-	}
-	
-	private void kargatuKontagailua(){
 		
+		//Kronometroa
+		kronometroa = new JTextArea("0");
+		goiburuak.add(kronometroa);
+		kronometroa.setBounds(10, 10, 50, 15);
 	}
 
 	 public void botonOff(int alt, int zab){
@@ -216,6 +221,11 @@ public class Pantaila extends JFrame implements Observer {
 		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/bandera.png"))); //Irudi hau falta da
 	 }
 	 
+	 public void eguneratuKronometroa(int pKron) {
+			kronometroa.setText(((Integer) pKron).toString());
+	 }
+	 
+	 
 	 @Override
 		public void updateIrudia(char ch, int i, int j) {
 		 if (ch == 'x')
@@ -225,6 +235,12 @@ public class Pantaila extends JFrame implements Observer {
 		 else
 			 setIrudi(ch, i, j);
 		}
+	 
+	 
+	 
+	 
+	 
+	 
 	 
 	 private class SaguListener extends MouseAdapter{
 		 public SaguListener(){}

@@ -4,6 +4,7 @@ import clickyboom.Jokoa;
 import clickyboom.Tableroa;
 
 public class StateHutsa implements State{
+	//Klase honek tableroa hutsa dagoenean egin beharreko atazak ditu
 	
 	public StateHutsa(){}
 
