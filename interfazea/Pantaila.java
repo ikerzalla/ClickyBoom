@@ -21,8 +21,9 @@ public class Pantaila extends JFrame implements Observer {
 	private int tamainua = 40;
 	
 	private JPanel goiburuak;
-	private JTextArea kronometroa;
+	private JLabel kronometroa;
 	private JButton aurpegi;
+	private JLabel banderaKop;
 	
 	private JPanel tableroa;
 	private JButton botoiak[][];
@@ -148,9 +149,18 @@ public class Pantaila extends JFrame implements Observer {
 		aurpegi.addMouseListener(new SaguListener());
 		
 		//Kronometroa
-		kronometroa = new JTextArea("0");
+		kronometroa = new JLabel("0:00");
 		goiburuak.add(kronometroa);
-		kronometroa.setBounds(10, 10, 50, 15);
+		kronometroa.setBounds(10, 10, 100, 40);
+		Font labelFont1 = kronometroa.getFont();
+		kronometroa.setFont(new Font(labelFont1.getName(), Font.BOLD, 40));
+		
+		//Bandera Kopurua
+		banderaKop = new JLabel(((Integer) Jokoa.getNireJokoa().getTableroa().getBonbaKop()).toString());
+		goiburuak.add(banderaKop);
+		banderaKop.setBounds((tamainua*altuera) - 60, 10, 50, 40);
+		Font labelFont2 = banderaKop.getFont();
+		banderaKop.setFont(new Font(labelFont2.getName(), Font.BOLD, 40));
 	}
 
 	 public void botonOff(int alt, int zab){
@@ -215,14 +225,29 @@ public class Pantaila extends JFrame implements Observer {
 
 	 public void irudiHutsaJarri(int i, int j) {
 		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/amarilla.png")));	
+		 Integer banderak = Integer.parseInt(banderaKop.getText());
+		 banderaKop.setText((++banderak).toString());
 	 }
 	 
 	 public void banderaJarri(int i, int j) {
-		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/bandera.png"))); //Irudi hau falta da
+		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/bandera.png")));
+		 Integer banderak = Integer.parseInt(banderaKop.getText());
+		 banderaKop.setText((--banderak).toString());
 	 }
 	 
-	 public void eguneratuKronometroa(int pKron) {
-			kronometroa.setText(((Integer) pKron).toString());
+	 public void eguneratuKronometroa(Integer pKron) {
+		 Integer min = 0;
+		 Integer seg = pKron;
+		 if(pKron>60){
+			 seg = pKron % 60;
+			 min = pKron / 60;
+		 }
+		 if(seg<10){
+			 kronometroa.setText(min.toString() + ":0" + seg.toString());
+		 }
+		 else{
+			 kronometroa.setText(min.toString() + ":" + seg.toString());
+		 }
 	 }
 	 
 	 
@@ -246,6 +271,10 @@ public class Pantaila extends JFrame implements Observer {
 		 public SaguListener(){}
 		 
 		 public void mouseClicked(MouseEvent e) {
+			 if (e.getSource().equals(aurpegi)){
+				 //TABLEROA ERRESETEATU
+			 }
+			 else{
 				for(int i=0; i<altuera; i++){
 					for(int j=0; j<luzera; j++){
 						System.out.println("se ha mirado "+j+" , "+i);
@@ -259,7 +288,8 @@ public class Pantaila extends JFrame implements Observer {
 						}
 					}
 				}
-			}
+			 }
+		 }
 		 public void mousePressed(MouseEvent e){
 			 if (!e.getSource().equals(aurpegi)){
 				 setAurpegiIrudi('a');

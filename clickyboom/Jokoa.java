@@ -17,7 +17,7 @@ public class Jokoa {
 	private String jokalaria = null;
 	private static Jokoa nJokoa;
 	private Tableroa taula;
-	private int kronometroa;
+	private Integer kronometroa;
 	private TimerTask timerTask;
 	
 	
