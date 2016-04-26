@@ -1,6 +1,8 @@
 package interfazea;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -9,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 import clickyboom.Jokoa;
 import clickyboom.Observer;
+import clickyboom.Ranking;
 
 
 public class Pantaila extends JFrame implements Observer {
@@ -177,6 +180,52 @@ public class Pantaila extends JFrame implements Observer {
 		banderak1.setBounds((tamainua*altuera) - 42, 1, 32, 58);
 		
 		setBanderaKopIrudi(bandKop);
+		
+		//Goiko Menu Barra
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnArtxibo = new JMenu("Artxibo");
+		menuBar.add(mnArtxibo);
+		
+		JMenu mnZailtasuna = new JMenu("Zailtasuna:    ");
+		mnArtxibo.add(mnZailtasuna);
+		
+		JMenuItem mntmErreza = new JMenuItem("Erreza ");
+		mnZailtasuna.add(mntmErreza);
+		mntmErreza.addActionListener(new ActionListener() {	
+			public void actionPerformed(ActionEvent e) {
+				try {	
+					dispose();
+				} catch (Exception e1) {e1.printStackTrace();}
+			}
+		});		
+		
+		JMenuItem mntmNormala = new JMenuItem("Normala ");
+		mnZailtasuna.add(mntmNormala);
+		mntmNormala.addActionListener(new ActionListener() {	
+			public void actionPerformed(ActionEvent e) {
+				try {	
+					dispose();
+				} catch (Exception e1) {e1.printStackTrace();}
+			}
+		});
+		
+		JMenuItem mntmZaila = new JMenuItem("Zaila ");
+		mnZailtasuna.add(mntmZaila);
+		mntmZaila.addActionListener(new ActionListener() {	
+			public void actionPerformed(ActionEvent e) {
+				try {	
+					dispose();
+				} catch (Exception e1) {e1.printStackTrace();}
+			}
+		});
+		
+		JMenu mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
+		
+		JMenuItem mntmArauak = new JMenuItem("Arauak");
+		mnHelp.add(mntmArauak);
 	}
 
 	 public void botonOff(int alt, int zab){
