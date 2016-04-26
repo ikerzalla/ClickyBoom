@@ -1,9 +1,6 @@
 package interfazea;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -21,9 +18,11 @@ public class Pantaila extends JFrame implements Observer {
 	private int tamainua = 40;
 	
 	private JPanel goiburuak;
-	private JLabel kronometroa;
+	private JLabel min0, biPuntu, seg0, seg1;
+	
 	private JButton aurpegi;
-	private JLabel banderaKop;
+	private JLabel banderak0, banderak1;
+	private Integer bandKop;
 	
 	private JPanel tableroa;
 	private JButton botoiak[][];
@@ -60,7 +59,7 @@ public class Pantaila extends JFrame implements Observer {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (int) ((dim.getWidth() - (altuera*42)+10) / 2);
 		int y = (int) ((dim.getHeight() - (luzera*42)+36) / 2);
-		this.setLocation(x, y-40);//40 hori Windows-en "Barra de tareas"-en altuera da
+		this.setLocation(x, y-60);//40 hori Windows-en "Barra de tareas"-en altuera da
 		
 		contentPane = new JPanel(new BorderLayout());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -77,6 +76,8 @@ public class Pantaila extends JFrame implements Observer {
 		goiburuak.setPreferredSize(new Dimension(altuera*tamainua, 60));
 		goiburuak.setBackground(Color.CYAN);
 		goiburuak.setLayout(null);
+		
+		bandKop = Jokoa.getNireJokoa().getTableroa().getBonbaKop();
 		
 		kargatuBotoiak();
 		kargatuGoiburuak();
@@ -138,6 +139,7 @@ public class Pantaila extends JFrame implements Observer {
 	}
 	
 	private void kargatuGoiburuak(){
+		
 		//Aurpegia
 		aurpegi = new JButton();
 		aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin1/ongi.png")));
@@ -149,18 +151,32 @@ public class Pantaila extends JFrame implements Observer {
 		aurpegi.addMouseListener(new SaguListener());
 		
 		//Kronometroa
-		kronometroa = new JLabel("0:00");
-		goiburuak.add(kronometroa);
-		kronometroa.setBounds(10, 10, 100, 40);
-		Font labelFont1 = kronometroa.getFont();
-		kronometroa.setFont(new Font(labelFont1.getName(), Font.BOLD, 40));
+		min0 = new JLabel(new ImageIcon(this.getClass().getResource("/zenbakiak/0.png")));
+		goiburuak.add(min0);
+		min0.setBounds(10, 1, 32, 58);
+		
+		biPuntu = new JLabel(new ImageIcon(this.getClass().getResource("/zenbakiak/biPuntu.png")));
+		goiburuak.add(biPuntu);
+		biPuntu.setBounds(41, 1, 15, 58);
+		
+		seg1 = new JLabel(new ImageIcon(this.getClass().getResource("/zenbakiak/0.png")));
+		goiburuak.add(seg1);
+		seg1.setBounds(55, 1, 32, 58);
+		
+		seg0 = new JLabel(new ImageIcon(this.getClass().getResource("/zenbakiak/0.png")));
+		goiburuak.add(seg0);
+		seg0.setBounds(86, 1, 32, 58);
 		
 		//Bandera Kopurua
-		banderaKop = new JLabel(((Integer) Jokoa.getNireJokoa().getTableroa().getBonbaKop()).toString());
-		goiburuak.add(banderaKop);
-		banderaKop.setBounds((tamainua*altuera) - 60, 10, 50, 40);
-		Font labelFont2 = banderaKop.getFont();
-		banderaKop.setFont(new Font(labelFont2.getName(), Font.BOLD, 40));
+		banderak0 = new JLabel();
+		goiburuak.add(banderak0);
+		banderak0.setBounds((tamainua*altuera) - 73, 1, 32, 58);
+		
+		banderak1 = new JLabel();
+		goiburuak.add(banderak1);
+		banderak1.setBounds((tamainua*altuera) - 42, 1, 32, 58);
+		
+		setBanderaKopIrudi(bandKop);
 	}
 
 	 public void botonOff(int alt, int zab){
@@ -196,6 +212,12 @@ public class Pantaila extends JFrame implements Observer {
 		 	default:
 			break;
 		}
+	 }
+	 
+	 private void setBanderaKopIrudi(Integer zenb){
+		 
+		 banderak0.setIcon(new ImageIcon(this.getClass().getResource("/zenbakiak/" + zenb/10 + ".png")));
+		 banderak1.setIcon(new ImageIcon(this.getClass().getResource("/zenbakiak/" + zenb%10 + ".png")));
 	 }
 	 
 	 public boolean entzutenDago(int alt, int zab){
@@ -237,14 +259,12 @@ public class Pantaila extends JFrame implements Observer {
 
 	public void irudiHutsaJarri(int i, int j) {
 		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/amarilla.png")));	
-		 Integer banderak = Integer.parseInt(banderaKop.getText());
-		 banderaKop.setText((++banderak).toString());
+		 setBanderaKopIrudi(++bandKop);
 	 }
 	 
 	 public void banderaJarri(int i, int j) {
 		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/bandera.png")));
-		 Integer banderak = Integer.parseInt(banderaKop.getText());
-		 banderaKop.setText((--banderak).toString());
+		 setBanderaKopIrudi(--bandKop);
 	 }
 	 
 	 public void eguneratuKronometroa(Integer pKron) {
@@ -254,12 +274,17 @@ public class Pantaila extends JFrame implements Observer {
 			 seg = pKron % 60;
 			 min = pKron / 60;
 		 }
-		 if(seg<10){
+		 min0.setIcon(new ImageIcon(this.getClass().getResource("/zenbakiak/" + min + ".png")));
+		 seg1.setIcon(new ImageIcon(this.getClass().getResource("/zenbakiak/" + seg/10 + ".png")));
+		 seg0.setIcon(new ImageIcon(this.getClass().getResource("/zenbakiak/" + seg%10 + ".png")));
+		 
+		/* if(seg<10){
 			 kronometroa.setText(min.toString() + ":0" + seg.toString());
 		 }
 		 else{
 			 kronometroa.setText(min.toString() + ":" + seg.toString());
 		 }
+		 */
 	 }
 	 
 	 
