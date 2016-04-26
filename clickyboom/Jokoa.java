@@ -19,7 +19,7 @@ public class Jokoa {
 	private Tableroa taula;
 	private Integer kronometroa;
 	private TimerTask timerTask;
-	
+	private Timer timer;
 	
 	private Jokoa() {
 		kronometroa = 0;
@@ -32,6 +32,18 @@ public class Jokoa {
         };
 	}
 	
+	private Jokoa(String pJokalaria, String pZailtasun) {
+	kronometroa = 0;
+	timerTask = new TimerTask(){
+	public void run() {
+		kronometroa++;
+		Pantaila.getNPantaila().eguneratuKronometroa(kronometroa);
+		}            
+	};
+	jokalaria = pJokalaria;
+	taula = TableroaFactory.tableroaFactoryLortu().createTableroa(pZailtasun);
+	}
+
 	public static Jokoa getNireJokoa() {
 		if (nJokoa == null)
 			nJokoa = new Jokoa();	
@@ -56,14 +68,22 @@ public class Jokoa {
 	
 
 	public static void main(String[] args){
-		getNireJokoa().jokalariaSartu();
+		getNireJokoa().jokoaHasieratu();
+		//getNireJokoa().zailtasunaAukeratu();
 	}
 	
-	public void jokalariaSartu(){
-		//Login l = new Login();
-		//l.setVisible(true);
-		Menu m = new Menu();
-		m.setVisible(true);
+	private void jokatu() {
+		Pantaila p = Pantaila.getNPantaila();
+		System.out.println("Pantaila sortu dugu");
+		p.setVisible(true);
+		System.out.println("Tableroa sortu dugu");
+	}
+
+	
+	public void jokoaHasieratu(){
+		//llama al login que llama al menu que llama al juego y a jugar
+		Login l = new Login();
+		l.setVisible(true);
 	}
 	
 	public void zailtasunaAukeratu() {
@@ -72,11 +92,19 @@ public class Jokoa {
 	}
 
 	public void amaitu(boolean irabazi) {
-		timerTask.cancel();
+		timer.cancel();
 		if (!irabazi){
 			taula.bonbakErakutsi();
 		}
 		Pantaila.getNPantaila().amaitu(irabazi);
+	}
+	
+	public void jokoaRestart() {
+		String zail;
+		if (taula instanceof TableroErraza) zail = "Erraza";
+		else if (taula instanceof TableroNormala) zail = "Normala";
+		else zail = "Zaila";
+		nJokoa = new Jokoa(jokalaria, zail);
 	}
 
 	public void eskuinClickEgin(int i, int j) {
@@ -99,7 +127,7 @@ public class Jokoa {
 	}
 	
 	private void kronometroaHasi(){
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.schedule(timerTask, 0, 1000);
 	}
 }

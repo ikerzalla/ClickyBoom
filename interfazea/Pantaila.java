@@ -207,7 +207,6 @@ public class Pantaila extends JFrame implements Observer {
 		 if(!notBoom){	
 			 setAurpegiIrudi('h');
 			 a.showMessageDialog(null, "BOMBA bat zapaldu duzu. BOOM!");
-			 dispose();
 			
 			 //RANKINARI DEITU ??
 			
@@ -216,14 +215,27 @@ public class Pantaila extends JFrame implements Observer {
 		 }else{
 			 setAurpegiIrudi('g');
 			 a.showMessageDialog(null, "Irabazi egin duzu!");
-			 dispose();
 			 
 			 //RANKINARI DEITU ??
 			
 		 }
+		 restart();
 	 }
 
-	 public void irudiHutsaJarri(int i, int j) {
+	 private void restart() {
+		 dispose();
+		 Jokoa.getNireJokoa().jokoaRestart();
+		 nPantaila=null;
+		 Pantaila p = Pantaila.getNPantaila();
+		 System.out.println("Pantaila sortu dugu");
+		 p.setVisible(true);
+		 System.out.println("Tableroa sortu dugu");
+
+		
+	}
+
+
+	public void irudiHutsaJarri(int i, int j) {
 		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/amarilla.png")));	
 		 Integer banderak = Integer.parseInt(banderaKop.getText());
 		 banderaKop.setText((++banderak).toString());
@@ -272,7 +284,7 @@ public class Pantaila extends JFrame implements Observer {
 		 
 		 public void mouseClicked(MouseEvent e) {
 			 if (e.getSource().equals(aurpegi)){
-				 //TABLEROA ERRESETEATU
+				 restart();
 			 }
 			 else{
 				for(int i=0; i<altuera; i++){

@@ -111,10 +111,10 @@ public class Menu extends JFrame {
 	private void aukeratu(String zailtasun){
 		Jokoa j = Jokoa.getNireJokoa();
 		j.setZailtasun(zailtasun);
+		dispose();
 	    Pantaila p = Pantaila.getNPantaila();
 		System.out.println("Pantaila sortu dugu");
 		p.setVisible(true);
 		System.out.println("Tableroa sortu dugu");
-		dispose();
 	}
 }
