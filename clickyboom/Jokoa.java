@@ -130,4 +130,11 @@ public class Jokoa {
         timer = new Timer();
         timer.schedule(timerTask, 0, 1000);
 	}
+	
+	public String getJokalaria(){
+		return jokalaria;
+	}
+	public int getKrono(){
+		return kronometroa;
+	}
 }

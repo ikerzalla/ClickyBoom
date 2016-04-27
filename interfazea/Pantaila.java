@@ -1,5 +1,5 @@
 package interfazea;
-
+import clickyboom.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -288,6 +288,19 @@ public class Pantaila extends JFrame implements Observer {
 			 a.showMessageDialog(null, "Irabazi egin duzu!");
 			 
 			 //RANKINARI DEITU ??
+			 try {
+				Ranking r = Ranking.getRanking();
+				Puntuaketa p = new Puntuaketa(Jokoa.getNireJokoa().getJokalaria());
+				Integer i = Jokoa.getNireJokoa().getKrono();
+				p.puntuaketaAldatu(i.toString());
+				r.gehituPuntuaketa(p);
+				r.rankingDeia();
+				r.fitxategiaGorde();
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}
 			
 		 }
 		 restart();

@@ -60,7 +60,7 @@ public  class Ranking extends JFrame{
 	public static Ranking getRanking()throws Exception{
 		if (nRanking == null){
 			nRanking = new Ranking();
-			nRanking.rankingaKargatu("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");;
+			nRanking.rankingaKargatu("C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking.txt");;
 		}
 		return nRanking;
 	}
@@ -117,7 +117,7 @@ public  class Ranking extends JFrame{
 		Puntuaketa p = null;
 		
 		try {
-			FileWriter fw = new FileWriter("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
+			FileWriter fw = new FileWriter("C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking.txt");
 			BufferedWriter output = new BufferedWriter(fw);
 			
 			for(int i=0;i<l.size();i++){
@@ -165,13 +165,5 @@ public  class Ranking extends JFrame{
 		nRanking.setVisible(true);
 	}
 	
-	public static void main(String[] args){
-		try {
-			Ranking r = Ranking.getRanking();
-			r.ordenatuRankina();
-			r.gehituPuntuaketa(new Puntuaketa("Harry"));
-			r.ordenatuRankina();
-			r.fitxategiaGorde();
-		} catch (Exception e) {e.printStackTrace();}
-	}
+
 }
