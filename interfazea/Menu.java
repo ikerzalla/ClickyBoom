@@ -37,7 +37,7 @@ public class Menu extends JFrame {
 		setTitle("ClickyBoom");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		setSize(302, 278);
+		setSize(302, 328);
 		int x = (int) ((dim.getWidth() - this.getWidth()) / 2);
 		int y = (int) ((dim.getHeight() - this.getHeight()) / 2);
 		this.setLocation(x, y-40);//40 hori Windows-en "Barra de tareas"-en altuera da
@@ -53,33 +53,54 @@ public class Menu extends JFrame {
 	}
 	
 	private void botoiak(){
+		
+		JTextField izena = new JTextField(10);
+		izena.setToolTipText("Idatzi zure izena");
+		izena.setBounds(75, 80, 150, 30);
+		
+		Font letra = new Font("Courier", Font.BOLD, 15);
+		izena.setFont(letra);
+		
+		izena.setBackground(Color.ORANGE);
+		getContentPane().add(izena);
+		
+		/*izena.addFocusListener(new FocusListener() {
+		    public void focusGained(FocusEvent e) {
+		        izena.setText("");
+		    }
+
+		    public void focusLost(FocusEvent e) {
+		    }
+		});*/
+		
+		
 		JButton b1 = new JButton();
 	    b1.setIcon(new ImageIcon(this.getClass().getResource("/argazkiak/Erreza.jpg")));
-	    b1.setBounds(15, 150, b1.getIcon().getIconWidth(), b1.getIcon().getIconHeight());
+	    b1.setBounds(13, 200, b1.getIcon().getIconWidth(), b1.getIcon().getIconHeight());
 	    getContentPane().add(b1);
 	    b1.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
-				aukeratu("erraza");
+				aukeratu("erraza", izena.getText());
 			}
 		});
 	    
 	    JButton b2 = new JButton();
 	    b2.setIcon(new ImageIcon(this.getClass().getResource("/argazkiak/Normala.jpg")));
-	    b2.setBounds(120, 111, b2.getIcon().getIconWidth(), b2.getIcon().getIconHeight());
+	    b2.setBounds(121, 155, b2.getIcon().getIconWidth(), b2.getIcon().getIconHeight());
 	    getContentPane().add(b2);
 	    b2.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
-				aukeratu("normala");
+				aukeratu("normala", izena.getText());
 			}
 		});
 	    
 	    JButton b3 = new JButton();
 	    b3.setIcon(new ImageIcon(this.getClass().getResource("/argazkiak/Zaila.jpg")));
-	    b3.setBounds(220, 150, b3.getIcon().getIconWidth(), b3.getIcon().getIconHeight());
+	    b3.setBounds(216, 200, b3.getIcon().getIconWidth(), b3.getIcon().getIconHeight());
 	    getContentPane().add(b3);
 	    b3.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
-				aukeratu("zaila");
+				aukeratu("zaila", izena.getText());
 			}
 		});
 		JMenuBar menuBar = new JMenuBar();
@@ -108,13 +129,23 @@ public class Menu extends JFrame {
 
 	}
 	
-	private void aukeratu(String zailtasun){
+	private void aukeratu(String pZailtasun, String pIzena){
 		Jokoa j = Jokoa.getNireJokoa();
-		j.setZailtasun(zailtasun);
+		j.aldatuJokalaria(pIzena);
+		j.setZailtasun(pZailtasun);
+		dispose();
+		Pantaila p = Pantaila.getNPantaila();
+		p.setVisible(true);
+	}
+	
+	/*private void aukeratu(String pZailtasun){
+		Jokoa j = Jokoa.getNireJokoa();
+		
 		dispose();
 	    Pantaila p = Pantaila.getNPantaila();
 		System.out.println("Pantaila sortu dugu");
-		p.setVisible(true);
+		
 		System.out.println("Tableroa sortu dugu");
-	}
+	}*/
+	
 }

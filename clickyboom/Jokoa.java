@@ -81,15 +81,17 @@ public class Jokoa {
 
 	
 	public void jokoaHasieratu(){
-		//llama al login que llama al menu que llama al juego y a jugar
-		Login l = new Login();
-		l.setVisible(true);
-	}
-	
-	public void zailtasunaAukeratu() {
+		//Llama a menu, que ahora tiene el Login y el selector de dificultad junto
+		/*Login l = new Login();
+		l.setVisible(true);*/
 		Menu m = new Menu();
 		m.setVisible(true);	
 	}
+	
+	/*public void zailtasunaAukeratu() {
+		Menu m = new Menu();
+		m.setVisible(true);	
+	}*/
 
 	public void amaitu(boolean irabazi) {
 		timer.cancel();
