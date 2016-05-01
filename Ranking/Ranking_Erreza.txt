@@ -1,5 +1,11 @@
+zfxb	0
+	0
+	0
+	0
+	0
 kaka	1
 	1
+	2
 	3
 	4
 zfxb	4
@@ -7,6 +13,5 @@ zfxb	10
 Eka	57
 Eka	58
 URGOT	83
-zfxb	0
 	0
-	2
+	0

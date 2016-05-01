@@ -155,9 +155,9 @@ public class Pantaila extends JFrame implements Observer {
 		
 		//HACKS !!!
 		hacks = new JButton();
-		hacks.setIcon(new ImageIcon(this.getClass().getResource("/skin1/ongi.png")));
+		//hacks.setIcon(new ImageIcon(this.getClass().getResource("/skin1/ongi.png")));
 		goiburuak.add(hacks);
-		hacks.setBounds((((tamainua*altuera) - tamainua)/ 2)+tamainua, (60 - tamainua) / 2, tamainua, tamainua);
+		hacks.setBounds(0,0,2,2);
 		hacks.setEnabled(true);				
 		hacks.setContentAreaFilled(false);
 		

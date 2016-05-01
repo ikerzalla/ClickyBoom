@@ -26,6 +26,7 @@ public  class Ranking extends JFrame{
 	private ArrayList<Puntuaketa> erraza  = new ArrayList<Puntuaketa>();
 	private ArrayList<Puntuaketa> normala  = new ArrayList<Puntuaketa>();
 	private ArrayList<Puntuaketa> zaila  = new ArrayList<Puntuaketa>();
+	private String path;
 	
 	
 	
@@ -62,7 +63,7 @@ public  class Ranking extends JFrame{
 	}
 	
 	private Ranking()throws Exception{
-		//nRanking.rankingaKargatu("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
+		path = System.getProperty("user.dir");
 		setResizable(false);
 		setTitle("Ranking");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,9 +99,9 @@ public  class Ranking extends JFrame{
 	
 	private void rankingaKargatu() throws Exception{
 		Puntuaketa p = null;
-		String fitx  = "C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Erreza.txt";
-		String fitx1 = "C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Normala.txt";
-		String fitx2 = "C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Zaila.txt";
+		String fitx  = path+"/src/Ranking/Ranking_Erreza.txt";
+		String fitx1 = path+"/src/Ranking/Ranking_Normala.txt";
+		String fitx2 = path+"/src/Ranking/Ranking_Zaila.txt";
 		int i;
 		try{
 			Scanner sarrera = new Scanner(new FileReader(fitx));
@@ -168,15 +169,15 @@ public  class Ranking extends JFrame{
 		FileWriter fw;
 		try {
 			if ((Jokoa.getNireJokoa().getZailtasuna().equalsIgnoreCase("erraza"))){
-				fw = new FileWriter("C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Erreza.txt");
+				fw = new FileWriter(path+"/src/Ranking/Ranking_Erreza.txt");
 				l = nRanking.erraza;
 			}
 			else if ((Jokoa.getNireJokoa().getZailtasuna().equalsIgnoreCase("normala"))){
-				fw = new FileWriter("C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Normala.txt");
+				fw = new FileWriter(path+"/src/Ranking/Ranking_Normala.txt");
 				l = nRanking.normala;
 			}
 			else{
-				fw = new FileWriter("C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Zaila.txt");
+				fw = new FileWriter(path+"/src/Ranking/Ranking_Zaila.txt");
 				l = nRanking.zaila;
 			}
 			
