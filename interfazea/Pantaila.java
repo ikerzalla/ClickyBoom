@@ -23,7 +23,7 @@ public class Pantaila extends JFrame implements Observer {
 	private JPanel goiburuak;
 	private JLabel min0, biPuntu, seg0, seg1;
 	
-	private JButton aurpegi;
+	private JButton aurpegi,hacks;
 	private JLabel banderak0, banderak1;
 	private Integer bandKop;
 	
@@ -152,6 +152,16 @@ public class Pantaila extends JFrame implements Observer {
 		aurpegi.setContentAreaFilled(false);
 		
 		aurpegi.addMouseListener(new SaguListener());
+		
+		//HACKS !!!
+		hacks = new JButton();
+		hacks.setIcon(new ImageIcon(this.getClass().getResource("/skin1/ongi.png")));
+		goiburuak.add(hacks);
+		hacks.setBounds((((tamainua*altuera) - tamainua)/ 2)+tamainua, (60 - tamainua) / 2, tamainua, tamainua);
+		hacks.setEnabled(true);				
+		hacks.setContentAreaFilled(false);
+		
+		hacks.addMouseListener(new SaguListener());
 		
 		//Kronometroa
 		min0 = new JLabel(new ImageIcon(this.getClass().getResource("/zenbakiak/0.png")));
@@ -290,12 +300,19 @@ public class Pantaila extends JFrame implements Observer {
 			 //RANKINARI DEITU ??
 			 try {
 				Ranking r = Ranking.getRanking();
+				System.out.println("Rankina dut");
 				Puntuaketa p = new Puntuaketa(Jokoa.getNireJokoa().getJokalaria());
+				System.out.println("Puntuaketa sortu dut");
 				Integer i = Jokoa.getNireJokoa().getKrono();
+				System.out.println("kronoa daukat");
 				p.puntuaketaAldatu(i.toString());
+				System.out.println("puntuaketa aldatu dut");
 				r.gehituPuntuaketa(p);
+				System.out.println("puntuaketa gehitu dut");
 				r.rankingDeia(Jokoa.getNireJokoa().getZailtasuna());
+				System.out.println("rankina erakusten dut");
 				r.fitxategiaGorde();
+				System.out.println("fitxategia gorde dut");
 				
 			} catch (Exception e) {
 				
@@ -372,6 +389,9 @@ public class Pantaila extends JFrame implements Observer {
 		 public void mouseClicked(MouseEvent e) {
 			 if (e.getSource().equals(aurpegi)){
 				 restart();
+			 }
+			 else if(e.getSource().equals(hacks)){
+				 Jokoa.getNireJokoa().amaitu(true);
 			 }
 			 else{
 				for(int i=0; i<altuera; i++){

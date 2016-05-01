@@ -37,12 +37,12 @@ public  class Ranking extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					if(z=="erraza"||z=="Erraza"){
+					if(z.equalsIgnoreCase("erraza")){
 					Collections.sort(erraza,Puntuaketa.PUNTUAKETA);
 					jokalariakJarri(z);
 					setTitle("Ranking_Erreza");
 					}
-					else if (z == "normala"||z=="Normala"){
+					else if (z.equalsIgnoreCase("normala")){
 					Collections.sort(normala,Puntuaketa.PUNTUAKETA);
 					jokalariakJarri(z);
 					setTitle("Ranking_Normala");
@@ -83,10 +83,10 @@ public  class Ranking extends JFrame{
 	
 	public void gehituPuntuaketa(Puntuaketa p)throws Exception{
 		
-		if(Jokoa.getNireJokoa().getZailtasuna()=="Erraza" || Jokoa.getNireJokoa().getZailtasuna()=="erraza"){
+		if(Jokoa.getNireJokoa().getZailtasuna().equalsIgnoreCase("erraza")){
 			Ranking.nRanking.erraza.add(p);
 		}
-		else if (Jokoa.getNireJokoa().getZailtasuna()=="Normala" || Jokoa.getNireJokoa().getZailtasuna()=="normala"){
+		else if (Jokoa.getNireJokoa().getZailtasuna().equalsIgnoreCase("normala")){
 			Ranking.nRanking.normala.add(p);
 		}
 		else{
@@ -167,11 +167,11 @@ public  class Ranking extends JFrame{
 		Puntuaketa p = null;
 		FileWriter fw;
 		try {
-			if (Jokoa.getNireJokoa().getZailtasuna()==("Erraza")||Jokoa.getNireJokoa().getZailtasuna()==("erraza")){
+			if ((Jokoa.getNireJokoa().getZailtasuna().equalsIgnoreCase("erraza"))){
 				fw = new FileWriter("C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Erreza.txt");
 				l = nRanking.erraza;
 			}
-			else if (Jokoa.getNireJokoa().getZailtasuna()==("Normala")||Jokoa.getNireJokoa().getZailtasuna()=="normala"){
+			else if ((Jokoa.getNireJokoa().getZailtasuna().equalsIgnoreCase("normala"))){
 				fw = new FileWriter("C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Normala.txt");
 				l = nRanking.normala;
 			}
@@ -198,10 +198,10 @@ public  class Ranking extends JFrame{
 	public void jokalariakJarri(String z){
 		
 		ArrayList<Puntuaketa> lista;
-		if(z=="erraza"||z=="Erraza"){
+		if(z.equalsIgnoreCase("erraza")){
 			lista = nRanking.erraza;
 		}
-		else if (z=="normala"||z=="Normala"){
+		else if (z.equalsIgnoreCase("normala")){
 			lista = nRanking.normala;
 		}
 		else{

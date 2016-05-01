@@ -24,6 +24,7 @@ public class Jokoa {
 	
 	private Jokoa() {
 		kronometroa = 0;
+		timer = new Timer();
 		timerTask = new TimerTask(){
 			public void run() {
 				kronometroa++;
@@ -98,6 +99,7 @@ public class Jokoa {
 
 	public void amaitu(boolean irabazi) {
 		timer.cancel();
+		timerTask.cancel();
 		if (!irabazi){
 			taula.bonbakErakutsi();
 		}
@@ -105,11 +107,19 @@ public class Jokoa {
 	}
 	
 	public void jokoaRestart() {
-		String zail;
-		if (taula instanceof TableroErraza) zail = "Erraza";
-		else if (taula instanceof TableroNormala) zail = "Normala";
-		else zail = "Zaila";
-		nJokoa = new Jokoa(jokalaria, zail);
+
+		timer.cancel();
+		timerTask.cancel();
+
+		kronometroa = 0;
+		timer = new Timer();
+		timerTask = new TimerTask(){
+		public void run() {
+			kronometroa++;
+			Pantaila.getNPantaila().eguneratuKronometroa(kronometroa);
+			}            
+		};
+		taula = TableroaFactory.tableroaFactoryLortu().createTableroa(zailtasuna);
 	}
 
 	public void eskuinClickEgin(int i, int j) {
@@ -119,7 +129,7 @@ public class Jokoa {
 	public void ezkerClickEgin(int i, int j) {
 		taula.ezkerClickEgin(i, j);
 		if(kronometroa==0){
-			kronometroaHasi();
+	        timer.schedule(timerTask, 0, 1000);
 		}
 	}
 	
@@ -129,11 +139,6 @@ public class Jokoa {
 	
 	public void inprimatuJokalaria(){
 		System.out.println(jokalaria);
-	}
-	
-	private void kronometroaHasi(){
-        timer = new Timer();
-        timer.schedule(timerTask, 0, 1000);
 	}
 	
 	public String getJokalaria(){
