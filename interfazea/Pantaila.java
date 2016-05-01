@@ -198,11 +198,11 @@ public class Pantaila extends JFrame implements Observer {
 		JMenu mnArtxibo = new JMenu("Artxibo");
 		menuBar.add(mnArtxibo);
 		
-		JMenu mnZailtasuna = new JMenu("Zailtasuna:    ");
-		mnArtxibo.add(mnZailtasuna);
+		JMenu mnRanking = new JMenu("Ranking:    ");
+		mnArtxibo.add(mnRanking);
 		
 		JMenuItem mntmErraza = new JMenuItem("Erraza ");
-		mnZailtasuna.add(mntmErraza);
+		mnRanking.add(mntmErraza);
 		mntmErraza.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				try {	
@@ -212,7 +212,7 @@ public class Pantaila extends JFrame implements Observer {
 		});		
 		
 		JMenuItem mntmNormala = new JMenuItem("Normala ");
-		mnZailtasuna.add(mntmNormala);
+		mnRanking.add(mntmNormala);
 		mntmNormala.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				try {	
@@ -222,7 +222,7 @@ public class Pantaila extends JFrame implements Observer {
 		});
 		
 		JMenuItem mntmZaila = new JMenuItem("Zaila ");
-		mnZailtasuna.add(mntmZaila);
+		mnRanking.add(mntmZaila);
 		mntmZaila.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				try {	
