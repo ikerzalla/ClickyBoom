@@ -1,4 +1,5 @@
 package clickyboom;
+import java.util.*;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -22,7 +23,9 @@ import javax.swing.border.EmptyBorder;
 
 public  class Ranking extends JFrame{
 	private static Ranking nRanking = null;
-	private ArrayList<Puntuaketa> lista  = new ArrayList<Puntuaketa>();
+	private ArrayList<Puntuaketa> erraza  = new ArrayList<Puntuaketa>();
+	private ArrayList<Puntuaketa> normala  = new ArrayList<Puntuaketa>();
+	private ArrayList<Puntuaketa> zaila  = new ArrayList<Puntuaketa>();
 	
 	
 	
@@ -30,12 +33,25 @@ public  class Ranking extends JFrame{
 	/**
 	 * Launch the application.
 	 */
-	public void rankingDeia() {
+	public void rankingDeia(String z) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Collections.sort(lista,Puntuaketa.PUNTUAKETA);
-					jokalariakJarri();
+					if(z=="erraza"||z=="Erraza"){
+					Collections.sort(erraza,Puntuaketa.PUNTUAKETA);
+					jokalariakJarri(z);
+					setTitle("Ranking_Erreza");
+					}
+					else if (z == "normala"||z=="Normala"){
+					Collections.sort(normala,Puntuaketa.PUNTUAKETA);
+					jokalariakJarri(z);
+					setTitle("Ranking_Normala");
+					}
+					else{
+					Collections.sort(zaila,Puntuaketa.PUNTUAKETA);
+					jokalariakJarri(z);
+					setTitle("Ranking_Zaila");
+					}
 					botoiakGehitu();
 					setVisible(true);
 				} catch (Exception e) {
@@ -48,7 +64,7 @@ public  class Ranking extends JFrame{
 	private Ranking()throws Exception{
 		//nRanking.rankingaKargatu("C://Users/Eka/workspace/ClickyBoom/src/Ranking/Ranking.txt");
 		setResizable(false);
-		setTitle("ClickyBoom");
+		setTitle("Ranking");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 200, 450, 300);
 		
@@ -60,23 +76,31 @@ public  class Ranking extends JFrame{
 	public static Ranking getRanking()throws Exception{
 		if (nRanking == null){
 			nRanking = new Ranking();
-			nRanking.rankingaKargatu("C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking.txt");;
+			nRanking.rankingaKargatu();
 		}
 		return nRanking;
 	}
 	
 	public void gehituPuntuaketa(Puntuaketa p)throws Exception{
-		Ranking.nRanking.lista.add(p);
-		Ranking.nRanking.ordenatuRankina();
-	}
-	
-	private void ordenatuRankina(){
 		
+		if(Jokoa.getNireJokoa().getZailtasuna()=="Erraza" || Jokoa.getNireJokoa().getZailtasuna()=="erraza"){
+			Ranking.nRanking.erraza.add(p);
+		}
+		else if (Jokoa.getNireJokoa().getZailtasuna()=="Normala" || Jokoa.getNireJokoa().getZailtasuna()=="normala"){
+			Ranking.nRanking.normala.add(p);
+		}
+		else{
+			Ranking.nRanking.zaila.add(p);
+		}
 	}
 	
-	private void rankingaKargatu(String fitx) throws Exception{
-		//this.lista.clear();
+
+	
+	private void rankingaKargatu() throws Exception{
 		Puntuaketa p = null;
+		String fitx  = "C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Erreza.txt";
+		String fitx1 = "C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Normala.txt";
+		String fitx2 = "C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Zaila.txt";
 		int i;
 		try{
 			Scanner sarrera = new Scanner(new FileReader(fitx));
@@ -88,10 +112,36 @@ public  class Ranking extends JFrame{
 				p = new Puntuaketa(hitzak[i]);
 				i++;
 				p.puntuaketaAldatu(hitzak[i]);//COMO METO LA PUNTUACION ?
-				this.gehituPuntuaketa(p);
+				nRanking.erraza.add(p);
 				
 			}
 			sarrera.close();
+			
+			Scanner sarrera1 = new Scanner(new FileReader(fitx1));
+			while(sarrera1.hasNext()){
+				i=0;
+				lerroa = sarrera1.nextLine();
+				String[] hitzak1 = lerroa.split("\t");
+				p = new Puntuaketa(hitzak1[i]);
+				i++;
+				p.puntuaketaAldatu(hitzak1[i]);//COMO METO LA PUNTUACION ?
+				nRanking.normala.add(p);
+				
+			}
+			sarrera1.close();
+			
+			Scanner sarrera2 = new Scanner(new FileReader(fitx2));
+			while(sarrera2.hasNext()){
+				i=0;
+				lerroa = sarrera2.nextLine();
+				String[] hitzak2 = lerroa.split("\t");
+				p = new Puntuaketa(hitzak2[i]);
+				i++;
+				p.puntuaketaAldatu(hitzak2[i]);//COMO METO LA PUNTUACION ?
+				nRanking.zaila.add(p);
+				
+			}
+			sarrera2.close();
 			
 		}catch(Exception e){System.out.println(e);}
 	}
@@ -113,11 +163,23 @@ public  class Ranking extends JFrame{
 	
 	}*/
 	public void fitxategiaGorde(){
-		ArrayList<Puntuaketa> l = nRanking.lista;
+		ArrayList<Puntuaketa> l;
 		Puntuaketa p = null;
-		
+		FileWriter fw;
 		try {
-			FileWriter fw = new FileWriter("C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking.txt");
+			if (Jokoa.getNireJokoa().getZailtasuna()==("Erraza")||Jokoa.getNireJokoa().getZailtasuna()==("erraza")){
+				fw = new FileWriter("C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Erreza.txt");
+				l = nRanking.erraza;
+			}
+			else if (Jokoa.getNireJokoa().getZailtasuna()==("Normala")||Jokoa.getNireJokoa().getZailtasuna()=="normala"){
+				fw = new FileWriter("C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Normala.txt");
+				l = nRanking.normala;
+			}
+			else{
+				fw = new FileWriter("C://Users/Mielotxim/workspace/ClickyBoom/src/Ranking/Ranking_Zaila.txt");
+				l = nRanking.zaila;
+			}
+			
 			BufferedWriter output = new BufferedWriter(fw);
 			
 			for(int i=0;i<l.size();i++){
@@ -133,7 +195,18 @@ public  class Ranking extends JFrame{
 
 	}
 	
-	public void jokalariakJarri(){
+	public void jokalariakJarri(String z){
+		
+		ArrayList<Puntuaketa> lista;
+		if(z=="erraza"||z=="Erraza"){
+			lista = nRanking.erraza;
+		}
+		else if (z=="normala"||z=="Normala"){
+			lista = nRanking.normala;
+		}
+		else{
+			lista = nRanking.zaila;
+		}
 		JPanel b = new JPanel();
 		b.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(b);
@@ -141,8 +214,8 @@ public  class Ranking extends JFrame{
 			JPanel a = new JPanel();
 			JLabel k = new JLabel("#" + (i+1));
 			
-			if (nRanking.lista.size()>i){
-				JLabel l = nRanking.lista.get(i).showpuntuaketa();
+			if (lista.size()>i){
+				JLabel l = lista.get(i).showpuntuaketa();
 				a.add(k, BorderLayout.CENTER);
 				a.add(l, BorderLayout.CENTER);
 			}

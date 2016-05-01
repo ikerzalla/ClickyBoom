@@ -109,14 +109,36 @@ public class Menu extends JFrame {
 		JMenu mnArtxibo = new JMenu("Artxibo");
 		menuBar.add(mnArtxibo);
 		
-		JMenuItem mntmRanking = new JMenuItem("Ranking");
+		JMenu mntmRanking = new JMenu("Ranking");
 		mnArtxibo.add(mntmRanking);
-		mntmRanking.addActionListener(new ActionListener() {	
+
+		JMenuItem erreza = new JMenuItem("Erreza  ");
+		mntmRanking.add(erreza);
+		erreza.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Ranking.getRanking().rankingDeia();
-					
-				} catch (Exception e1) {e1.printStackTrace();}
+					Ranking.getRanking().rankingDeia("erraza");	
+				}catch (Exception e1) {e1.printStackTrace();}
+			}
+		});
+		
+		JMenuItem normala = new JMenuItem("Normala  ");
+		mntmRanking.add(normala);
+		normala.addActionListener(new ActionListener() {	
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Ranking.getRanking().rankingDeia("normala");	
+				}catch (Exception e1) {e1.printStackTrace();}
+			}
+		});
+		
+		JMenuItem zaila = new JMenuItem("Zaila  ");
+		mntmRanking.add(zaila);
+		zaila.addActionListener(new ActionListener() {	
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Ranking.getRanking().rankingDeia("zaila");	
+				}catch (Exception e1) {e1.printStackTrace();}
 			}
 		});
 		

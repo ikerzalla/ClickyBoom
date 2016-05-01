@@ -15,6 +15,7 @@ import interfazea.*;
 public class Jokoa {
 
 	private String jokalaria = null;
+	private String zailtasuna;
 	private static Jokoa nJokoa;
 	private Tableroa taula;
 	private Integer kronometroa;
@@ -55,8 +56,10 @@ public class Jokoa {
 	}
 	
 	public void setZailtasun(String zailtasun){
+		nJokoa.zailtasuna = zailtasun;
 		TableroaFactory faktoria = TableroaFactory.tableroaFactoryLortu();
 		taula = faktoria.createTableroa(zailtasun);
+		
 		//menura mugitu da 
 		/*Pantaila p = Pantaila.getNPantaila();
 		System.out.println("Pantaila sortu dugu");
@@ -134,9 +137,12 @@ public class Jokoa {
 	}
 	
 	public String getJokalaria(){
-		return jokalaria;
+		return nJokoa.jokalaria;
 	}
 	public int getKrono(){
-		return kronometroa;
+		return nJokoa.kronometroa;
+	}
+	public String getZailtasuna(){
+		return nJokoa.zailtasuna;
 	}
 }

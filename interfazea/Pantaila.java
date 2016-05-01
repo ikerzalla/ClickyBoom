@@ -191,12 +191,12 @@ public class Pantaila extends JFrame implements Observer {
 		JMenu mnZailtasuna = new JMenu("Zailtasuna:    ");
 		mnArtxibo.add(mnZailtasuna);
 		
-		JMenuItem mntmErreza = new JMenuItem("Erreza ");
-		mnZailtasuna.add(mntmErreza);
-		mntmErreza.addActionListener(new ActionListener() {	
+		JMenuItem mntmErraza = new JMenuItem("Erraza ");
+		mnZailtasuna.add(mntmErraza);
+		mntmErraza.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				try {	
-					dispose();
+					Ranking.getRanking().rankingDeia("erraza");
 				} catch (Exception e1) {e1.printStackTrace();}
 			}
 		});		
@@ -206,7 +206,7 @@ public class Pantaila extends JFrame implements Observer {
 		mntmNormala.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				try {	
-					dispose();
+					Ranking.getRanking().rankingDeia("normala");
 				} catch (Exception e1) {e1.printStackTrace();}
 			}
 		});
@@ -216,7 +216,7 @@ public class Pantaila extends JFrame implements Observer {
 		mntmZaila.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				try {	
-					dispose();
+					Ranking.getRanking().rankingDeia("zaila");
 				} catch (Exception e1) {e1.printStackTrace();}
 			}
 		});
@@ -294,7 +294,7 @@ public class Pantaila extends JFrame implements Observer {
 				Integer i = Jokoa.getNireJokoa().getKrono();
 				p.puntuaketaAldatu(i.toString());
 				r.gehituPuntuaketa(p);
-				r.rankingDeia();
+				r.rankingDeia(Jokoa.getNireJokoa().getZailtasuna());
 				r.fitxategiaGorde();
 				
 			} catch (Exception e) {
