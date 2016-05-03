@@ -98,7 +98,7 @@ public class Jokoa {
 	}*/
 
 	public void amaitu(boolean irabazi) {
-		timer.cancel();
+		//timer.cancel();
 		timerTask.cancel();
 		if (!irabazi){
 			taula.bonbakErakutsi();
@@ -107,16 +107,14 @@ public class Jokoa {
 	}
 	
 	public void jokoaRestart() {
-
-		timer.cancel();
 		timerTask.cancel();
-
+		timer.cancel();
 		kronometroa = 0;
 		timer = new Timer();
 		timerTask = new TimerTask(){
 		public void run() {
-			kronometroa++;
 			Pantaila.getNPantaila().eguneratuKronometroa(kronometroa);
+			kronometroa++;
 			}            
 		};
 		taula = TableroaFactory.tableroaFactoryLortu().createTableroa(zailtasuna);
@@ -127,10 +125,10 @@ public class Jokoa {
 	}
 
 	public void ezkerClickEgin(int i, int j) {
-		taula.ezkerClickEgin(i, j);
 		if(kronometroa==0){
 	        timer.schedule(timerTask, 0, 1000);
 		}
+		taula.ezkerClickEgin(i, j);
 	}
 	
 	public void aldatuJokalaria(String p){

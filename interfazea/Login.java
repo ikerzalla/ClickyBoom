@@ -74,6 +74,6 @@ public class Login extends JFrame {
 		j.aldatuJokalaria(pUserName);
 		j.inprimatuJokalaria();
 		dispose();
-		j.zailtasunaAukeratu();
+		//j.zailtasunaAukeratu();
 	}
 }
