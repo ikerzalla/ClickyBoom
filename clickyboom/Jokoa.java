@@ -121,6 +121,11 @@ public class Jokoa {
 	}
 
 	public void eskuinClickEgin(int i, int j) {
+		if (taula.getLauki(i, j) == null) {
+			if(kronometroa==0){
+				timer.schedule(timerTask, 0, 1000);
+			}
+		}
 		taula.eskuinClickEgin(i, j);
 	}
 

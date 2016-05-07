@@ -35,10 +35,12 @@ public abstract class Tableroa {
     //Lauki batean click egitean, laukiak metodo honi deituko
     //dio bere posizioa pasatuz
     public void ezkerClickEgin(int alt, int zab){
-    		System.out.println("Click egin da " + zab + "," + alt +" posizioan");
     		egoera.ezkerClickEgin(alt, zab);
     }
     public void eskuinClickEgin(int alt, int zab){
+    	if (laukiak[alt][zab] == null) {
+    		laukiak[alt][zab] = new Hutsa();
+    	}
     	egoera.eskuinClickEgin(alt, zab);
     }
 
@@ -60,11 +62,10 @@ public abstract class Tableroa {
                 if(l==null){
                     laukiak[y][x] = new Hutsa();
                 }
-                else if (l instanceof Bonba){
+                else if (l instanceof Bonba)
                     hurbilakAldatu(y,x); 
                     //hasX eta hasY gehitu ditut bonben ondoan dauden laukiak aldatzean 
                     //hasierako hutsunea ez aldatzeko
-                }
                 x++;
             }
             x=0;
@@ -80,13 +81,22 @@ public abstract class Tableroa {
         while(b<this.bonbaKop){
             alt =(int)(Math.random()*this.altuera-1);
             zab =(int)(Math.random()*this.zabalera-1);
-            if(!(alt+1 ==this.hasAlt || alt-1==this.hasAlt) && !(zab+1 ==this.hasZab || zab-1==this.hasZab)
-            && laukiak[alt][zab]==null){ 	//If honen baldintza luzea da, hasieran click 
+            if(!(alt+1 ==this.hasAlt || alt-1==this.hasAlt) && !(zab+1 ==this.hasZab || zab-1==this.hasZab)){ 	//If honen baldintza luzea da, hasieran click 
             								//egin dugun posizioaren alboan bonbak ez kokatzeko
-                laukiak[alt][zab] = new Bonba();
-                bonbenKoor.add(alt);
-                bonbenKoor.add(zab);
-                b++;
+            	if (laukiak[alt][zab]==null) {
+            		laukiak[alt][zab] = new Bonba();
+                	bonbenKoor.add(alt);
+                	bonbenKoor.add(zab);
+                	b++;
+            	}
+                else if (laukiak[alt][zab].banderaDu()) {
+                	laukiak[alt][zab].eskuinClickEgin(alt, zab);
+                	laukiak[alt][zab] = new Bonba();
+                	laukiak[alt][zab].eskuinClickEgin(alt, zab);
+                	bonbenKoor.add(alt);
+                	bonbenKoor.add(zab);
+                	b++;
+                }
             }
         }
         System.out.println("Bonbak kokatu dira");
@@ -161,7 +171,6 @@ public abstract class Tableroa {
                
             }
         }
-        System.out.println(zab + "," + alt + " posizioko bonbaren albokoak aldatu dira");
     }
    
     private void hurbilaAldatu(int alt, int zab){
@@ -171,7 +180,13 @@ public abstract class Tableroa {
 	            hur.bonbaGehitu();
 	        }
 	        else if(!(laukiak[alt][zab] instanceof Bonba)){
-	            laukiak[alt][zab] = new Hurbila();
+	        	if (laukiak[alt][zab] == null || !laukiak[alt][zab].banderaDu())
+	        		laukiak[alt][zab] = new Hurbila();
+	        	else {
+	        		eskuinClickEgin(alt, zab);
+	        		laukiak[alt][zab] = new Hurbila();
+	        		eskuinClickEgin(alt, zab);
+	        	}
 	        }
     	}
     }

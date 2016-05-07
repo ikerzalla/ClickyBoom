@@ -20,6 +20,7 @@ public class StateHutsa implements State{
 	
 	@Override
 	public void eskuinClickEgin(int alt, int zab){
+		Jokoa.getNireJokoa().getTableroa().getLauki(alt, zab).eskuinClickEgin(alt, zab);
 	}
 
 }

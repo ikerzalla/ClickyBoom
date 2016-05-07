@@ -1,5 +1,7 @@
 package clickyboom;
 
+import state.StateBandera;
+
 public class Hurbila extends Laukia {
 
 	Integer bonbaKop;
@@ -18,8 +20,10 @@ public class Hurbila extends Laukia {
 	}
 	
 	public void egituratu(int altuera, int zabalera) {
-		super.egituratu(altuera, zabalera);
-		Jokoa.getNireJokoa().getTableroa().laukiaMarkatu(altuera, zabalera);
+		if (!banderaDu()) {
+			super.egituratu(altuera, zabalera);
+			Jokoa.getNireJokoa().getTableroa().laukiaMarkatu(altuera, zabalera);
+		}
 	}
 	
 	@Override

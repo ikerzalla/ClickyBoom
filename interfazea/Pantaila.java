@@ -245,7 +245,6 @@ public class Pantaila extends JFrame implements Observer {
 	}
 	
 	 public void setIrudi(char irudi, int i, int j) {
-		 System.out.println(j + "," + i + " posizioko laukiari irudia jarriko zaio...");
 		 switch (irudi) {
 		 	case '1': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/uno.png"))); break;
 		 	case '2': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/dos.png"))); break;
@@ -274,7 +273,6 @@ public class Pantaila extends JFrame implements Observer {
 	 }
 	 
 	 private void setBanderaKopIrudi(Integer zenb){
-		 
 		 banderak0.setIcon(new ImageIcon(this.getClass().getResource("/zenbakiak/" + zenb/10 + ".png")));
 		 banderak1.setIcon(new ImageIcon(this.getClass().getResource("/zenbakiak/" + zenb%10 + ".png")));
 	 }
@@ -396,7 +394,6 @@ public class Pantaila extends JFrame implements Observer {
 			 else{
 				for(int i=0; i<altuera; i++){
 					for(int j=0; j<luzera; j++){
-						System.out.println("se ha mirado "+j+" , "+i);
 						if (e.getSource().equals(botoiak[i][j])){
 							if(SwingUtilities.isLeftMouseButton(e)){
 								ezkerClickEgin(i, j);
