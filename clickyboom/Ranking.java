@@ -5,19 +5,10 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -26,9 +17,9 @@ import interfazea.Pantaila;
 
 public  class Ranking extends JFrame{
 	private static Ranking nRanking = null;
-	private ArrayList<Puntuaketa> erraza  = new ArrayList<Puntuaketa>();
-	private ArrayList<Puntuaketa> normala  = new ArrayList<Puntuaketa>();
-	private ArrayList<Puntuaketa> zaila  = new ArrayList<Puntuaketa>();
+	private ListaPuntuaketa erraza  = new ListaPuntuaketa();
+	private ListaPuntuaketa normala  = new ListaPuntuaketa();
+	private ListaPuntuaketa zaila  = new ListaPuntuaketa();
 	private String path;
 	
 	
@@ -42,17 +33,17 @@ public  class Ranking extends JFrame{
 			public void run() {
 				try {
 					if(z.equalsIgnoreCase("erraza")){
-					Collections.sort(erraza,Puntuaketa.PUNTUAKETA);
+					erraza.ordenatu();
 					jokalariakJarri(z);
 					setTitle("Ranking Erreza");
 					}
 					else if (z.equalsIgnoreCase("normala")){
-					Collections.sort(normala,Puntuaketa.PUNTUAKETA);
+					normala.ordenatu();
 					jokalariakJarri(z);
 					setTitle("Ranking Normala");
 					}
 					else{
-					Collections.sort(zaila,Puntuaketa.PUNTUAKETA);
+					zaila.ordenatu();
 					jokalariakJarri(z);
 					setTitle("Ranking Zaila");
 					}
@@ -89,65 +80,26 @@ public  class Ranking extends JFrame{
 	public void gehituPuntuaketa(Puntuaketa p)throws Exception{
 		
 		if(Jokoa.getNireJokoa().getZailtasuna().equalsIgnoreCase("erraza")){
-			Ranking.nRanking.erraza.add(p);
+			erraza.gehituPuntuaketa(p);
 		}
 		else if (Jokoa.getNireJokoa().getZailtasuna().equalsIgnoreCase("normala")){
-			Ranking.nRanking.normala.add(p);
+			normala.gehituPuntuaketa(p);
 		}
 		else{
-			Ranking.nRanking.zaila.add(p);
+			zaila.gehituPuntuaketa(p);
 		}
 	}
 	
 
 	
 	private void rankingaKargatu() throws Exception{
-		Puntuaketa p = null;
+		try{
 		String fitx  = path+"/src/Ranking/Ranking_Erreza.txt";
 		String fitx1 = path+"/src/Ranking/Ranking_Normala.txt";
 		String fitx2 = path+"/src/Ranking/Ranking_Zaila.txt";
-		int i;
-		try{
-			Scanner sarrera = new Scanner(new FileReader(fitx));
-			String lerroa;
-			while(sarrera.hasNext()){
-				i=0;
-				lerroa = sarrera.nextLine();
-				String[] hitzak = lerroa.split("\t");
-				p = new Puntuaketa(hitzak[i]);
-				i++;
-				p.puntuaketaAldatu(hitzak[i]);//COMO METO LA PUNTUACION ?
-				nRanking.erraza.add(p);
-				
-			}
-			sarrera.close();
-			
-			Scanner sarrera1 = new Scanner(new FileReader(fitx1));
-			while(sarrera1.hasNext()){
-				i=0;
-				lerroa = sarrera1.nextLine();
-				String[] hitzak1 = lerroa.split("\t");
-				p = new Puntuaketa(hitzak1[i]);
-				i++;
-				p.puntuaketaAldatu(hitzak1[i]);//COMO METO LA PUNTUACION ?
-				nRanking.normala.add(p);
-				
-			}
-			sarrera1.close();
-			
-			Scanner sarrera2 = new Scanner(new FileReader(fitx2));
-			while(sarrera2.hasNext()){
-				i=0;
-				lerroa = sarrera2.nextLine();
-				String[] hitzak2 = lerroa.split("\t");
-				p = new Puntuaketa(hitzak2[i]);
-				i++;
-				p.puntuaketaAldatu(hitzak2[i]);//COMO METO LA PUNTUACION ?
-				nRanking.zaila.add(p);
-				
-			}
-			sarrera2.close();
-			
+		erraza.listaKargatu(fitx);
+		normala.listaKargatu(fitx1);
+		zaila.listaKargatu(fitx2);
 		}catch(Exception e){System.out.println(e);}
 	}
 	
@@ -168,66 +120,40 @@ public  class Ranking extends JFrame{
 	
 	}*/
 	public void fitxategiaGorde(){
-		ArrayList<Puntuaketa> l;
-		Puntuaketa p = null;
-		FileWriter fw;
 		try {
+			String fitx  = path+"/src/Ranking/Ranking_Erreza.txt";
+			String fitx1 = path+"/src/Ranking/Ranking_Normala.txt";
+			String fitx2 = path+"/src/Ranking/Ranking_Zaila.txt";
 			if ((Jokoa.getNireJokoa().getZailtasuna().equalsIgnoreCase("erraza"))){
-				fw = new FileWriter(path+"/src/Ranking/Ranking_Erreza.txt");
-				l = nRanking.erraza;
+				erraza.listaGorde(fitx);
 			}
 			else if ((Jokoa.getNireJokoa().getZailtasuna().equalsIgnoreCase("normala"))){
-				fw = new FileWriter(path+"/src/Ranking/Ranking_Normala.txt");
-				l = nRanking.normala;
+				normala.listaGorde(fitx1);
 			}
 			else{
-				fw = new FileWriter(path+"/src/Ranking/Ranking_Zaila.txt");
-				l = nRanking.zaila;
-			}
-			
-			BufferedWriter output = new BufferedWriter(fw);
-			
-			for(int i=0;i<l.size();i++){
-				
-				p = l.get(i);
-				p.idatzi(output);
-				output.newLine();
-			}
-			output.close();
-			
-		} catch (IOException e) {e.printStackTrace();}
+				zaila.listaGorde(fitx2);
+			}		
+		} catch (Exception e) {e.printStackTrace();}
 		
 
 	}
 	
 	public void jokalariakJarri(String z){
-		
-		ArrayList<Puntuaketa> lista;
-		if(z.equalsIgnoreCase("erraza")){
-			lista = nRanking.erraza;
-		}
-		else if (z.equalsIgnoreCase("normala")){
-			lista = nRanking.normala;
-		}
-		else{
-			lista = nRanking.zaila;
-		}
 		JPanel b = new JPanel();
 		b.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(b);
-		for (int i=0;i<10;i++){
-			JPanel a = new JPanel();
-			JLabel k = new JLabel("#" + (i+1));
-			
-			if (lista.size()>i){
-				JLabel l = lista.get(i).showpuntuaketa();
-				a.add(k, BorderLayout.CENTER);
-				a.add(l, BorderLayout.CENTER);
-			}
-			
-			b.add(a, BorderLayout.CENTER);
-			
+		
+		if(z.equalsIgnoreCase("erraza")){
+			b = erraza.jokalariakJarri(b);
 		}
+		else if (z.equalsIgnoreCase("normala")){
+			b = normala.jokalariakJarri(b);
+		}
+		else{
+			b = zaila.jokalariakJarri(b);
+		}
+
+		
 	}
 	
 	private void botoiakGehitu(){
