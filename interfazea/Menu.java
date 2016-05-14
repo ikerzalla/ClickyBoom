@@ -35,6 +35,7 @@ public class Menu extends JFrame {
 	public Menu() {
 		setResizable(false);
 		setTitle("ClickyBoom");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Pantaila.class.getResource("/argazkiak/icono.jpg")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(302, 328);
@@ -147,6 +148,12 @@ public class Menu extends JFrame {
 		
 		JMenuItem mntmArauak = new JMenuItem("Arauak");
 		mnHelp.add(mntmArauak);
+		mntmArauak.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Arauak a = new Arauak();
+				a.setVisible(true);
+			}
+		});
 	    
 
 	}

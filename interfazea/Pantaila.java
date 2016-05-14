@@ -236,6 +236,12 @@ public class Pantaila extends JFrame implements Observer {
 		
 		JMenuItem mntmArauak = new JMenuItem("Arauak");
 		mnHelp.add(mntmArauak);
+		mntmArauak.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Arauak a = new Arauak();
+				a.setVisible(true);
+			}
+		});
 	}
 
 	 public void botonOff(int alt, int zab){

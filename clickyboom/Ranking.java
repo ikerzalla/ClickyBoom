@@ -2,6 +2,7 @@ package clickyboom;
 import java.util.*;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
@@ -19,6 +20,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import interfazea.Pantaila;
 
 
 public  class Ranking extends JFrame{
@@ -41,18 +44,19 @@ public  class Ranking extends JFrame{
 					if(z.equalsIgnoreCase("erraza")){
 					Collections.sort(erraza,Puntuaketa.PUNTUAKETA);
 					jokalariakJarri(z);
-					setTitle("Ranking_Erreza");
+					setTitle("Ranking Erreza");
 					}
 					else if (z.equalsIgnoreCase("normala")){
 					Collections.sort(normala,Puntuaketa.PUNTUAKETA);
 					jokalariakJarri(z);
-					setTitle("Ranking_Normala");
+					setTitle("Ranking Normala");
 					}
 					else{
 					Collections.sort(zaila,Puntuaketa.PUNTUAKETA);
 					jokalariakJarri(z);
-					setTitle("Ranking_Zaila");
+					setTitle("Ranking Zaila");
 					}
+					setIconImage(Toolkit.getDefaultToolkit().getImage(Pantaila.class.getResource("/argazkiak/icono.jpg")));
 					botoiakGehitu();
 					setVisible(true);
 				} catch (Exception e) {
