@@ -1,14 +1,25 @@
 package clickyboom;
-
+import java.util.*;
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 public class ListaPuntuaketa {
 	private ArrayList<Puntuaketa> lista;
@@ -30,9 +41,9 @@ public class ListaPuntuaketa {
 				i=0;
 				lerroa = sarrera.nextLine();
 				String[] hitzak = lerroa.split("\t");
-				p = new Puntuaketa(hitzak[i]);
-				i++;
-				p.puntuaketaAldatu(hitzak[i]);
+				p = new Puntuaketa(hitzak[i], hitzak[++i]);
+				/*i++;
+				p.puntuaketaAldatu(hitzak[i]);*/
 				this.lista.add(p);
 			}
 			sarrera.close();

@@ -1,22 +1,23 @@
 package clickyboom;
-
+import java.util.*;
 import java.io.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.util.Comparator;
 
 public class Puntuaketa {
 	private String jokalaria;
 	private String puntuaketa;
 	
-	public Puntuaketa(String pJok){
+	public Puntuaketa(String pJok, String pPunt){
 		this.jokalaria = pJok;
-		this.puntuaketa = "0";
+		this.puntuaketa = pPunt;
 	}
-	
+	/*
 	public void puntuaketaAldatu(String z){
 		this.puntuaketa = z;
 	}
-
+*/
 	
 	static final Comparator<Puntuaketa> PUNTUAKETA = new Comparator<Puntuaketa>() {
 		public int compare(Puntuaketa pPunt1, Puntuaketa pPunt2) {

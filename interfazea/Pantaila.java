@@ -16,10 +16,6 @@ import clickyboom.Ranking;
 
 public class Pantaila extends JFrame implements Observer {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private int altuera, luzera;
 	private int tamainua = 40;
@@ -70,6 +66,7 @@ public class Pantaila extends JFrame implements Observer {
 		
 		contentPane = new JPanel(new BorderLayout());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		//contentPane.setLayout(new BorderLayout(0, 0));
 		
 		setContentPane(contentPane);
 		
@@ -111,7 +108,31 @@ public class Pantaila extends JFrame implements Observer {
 				botoiak[i][j].setBounds(i*tamainua, j*tamainua, tamainua, tamainua);
 				botoiak[i][j].setEnabled(true);				
 				botoiak[i][j].setContentAreaFilled(false);
-				botoiak[i][j].addMouseListener(new SaguListener() 
+				//botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("Button.png")));
+				//botoiak[i][j].setText(" ");
+				//botoiak[i][j].setSize(new Dimension(25, 25));
+				
+				botoiak[i][j].addMouseListener(new SaguListener() /*{
+					
+					public void mouseClicked(MouseEvent e) {
+						for(int i=0; i<altuera; i++){
+							for(int j=0; j<luzera; j++){
+								System.out.println("se ha mirado "+j+" , "+i);
+								if (e.getSource().equals(botoiak[i][j])){
+									Jokoa.getNireJokoa().getTableroa().ezkerClickEgin(i, j);
+									//JOptionPane a = new JOptionPane();
+									//a.showConfirmDialog(null, "Has pusado el boton: "+i+","+j);
+									//a.showMessageDialog(null, "Has pulsado el boton: "+(i+1)+","+(j+1));
+									//botonOff(i,j);
+									//botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("c4.png")));
+									//botoiak[i][j].setBackground(new Color(100, 50, 30));
+									//botoiak[i][j].setText("1");
+								}
+							}
+						}
+					}
+					
+				}*/
 				);
 			}
 		}
@@ -267,14 +288,20 @@ public class Pantaila extends JFrame implements Observer {
 	 }
 	 
 	 public void amaitu(boolean notBoom){
-		 if(!notBoom){	
+		 JOptionPane a = new JOptionPane();
+		 if(!notBoom){//GALDU	
 			 setAurpegiIrudi('h');
-			 JOptionPane.showMessageDialog(null, "BOMBA bat zapaldu duzu. BOOM!");
-	
-		 }else{
+			 a.showMessageDialog(null, "BOMBA bat zapaldu duzu. BOOM!");
+			
+			 //RANKINARI DEITU ??
+			
+			 //	Jokoa.getNireJokoa().jokatu();
+			
+		 }else{//IRABAZI
 			 setAurpegiIrudi('g');
-			 JOptionPane.showMessageDialog(null, "Irabazi egin duzu!");
-
+			 a.showMessageDialog(null, "Irabazi egin duzu!");
+			 /*
+			 //RANKINARI DEITU ??
 			 try {
 				Ranking r = Ranking.getRanking();
 				System.out.println("Rankina dut");
@@ -285,6 +312,7 @@ public class Pantaila extends JFrame implements Observer {
 				p.puntuaketaAldatu(i.toString());
 				System.out.println("puntuaketa aldatu dut");
 				r.gehituPuntuaketa(p);
+				
 				System.out.println("puntuaketa gehitu dut");
 				r.rankingDeia(Jokoa.getNireJokoa().getZailtasuna());
 				System.out.println("rankina erakusten dut");
@@ -294,7 +322,7 @@ public class Pantaila extends JFrame implements Observer {
 			} catch (Exception e) {
 				
 				e.printStackTrace();
-			}
+			}*/
 			
 		 }
 		 restart();
@@ -333,6 +361,14 @@ public class Pantaila extends JFrame implements Observer {
 		 min0.setIcon(new ImageIcon(this.getClass().getResource("/zenbakiak/" + min + ".png")));
 		 seg1.setIcon(new ImageIcon(this.getClass().getResource("/zenbakiak/" + seg/10 + ".png")));
 		 seg0.setIcon(new ImageIcon(this.getClass().getResource("/zenbakiak/" + seg%10 + ".png")));
+		 
+		/* if(seg<10){
+			 kronometroa.setText(min.toString() + ":0" + seg.toString());
+		 }
+		 else{
+			 kronometroa.setText(min.toString() + ":" + seg.toString());
+		 }
+		 */
 	 }
 	 
 	 

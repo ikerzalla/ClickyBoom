@@ -1,5 +1,5 @@
 package clickyboom;
-
+import java.util.*;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -16,10 +16,6 @@ import interfazea.Pantaila;
 
 
 public  class Ranking extends JFrame{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private static Ranking nRanking = null;
 	private ListaPuntuaketa erraza  = new ListaPuntuaketa();
 	private ListaPuntuaketa normala  = new ListaPuntuaketa();
@@ -65,7 +61,7 @@ public  class Ranking extends JFrame{
 		path = System.getProperty("user.dir");
 		setResizable(false);
 		setTitle("Ranking");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(400, 200, 450, 300);
 		
 	   
@@ -79,6 +75,18 @@ public  class Ranking extends JFrame{
 			nRanking.rankingaKargatu();
 		}
 		return nRanking;
+	}
+	
+	public void sortuPuntuaketa(String jok, Integer kron) {
+		try {
+			Puntuaketa p = new Puntuaketa(jok, kron.toString());
+			gehituPuntuaketa(p);
+			rankingDeia(Jokoa.getNireJokoa().getZailtasuna());
+			fitxategiaGorde();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void gehituPuntuaketa(Puntuaketa p)throws Exception{
