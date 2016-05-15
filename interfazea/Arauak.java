@@ -48,6 +48,7 @@ public class Arauak extends JFrame {
 		txtArauak.setFont(new Font("Sitka Small", Font.BOLD, 13));
 		txtArauak.setText("Helburua: Pantailan agertzen diren laukietan klik eginez zelaia garbitzea, minak zapaldu gabe.\r\n\r\nBadaude lau motatako laukiak:\r\n- Hasieran agertzen diren laukiak: Jarraian azaldutako edozein lauki mota izan ahal dira.\r\n- Ezer ez daukatenak: Lauki hutsak dira, ez dago arriskurik.\r\n- Zenbaki bat daukatenak: Lauki hutsak dira ere, ez daukate minarik, baina zenbakia alboan daukaten bonba kopurua adierazten du.\r\n- Mina daukatenak: Hauetan klik egiterakoan partida galdu egiten da.\r\n\r\nEzkerreko klik eginez oraindik zapaldu gabe dauden laukietan bandera bat ipini diezaiokegu mina dauden laukiak markatzeko, hauetan klik egiten badiogu ez du ezer egingo.\r\n\r\nHiru maila desberdin daude:\r\n- Erreza: 7x10 –eko pantaila, 10 mina dituena.\r\n- Normala: 10x15 –eko pantaila, 30 mina dituena.\r\n- Zaila: 12x25 –eko pantaila, 75 mina dituena.");
 		contentPane.add(txtArauak, BorderLayout.CENTER);
+		txtArauak.setEditable(false);
 		this.pack();
 		}
 
