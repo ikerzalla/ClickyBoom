@@ -1,7 +1,5 @@
 package clickyboom;
 
-import state.StateBandera;
-
 public class Hutsa extends Laukia {
 
 	public Hutsa() {

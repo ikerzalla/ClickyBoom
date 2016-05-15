@@ -60,45 +60,19 @@ public class Jokoa {
 		nJokoa.zailtasuna = zailtasun;
 		TableroaFactory faktoria = TableroaFactory.tableroaFactoryLortu();
 		taula = faktoria.createTableroa(zailtasun);
-		
-		//menura mugitu da 
-		/*Pantaila p = Pantaila.getNPantaila();
-		System.out.println("Pantaila sortu dugu");
-		p.setVisible(true);
-		System.out.println("Tableroa sortu dugu");*/
 	}
-	
-	//interfaz grafikoa eta sistema ezberdindu behar dira
 	
 
 	public static void main(String[] args){
 		getNireJokoa().jokoaHasieratu();
-		//getNireJokoa().zailtasunaAukeratu();
 	}
-	
-	private void jokatu() {
-		Pantaila p = Pantaila.getNPantaila();
-		System.out.println("Pantaila sortu dugu");
-		p.setVisible(true);
-		System.out.println("Tableroa sortu dugu");
-	}
-
 	
 	public void jokoaHasieratu(){
-		//Llama a menu, que ahora tiene el Login y el selector de dificultad junto
-		/*Login l = new Login();
-		l.setVisible(true);*/
 		Menu m = new Menu();
 		m.setVisible(true);	
 	}
-	
-	/*public void zailtasunaAukeratu() {
-		Menu m = new Menu();
-		m.setVisible(true);	
-	}*/
 
 	public void amaitu(boolean irabazi) {
-		//timer.cancel();
 		timerTask.cancel();
 		if (!irabazi){
 			taula.bonbakErakutsi();

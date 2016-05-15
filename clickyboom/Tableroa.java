@@ -1,9 +1,6 @@
 package clickyboom;
-import javax.swing.JButton;
 
-import interfazea.Pantaila;
 import state.State;
-
 import java.util.*;
 
 //Enkapsulazio handiagoa nahiko bagenu Singleton patroia Tableroa klasean erabiltzeko eta
