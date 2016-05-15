@@ -1,8 +1,7 @@
 package clickyboom;
-import java.util.*;
+
 import java.io.*;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.util.Comparator;
 
 public class Puntuaketa {

@@ -1,7 +1,7 @@
 package clickyboom;
 
 public class TableroaTest {
-	private Jokoa jok = Jokoa.getNireJokoa();
+	//private Jokoa jok = Jokoa.getNireJokoa();
 	/*
 	@Before
 	public void setUp() throws Exception {
