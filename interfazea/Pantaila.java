@@ -16,9 +16,6 @@ import clickyboom.Ranking;
 
 public class Pantaila extends JFrame implements Observer {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private int altuera, luzera;
@@ -48,12 +45,9 @@ public class Pantaila extends JFrame implements Observer {
 					e.printStackTrace();
 				}
 			}
-		});
-		
-		
+		});	
 	}
 
-	
 	private Pantaila() {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Pantaila.class.getResource("/argazkiak/icono.jpg")));
@@ -66,7 +60,7 @@ public class Pantaila extends JFrame implements Observer {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (int) ((dim.getWidth() - (altuera*42)+10) / 2);
 		int y = (int) ((dim.getHeight() - (luzera*42)+36) / 2);
-		this.setLocation(x, y-60);//40 hori Windows-en "Barra de tareas"-en altuera da
+		this.setLocation(x, y-60);
 		
 		contentPane = new JPanel(new BorderLayout());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -76,7 +70,7 @@ public class Pantaila extends JFrame implements Observer {
 		tableroa = new JPanel(new BorderLayout());
 		tableroa.setPreferredSize(new Dimension(altuera*tamainua, luzera*tamainua));
 		tableroa.setBackground(Color.BLUE);
-		tableroa.setLayout(null); //Layout por defecto te cambia las dimensiones
+		tableroa.setLayout(null);
 		
 		goiburuak = new JPanel(new BorderLayout());
 		goiburuak.setPreferredSize(new Dimension(altuera*tamainua, 60));
@@ -90,8 +84,7 @@ public class Pantaila extends JFrame implements Observer {
 		
 		contentPane.add(goiburuak, BorderLayout.NORTH);
 		contentPane.add(tableroa, BorderLayout.CENTER);
-		
-		
+
 		this.pack();
 	}
 
@@ -106,7 +99,7 @@ public class Pantaila extends JFrame implements Observer {
 		for(int i=0; i<altuera; i++){
 			for(int j=0; j<luzera; j++){
 				botoiak[i][j] = new JButton();
-				botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/amarilla.png")));
+				botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin/amarilla.png")));
 				tableroa.add(botoiak[i][j]);
 				botoiak[i][j].setBounds(i*tamainua, j*tamainua, tamainua, tamainua);
 				botoiak[i][j].setEnabled(true);				
@@ -115,8 +108,6 @@ public class Pantaila extends JFrame implements Observer {
 				);
 			}
 		}
-		
-		
 		System.out.println("Botoiak kokatu dira");
 	}
 	
@@ -124,7 +115,7 @@ public class Pantaila extends JFrame implements Observer {
 		
 		//Aurpegia
 		aurpegi = new JButton();
-		aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin1/ongi.png")));
+		aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin/ongi.png")));
 		goiburuak.add(aurpegi);
 		aurpegi.setBounds(((tamainua*altuera) - tamainua)/ 2, (60 - tamainua) / 2, tamainua, tamainua);
 		aurpegi.setEnabled(true);				
@@ -132,14 +123,12 @@ public class Pantaila extends JFrame implements Observer {
 		
 		aurpegi.addMouseListener(new SaguListener());
 		
-		//HACKS !!!
+		//HACKS
 		hacks = new JButton();
-		//hacks.setIcon(new ImageIcon(this.getClass().getResource("/skin1/ongi.png")));
 		goiburuak.add(hacks);
 		hacks.setBounds(0,0,2,2);
 		hacks.setEnabled(true);				
 		hacks.setContentAreaFilled(false);
-		
 		hacks.addMouseListener(new SaguListener());
 		
 		//Kronometroa
@@ -231,15 +220,15 @@ public class Pantaila extends JFrame implements Observer {
 	
 	 public void setIrudi(char irudi, int i, int j) {
 		 switch (irudi) {
-		 	case '1': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/uno.png"))); break;
-		 	case '2': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/dos.png"))); break;
-		 	case '3': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/tres.png"))); break;
-		 	case '4': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/cuatro.png"))); break;
-		 	case '5': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/cinco.png"))); break;
-		 	case '6': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/seis.png"))); break;
-		 	case '7': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/siete.png"))); break;
-		 	case '8': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/ocho.png"))); break;
-		 	case 'b': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin1/c4.png"))); break;
+		 	case '1': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin/uno.png"))); break;
+		 	case '2': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin/dos.png"))); break;
+		 	case '3': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin/tres.png"))); break;
+		 	case '4': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin/cuatro.png"))); break;
+		 	case '5': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin/cinco.png"))); break;
+		 	case '6': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin/seis.png"))); break;
+		 	case '7': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin/siete.png"))); break;
+		 	case '8': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin/ocho.png"))); break;
+		 	case 'b': botoiak[i][j].setDisabledIcon(new ImageIcon(this.getClass().getResource("/skin/c4.png"))); break;
 		 	default:
 			break;
 		}
@@ -248,10 +237,10 @@ public class Pantaila extends JFrame implements Observer {
 	 
 	 public void setAurpegiIrudi(char irudi) {
 		 switch (irudi) {
-		 	case 'o': aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin1/ongi.png"))); break;
-		 	case 'a': aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin1/auskalo.png"))); break;
-		 	case 'h': aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin1/hil.png"))); break;
-		 	case 'g': aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin1/ggwp.png"))); break;
+		 	case 'o': aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin/ongi.png"))); break;
+		 	case 'a': aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin/auskalo.png"))); break;
+		 	case 'h': aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin/hil.png"))); break;
+		 	case 'g': aurpegi.setIcon(new ImageIcon(this.getClass().getResource("/skin/ggwp.png"))); break;
 		 	default:
 			break;
 		}
@@ -267,15 +256,13 @@ public class Pantaila extends JFrame implements Observer {
 	 }
 	 
 	 public void amaitu(boolean notBoom){
-		 if(!notBoom){//GALDU	
+		 if(!notBoom){	
 			 setAurpegiIrudi('h');
 			 JOptionPane.showMessageDialog(null, "BOMBA bat zapaldu duzu. BOOM!");
 			
-		 }else{//IRABAZI
+		 }else{
 			 setAurpegiIrudi('g');
 			 JOptionPane.showMessageDialog(null, "Irabazi egin duzu!");
-			
-			
 		 }
 		 restart();
 	 }
@@ -287,19 +274,16 @@ public class Pantaila extends JFrame implements Observer {
 		 Pantaila p = Pantaila.getNPantaila();
 		 System.out.println("Pantaila sortu dugu");
 		 p.setVisible(true);
-		 System.out.println("Tableroa sortu dugu");
-
-		
+		 System.out.println("Tableroa sortu dugu");	
 	}
-
-
+	 
 	public void irudiHutsaJarri(int i, int j) {
-		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/amarilla.png")));	
+		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin/amarilla.png")));	
 		 setBanderaKopIrudi(++bandKop);
 	 }
 	 
 	 public void banderaJarri(int i, int j) {
-		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin1/bandera.png")));
+		 botoiak[i][j].setIcon(new ImageIcon(this.getClass().getResource("/skin/bandera.png")));
 		 setBanderaKopIrudi(--bandKop);
 	 }
 	 
@@ -313,7 +297,6 @@ public class Pantaila extends JFrame implements Observer {
 		 min0.setIcon(new ImageIcon(this.getClass().getResource("/zenbakiak/" + min + ".png")));
 		 seg1.setIcon(new ImageIcon(this.getClass().getResource("/zenbakiak/" + seg/10 + ".png")));
 		 seg0.setIcon(new ImageIcon(this.getClass().getResource("/zenbakiak/" + seg%10 + ".png")));
-
 	 }
 	 
 	 
@@ -326,12 +309,6 @@ public class Pantaila extends JFrame implements Observer {
 		 else
 			 setIrudi(ch, i, j);
 		}
-	 
-	 
-	 
-	 
-	 
-	 
 	 
 	 private class SaguListener extends MouseAdapter{
 		 public SaguListener(){}
@@ -381,7 +358,4 @@ public class Pantaila extends JFrame implements Observer {
 			 }
 		 }
 	 }
-
 }
-
-

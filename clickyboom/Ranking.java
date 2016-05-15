@@ -16,9 +16,7 @@ import interfazea.Pantaila;
 
 
 public  class Ranking extends JFrame{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private static Ranking nRanking = null;
 	private ListaPuntuaketa erraza  = new ListaPuntuaketa();
@@ -26,12 +24,7 @@ public  class Ranking extends JFrame{
 	private ListaPuntuaketa zaila  = new ListaPuntuaketa();
 	private String path;
 	
-	
-	
-	
-	/**
-	 * Launch the application.
-	 */
+
 	public void rankingDeia(String z) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -67,10 +60,6 @@ public  class Ranking extends JFrame{
 		setTitle("Ranking");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(400, 200, 450, 300);
-		
-	   
-	        
-	    
 		}
 	
 	public static Ranking getRanking()throws Exception{
@@ -90,7 +79,6 @@ public  class Ranking extends JFrame{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public void gehituPuntuaketa(Puntuaketa p)throws Exception{
@@ -105,36 +93,18 @@ public  class Ranking extends JFrame{
 			zaila.gehituPuntuaketa(p);
 		}
 	}
-	
 
-	
 	private void rankingaKargatu() throws Exception{
 		try{
-		String fitx  = path+"/src/Ranking/Ranking_Erreza.txt";
-		String fitx1 = path+"/src/Ranking/Ranking_Normala.txt";
-		String fitx2 = path+"/src/Ranking/Ranking_Zaila.txt";
-		erraza.listaKargatu(fitx);
-		normala.listaKargatu(fitx1);
-		zaila.listaKargatu(fitx2);
+			String fitx  = path+"/src/Ranking/Ranking_Erreza.txt";
+			String fitx1 = path+"/src/Ranking/Ranking_Normala.txt";
+			String fitx2 = path+"/src/Ranking/Ranking_Zaila.txt";
+			erraza.listaKargatu(fitx);
+			normala.listaKargatu(fitx1);
+			zaila.listaKargatu(fitx2);
 		}catch(Exception e){System.out.println(e);}
 	}
 	
-	/*private static void fitxSortu(String[] taula) throws IOException{
-		File fitxategia = new File("Ranking.txt");
-		try{
-			FileWriter fw = new FileWriter(fitxategia);
-			BufferedWriter output = new BufferedWriter(fw);
-			int sz = taula.length;
-			for (int i=0; i<sz; i++){
-				output.write(taula[i]);
-				output.newLine();
-			}
-			output.close();
-		
-			
-		}catch(Exception e){JOptionPane.showMessageDialog(null, "ezin da fitxategia sortu");}
-	
-	}*/
 	public void fitxategiaGorde(){
 		try {
 			String fitx  = path+"/src/Ranking/Ranking_Erreza.txt";
@@ -149,16 +119,13 @@ public  class Ranking extends JFrame{
 			else{
 				zaila.listaGorde(fitx2);
 			}		
-		} catch (Exception e) {e.printStackTrace();}
-		
-
+		} catch (Exception e) {e.printStackTrace();}	
 	}
 	
 	public void jokalariakJarri(String z){
 		JPanel b = new JPanel();
 		b.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(b);
-		
 		if(z.equalsIgnoreCase("erraza")){
 			b = erraza.jokalariakJarri(b);
 		}
@@ -168,8 +135,6 @@ public  class Ranking extends JFrame{
 		else{
 			b = zaila.jokalariakJarri(b);
 		}
-
-		
 	}
 	
 	private void botoiakGehitu(){
@@ -184,6 +149,4 @@ public  class Ranking extends JFrame{
 	public void erakutsi(){
 		nRanking.setVisible(true);
 	}
-	
-
 }

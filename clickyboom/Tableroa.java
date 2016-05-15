@@ -2,12 +2,6 @@ package clickyboom;
 
 import state.State;
 import java.util.*;
-
-//Enkapsulazio handiagoa nahiko bagenu Singleton patroia Tableroa klasean erabiltzeko eta
-//tablero bakarra egoteko, Tableroa interfaze bat izan beharko litzateke, klase abstraktu
-//batean ezin daitekeelako Singleton patroia inplementatu.
-//Hala ere, gure proiektuarentzako Tableroa abstraktua edo interfazea izateak ez du
-//ezberdintasun askorik.
  
 public abstract class Tableroa {
     protected Laukia[][] laukiak;
@@ -19,15 +13,13 @@ public abstract class Tableroa {
     protected State egoera;
     //Bi atributu hauek erabili ditut bonben ondoan dauden laukiak ikutzean,
     //hasieran click egin dugun laukia HUTSA jarraitzen izateko hurbilakAldatu() metodoa eta gero
-    //Hala ere, inprimatu metodoaren emaitza ikusita, baliteke "zabalera" eta "altuera" hitzak trukatzea
     private int hasAlt;
     private int hasZab;
     protected boolean[][] begiratuak;
     private ArrayList<Integer> bonbenKoor= new ArrayList<Integer>();
     
     
-    protected Tableroa(){
-    	
+    protected Tableroa(){	
     }
     //Lauki batean click egitean, laukiak metodo honi deituko
     //dio bere posizioa pasatuz
@@ -41,10 +33,6 @@ public abstract class Tableroa {
     	egoera.eskuinClickEgin(alt, zab);
     }
 
-	//public abstract Tableroa nTableroaLortu();
-   
-    //0 <= laukZab <= (laukiak[].lenght)-1
-    //0 <= laukAlt <= (laukiak[0][].lenght)-1
     public void tableroaBete(int alt, int zab){
     	this.hasAlt = alt;
     	this.hasZab = zab;
@@ -60,9 +48,7 @@ public abstract class Tableroa {
                     laukiak[y][x] = new Hutsa();
                 }
                 else if (l instanceof Bonba)
-                    hurbilakAldatu(y,x); 
-                    //hasX eta hasY gehitu ditut bonben ondoan dauden laukiak aldatzean 
-                    //hasierako hutsunea ez aldatzeko
+                    hurbilakAldatu(y,x);                     //hasX eta hasY gehitu ditut bonben ondoan dauden laukiak aldatzean  //hasierako hutsunea ez aldatzeko
                 x++;
             }
             x=0;
@@ -79,7 +65,7 @@ public abstract class Tableroa {
             alt =(int)(Math.random()*this.altuera-1);
             zab =(int)(Math.random()*this.zabalera-1);
             if(!(alt+1 ==this.hasAlt || alt-1==this.hasAlt) && !(zab+1 ==this.hasZab || zab-1==this.hasZab)){ 	//If honen baldintza luzea da, hasieran click 
-            								//egin dugun posizioaren alboan bonbak ez kokatzeko
+            	//egin dugun posizioaren alboan bonbak ez kokatzeko
             	if (laukiak[alt][zab]==null) {
             		laukiak[alt][zab] = new Bonba();
                 	bonbenKoor.add(alt);
@@ -100,7 +86,7 @@ public abstract class Tableroa {
     }
    
     private void hurbilakAldatu(int alt, int zab){
-        //Aurrebaldintza: Tableroa 2zab2-koa izango da gutzabienez
+        //Aurrebaldintza: Tableroa 2x2-koa izango da gutxienez
         //Metodo honetan bonbak egoteagatik aldaketak non egin ahal diren begiratzen du bakarrik,
         //ez du ezer ez aldatzen
         if (alt == 0){                                //Ezkerraldeko zutabea
@@ -247,40 +233,5 @@ public abstract class Tableroa {
 	
 	public int getBonbaKop(){
 		return bonbaKop;
-	}	
-	
-	//Metodo hau tableroa ondo sortu dela probatzeko da bakarrik
-	public void inprimatu(){
-		int y = 0;
-        Laukia [] lista = null;
-        while (y<=this.altuera-1){
-        	lista =  this.laukiak[y];
-        	for (Laukia l : lista){
-                if(l instanceof Bonba){
-                    System.out.print("* ");
-                }
-                else if (l instanceof Hutsa){
-                	System.out.print(". ");
-                }
-                else if(l instanceof Hurbila){
-                	switch (((Hurbila) l).getBonbaKop()) {
-					case 1: System.out.print("1 ");break;
-					case 2: System.out.print("2 ");break;
-					case 3: System.out.print("3 ");break;
-					case 4: System.out.print("4 ");break;
-					case 5: System.out.print("5 ");break;
-					case 6: System.out.print("6 ");break;
-					case 7: System.out.print("7 ");break;
-					case 8: System.out.print("8 ");break;
-					default:
-						break;
-					}
-                }
-            }
-        	System.out.println("");
-            y++;
-        }
 	}
-	
-	
 }

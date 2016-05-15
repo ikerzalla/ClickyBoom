@@ -4,14 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import interfazea.*;
-/*
-1. Sprint:
-	Tableroa sortzea: 4 ordu
 
-2. Sprint:
-	Bandera jartzea (eskuineko click-a jaso): 3 ordu
-	
-	*/
 public class Jokoa {
 
 	private String jokalaria = null;
@@ -60,37 +53,18 @@ public class Jokoa {
 		nJokoa.zailtasuna = zailtasun;
 		TableroaFactory faktoria = TableroaFactory.tableroaFactoryLortu();
 		taula = faktoria.createTableroa(zailtasun);
-		
-		//menura mugitu da 
-		/*Pantaila p = Pantaila.getNPantaila();
-		System.out.println("Pantaila sortu dugu");
-		p.setVisible(true);
-		System.out.println("Tableroa sortu dugu");*/
 	}
-	
-	//interfaz grafikoa eta sistema ezberdindu behar dira
-	
 
 	public static void main(String[] args){
 		getNireJokoa().jokoaHasieratu();
-		//getNireJokoa().zailtasunaAukeratu();
 	}
 	
 	public void jokoaHasieratu(){
-		//Llama a menu, que ahora tiene el Login y el selector de dificultad junto
-		/*Login l = new Login();
-		l.setVisible(true);*/
 		Menu m = new Menu();
 		m.setVisible(true);	
 	}
 	
-	/*public void zailtasunaAukeratu() {
-		Menu m = new Menu();
-		m.setVisible(true);	
-	}*/
-
 	public void amaitu(boolean irabazi) {
-		//timer.cancel();
 		timerTask.cancel();
 		if (!irabazi){
 			taula.bonbakErakutsi();
@@ -99,19 +73,7 @@ public class Jokoa {
 			try {
 				Ranking r = Ranking.getRanking();
 				r.sortuPuntuaketa(this.jokalaria, this.kronometroa);
-				
-				
-				/*
-				Puntuaketa p = new Puntuaketa(Jokoa.getNireJokoa().getJokalaria());
-				Integer i = Jokoa.getNireJokoa().getKrono();
-				p.puntuaketaAldatu(i.toString());
-				r.gehituPuntuaketa(p);
-				r.rankingDeia(Jokoa.getNireJokoa().getZailtasuna());
-				r.fitxategiaGorde();
-				*/
-				
 			} catch (Exception e) {
-				
 				e.printStackTrace();
 			}
 		}

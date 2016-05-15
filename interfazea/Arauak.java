@@ -12,15 +12,9 @@ import java.awt.Font;
 
 public class Arauak extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -34,9 +28,6 @@ public class Arauak extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Arauak() {
 		setTitle("Arauak");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Arauak.class.getResource("/argazkiak/icono.jpg")));
@@ -55,5 +46,4 @@ public class Arauak extends JFrame {
 		txtArauak.setEditable(false);
 		this.pack();
 		}
-
 }

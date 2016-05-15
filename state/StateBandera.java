@@ -5,8 +5,7 @@ import clickyboom.Laukia;
 import clickyboom.Tableroa;
 
 public class StateBandera implements State{
-	//Klase honek lauki batean bandera bat jarrita dagoela adierazten du
-	
+
 	public StateBandera(){}
 	
 	@Override
@@ -20,5 +19,4 @@ public class StateBandera implements State{
 		t.banderaKendu();
 		l.egoeraAldatu(new StateGarbia());
 	}
-
 }

@@ -12,11 +12,6 @@ public class Puntuaketa {
 		this.jokalaria = pJok;
 		this.puntuaketa = pPunt;
 	}
-	/*
-	public void puntuaketaAldatu(String z){
-		this.puntuaketa = z;
-	}
-*/
 	
 	static final Comparator<Puntuaketa> PUNTUAKETA = new Comparator<Puntuaketa>() {
 		public int compare(Puntuaketa pPunt1, Puntuaketa pPunt2) {

@@ -22,7 +22,6 @@ public abstract class Laukia implements Observable{
 		egoera.eskuinClickEgin(alt, zab);
 	}
 	
-	
 	public void egituratu(int altuera, int zabalera){
 		this.notifyObserver(altuera, zabalera);
 	}

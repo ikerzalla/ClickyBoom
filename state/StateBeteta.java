@@ -3,8 +3,7 @@ package state;
 import clickyboom.Jokoa;
 
 public class StateBeteta implements State {
-	//Klase honek tableroa beteta dagoenean egin beharreko atazak ditu
-	
+
 	public StateBeteta() {}
 
 	@Override

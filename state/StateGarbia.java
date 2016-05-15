@@ -5,7 +5,6 @@ import clickyboom.Laukia;
 import clickyboom.Tableroa;
 
 public class StateGarbia implements State{
-	//Klase honek lauki batean bandera bat jarrita ez dagoela adierazten du
 	
 	public StateGarbia(){}
 	
@@ -25,5 +24,4 @@ public class StateGarbia implements State{
 			l.egoeraAldatu(new StateBandera());
 		}
 	}
-
 }

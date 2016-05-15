@@ -4,7 +4,6 @@ import clickyboom.Jokoa;
 import clickyboom.Tableroa;
 
 public class StateHutsa implements State{
-	//Klase honek tableroa hutsa dagoenean egin beharreko atazak ditu
 	
 	public StateHutsa(){}
 
@@ -15,12 +14,10 @@ public class StateHutsa implements State{
 		tab.tableroaBete(alt, zab);
 		tab.egoeraAldatu(new StateBeteta());
 		tab.ezkerClickEgin(alt, zab);
-		
 	}
 	
 	@Override
 	public void eskuinClickEgin(int alt, int zab){
 		Jokoa.getNireJokoa().getTableroa().getLauki(alt, zab).eskuinClickEgin(alt, zab);
 	}
-
 }

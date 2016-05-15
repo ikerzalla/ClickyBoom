@@ -14,9 +14,7 @@ public class TableroaFactory {
 		}
 		return fact;
 	}
-	
-	//Hasieran tablero mota bakarra izango dugu. Hala ere, geroago zailtasun-maila gehiago gehitzeko,
-	//"Factory" patroia erabiliko dugu, bakoitzaren sorrera errazteko
+
 	public Tableroa createTableroa(String s){	
 		Tableroa nireTableroa = null;
 		
@@ -31,5 +29,4 @@ public class TableroaFactory {
 		}
 		return nireTableroa;
 	}
-
 }

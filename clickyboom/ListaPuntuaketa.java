@@ -33,8 +33,6 @@ public class ListaPuntuaketa {
 				lerroa = sarrera.nextLine();
 				String[] hitzak = lerroa.split("\t");
 				p = new Puntuaketa(hitzak[i], hitzak[++i]);
-				/*i++;
-				p.puntuaketaAldatu(hitzak[i]);*/
 				this.lista.add(p);
 			}
 			sarrera.close();

@@ -11,15 +11,9 @@ import clickyboom.*;
 
 public class Menu extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -33,9 +27,6 @@ public class Menu extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Menu() {
 		setResizable(false);
 		setTitle("ClickyBoom");
@@ -68,16 +59,6 @@ public class Menu extends JFrame {
 		
 		izena.setBackground(Color.ORANGE);
 		getContentPane().add(izena);
-		
-		/*izena.addFocusListener(new FocusListener() {
-		    public void focusGained(FocusEvent e) {
-		        izena.setText("");
-		    }
-
-		    public void focusLost(FocusEvent e) {
-		    }
-		});*/
-		
 		
 		JButton b1 = new JButton();
 	    b1.setIcon(new ImageIcon(this.getClass().getResource("/argazkiak/Erreza.jpg")));
@@ -158,8 +139,6 @@ public class Menu extends JFrame {
 				a.setVisible(true);
 			}
 		});
-	    
-
 	}
 	
 	private void aukeratu(String pZailtasun, String pIzena){
@@ -170,15 +149,4 @@ public class Menu extends JFrame {
 		Pantaila p = Pantaila.getNPantaila();
 		p.setVisible(true);
 	}
-	
-	/*private void aukeratu(String pZailtasun){
-		Jokoa j = Jokoa.getNireJokoa();
-		
-		dispose();
-	    Pantaila p = Pantaila.getNPantaila();
-		System.out.println("Pantaila sortu dugu");
-		
-		System.out.println("Tableroa sortu dugu");
-	}*/
-	
 }
